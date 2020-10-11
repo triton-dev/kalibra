@@ -1,0 +1,18 @@
+\select@language {magyar} \contentsline {part}{I.\hspace {1em}Bevezet\IeC {\'e}s}{2}% 
+\select@language {magyar} \contentsline {chapter}{\numberline {1}A tervezett rendszer}{3}% 
+\select@language {magyar} \contentsline {chapter}{\numberline {2}A jelenlegi rendszer}{4}% 
+\select@language {magyar} \contentsline {section}{\numberline {2.1}A jelenlegi rendszer bemutat\IeC {\'a}sa}{4}% 
+\select@language {magyar} \contentsline {section}{\numberline {2.2}A jelenlegi rendszer tov\IeC {\'a}bbi haszn\IeC {\'a}lat\IeC {\'a}nak lehet\IeC {\H o}s\IeC {\'e}ge}{5}% 
+\select@language {magyar} \contentsline {section}{\numberline {2.3}A r\IeC {\'e}gi rendszer hib\IeC {\'a}i, az \IeC {\'u}jratervez\IeC {\'e}s sz\IeC {\"u}ks\IeC {\'e}gess\IeC {\'e}ge}{5}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}Kulcsok hi\IeC {\'a}nya}{5}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.2}Kulcsok \IeC {\'e}s szab\IeC {\'a}lyok hi\IeC {\'a}nya, annak k\IeC {\"o}vetkezm\IeC {\'e}nyei}{6}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.3}Kulcsok (azonos\IeC {\'\i }t\IeC {\'o}k) k\IeC {\'e}pz\IeC {\'e}se}{7}% 
+\select@language {magyar} \contentsline {subsubsection}{\numberline {2.3.3.1}Bels\IeC {\H o} k\IeC {\'e}pz\IeC {\'e}s\IeC {\H u} azonos\IeC {\'\i }t\IeC {\'o}k}{7}% 
+\select@language {magyar} \contentsline {subsubsection}{\numberline {2.3.3.2}K\IeC {\'e}pzett azonos\IeC {\'\i }t\IeC {\'o}k}{8}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.4}A megl\IeC {\'e}v\IeC {\H o} rendszerek azonos\IeC {\'\i }t\IeC {\'o}i}{8}% 
+\select@language {magyar} \contentsline {subsubsection}{\numberline {2.3.4.1}A hum\IeC {\'a}n\IeC {\"u}gyi rendszer}{8}% 
+\select@language {magyar} \contentsline {subsubsection}{\numberline {2.3.4.2}A SAP rendszer}{9}% 
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Az \IeC {\'u}j rendszer tervez\IeC {\'e}se}{10}% 
+\select@language {magyar} \contentsline {section}{\numberline {3.1}A probl\IeC {\'e}ma le\IeC {\'\i }r\IeC {\'a}sa}{11}% 
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Felhaszn\IeC {\'a}l\IeC {\'o}i szerepek}{12}% 
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Az \IeC {\'u}j rendszer t\IeC {\'a}bl\IeC {\'a}i}{12}% 
