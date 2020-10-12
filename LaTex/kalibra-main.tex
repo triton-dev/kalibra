@@ -26,17 +26,19 @@
 
 \part{Bevezetés}
 \chapter{A tervezett rendszer}
-A BKV Vasúti Járműjavító Kft. 9001-es ISO rendszerben végzi tevékenységeinek 
-jelentős részét. A minőségbiztosítás fontos eleme a mérő-, ellenőrző- és 
-vizsgáló eszközök, berendezések nyilvántartása, megfelelő működésük rendszeres 
-ellenőrzése, a napi karbantartáson túlmutató ápolása, esetleges javítása, a mért 
-értékek helyességének biztosítása, amit a kalibrálás, egyes esetekben a 
-hitelesítés biztosít.
+A BKV Vasúti Járműjavító Kft. 9001:2015-ös ISO rendszerben végzi 
+tevékenységeinek jelentős részét. A minőségbiztosítás fontos eleme a mérő-, 
+ellenőrző- és vizsgáló eszközök, berendezések nyilvántartása, megfelelő 
+működésük rendszeres ellenőrzése, a napi karbantartáson túlmutató ápolása, 
+esetleges javítása, a mért értékek helyességének biztosításának érdekében, 
+végzett kalibrálás, egyes esetekben a hitelesítés.
 
-A Kft. az 90-es évek végétől a mérő-, ellenőrző-, viszgáló eszközök 
+A Kft. az 90-es évek végétől a mérő-, ellenőrző-, vizsgáló eszközök 
 nyilvántartására egy mára elavultnak tekinthető programot használ, ami nem,
 vagy alig biztosítja az elégséges feltételeket az idő közben életbe lépet 
-24/2016 (VII. 18.) NFM rendelet követelményeinek betartására.
+\textit{24/2016 (VII. 18.) NFM rendelet} követelményeinek betartására. Arról 
+született döntés, hogy a felhasználó igények és a megfelelés érdekében egy új 
+rendszert kell megtervezni, majd bevezetni.
 
 Az új rendszer tervezésekor figyelembe kell venni:
 \begin{itemize}
@@ -59,15 +61,15 @@ kiterjesztése.
 
 A hálózatos kialakítás előnye, hogy elvileg minden olyan eszközről elérhető az
 adatbázis, amely a keretprogramon keresztül képes csatlakozni hozzá. Egyúttal 
-kockázatot jelent, hogy a hálózati meghajtón lévő fájlok egy alacsony szintű 
+kockázatot is jelent, hogy a hálózati meghajtón lévő fájlok egy alacsony szintű 
 hozzáférés esetén is könnyen megváltoztathatók, tekintettel arra, hogy a dBase 
 adatfájlok strukturált szerkezete szövegszerkesztő, táblázatkezelő 
-alkalmazással egyszerűen módosítható.
+alkalmazással egyszerűen módosíthatók.
 
 A DBF fájlok tanulmányozása az alábbiakat tárta fel:
 \begin{itemize}
 \item az első bejegyzések 1999-ben keletkeztek,
-\item az adatbázis inkonzisztenciájára utaló jelek láthatók,
+\item az adatbázis inkonzisztenciájára utaló jelek láthatók(!) ,
 \item egyes mezők kitöltése esetleges, nem következetes,
 \item az adatok egy része meglévő Kft.-s nyilvántartásokra épül, például a
 dolgozók azonosítása,
@@ -86,17 +88,18 @@ lehetőség,
 
 \section{A jelenlegi rendszer további használatának lehetősége}
 
-A jelenlegi renszder javítására nincs mód, az eredeti forráskód nincs meg, csak
+A jelenlegi rendszer javítására nincs mód, az eredeti forráskód nincs meg, csak
 a futtatható állománnyal rendelkezik a Kft. 
 A karaktergrafikus alkalmazás egyébként a feladat elvégzéshez tökéletes lenne, 
-azonban a fejlesztői környezetet meg kell vásárolni, illetve licence díjat kell 
-fizetni érte.
-El kellene végezni az adatbázis újratervezést, mert mint a későbbiekben 
-bemutatásra kerül, az adatbázis tervezésekor olyan hibákat követtek el az 
-egykori tervezők, amelyek minden képpen javításra szorulnak.
+azonban a fejlesztői környezetet meg kellene vásárolni, illetve licence díjat 
+kell fizetni érte.
+Nem elegendő a jelenlegi adatbázis átültetése egy másik adatbázis motorra, mert
+az eredeti adatbázis olyan tervezési hibákat tartalmaz, amit ki kell javítani, 
+különben az új adatbázis működésében komoly zavart okoznak.
 
 A jelenlegi rendszer a működés folyamatosságának érdekében tovább használható, 
-de egyidejűleg el kell kezdeni a kialakítandó rendszer tervezését.
+de egyidejűleg el kell kezdeni a kialakítandó rendszer tervezését, a folyamatok 
+feltárását, rögzítését.
 
 A további inkonzisztencia növekedésének lassítása érdekében:
 \begin{itemize}
@@ -104,7 +107,7 @@ A további inkonzisztencia növekedésének lassítása érdekében:
 \item  szöveges mezők kitöltésénél törekedni kell az azonos értékek azonos módon
 történő rögzítésére,
 \item az azonosító szerepű mezők kitöltése előtt ellenőrizni kell, hogy az 
-azonosító létezik-e
+azonosító létezik-e.
 \end{itemize}
 
 A jelenlegi rendszer adatai részben felhasználhatók az új rendszerben is, 
@@ -116,23 +119,24 @@ tervezéséhez.
 \subsection{Kulcsok hiánya}
 A relációs adatbázisok az \textit{egyed - tulajdonság - kapcsolat} hármasra
 épülnek. \textit{Egyed}nek nevezzük az adatokat tartalmazó táblákat, melyek 
-sorai az \textit{egyed} előfordulásokat tartalmazzák, a táblák oszlopai a 
+sorai az \textit{egyed} előfordulások, a táblák oszlopai a 
 \textit{tulajdonságok}, amelyek az egyed jellemzőit tárolják. A táblák 
-közötti összefüggéseket, viszonyokat a \textit{kapcsolat} írja le.
+közötti összefüggéseket, viszonyokat a táblák közötti \textit{kapcsolat} írja 
+le.
 
 Azokat a tulajdonságot, vagy tulajdonságokat, amelyek egyértelműen azonosítanak
-egy-egy egyedelőfordulást \textit{kulcs}nak nevezzük. Ha \textit{kulcs} egy 
+egy-egy egyed előfordulást \textit{kulcs}nak nevezzük. Ha \textit{kulcs} egy 
 elemű akkor egyszerű, ha több elemű akkor \textit{összetett kulcs}nak nevezzük.
 
 A táblák közötti kapcsolatokat a \textit{kulcs}ok biztosítják. Ehhez az egyik 
-tábla kulcsát egy másik tábla tartalmazza és \textit{idegen-, vagy külső 
-kulcs}nak nevezzük. Emellett kell állítani a szabályt aminek teljesülését az 
-\textit{adatbázis motor} minden esetben automatikusan ellenőriz. Amennyiben a 
-felállított szabály sérülne, úgy a motor nem engedi végrehajtani a kért 
-műveletet.
+tábla kulcsát egy másik táblának tartalmaznia kell és \textit{idegen-, vagy 
+külső kulcs}nak nevezzük. Emellett fel kell állítani a szabályt aminek 
+teljesülését az \textit{adatbázis motor} minden esetben automatikusan ellenőriz. 
+Amennyiben a felállított szabály sérülne, úgy a motor nem engedi végrehajtani a 
+kért műveletet.
 
 A jelenlegi rendszerben, ha vannak is kulcsok, valószínűleg a szabályok leírása 
-elmaradt,és semmi nem akadályozza meg, hogy a helytelen érték kerüljön a 
+elmaradt, és semmi nem akadályozza meg, hogy a helytelen érték kerüljön a 
 rendszerbe. Például a kalibrálást végezte oszlopban az érték hol 
 \texttt{HARANGOZO}, hol \texttt{HRANGOZO}, de van \texttt{HARANGÓZO} és 
 \texttt{HARANGÓZÓ} is.
@@ -170,6 +174,7 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \hline
         KOVACS&Kovács József\\
         \hline
+        \dots&\dots\\
         \end{tabular}
         \caption{DOLGOZÓ tábla}\label{dolg}
 \end{figure}
@@ -189,26 +194,28 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \dots&\dots&\dots\\
         \hline
         104&\dots&KOVACS\\
+        \hline
+        \dots&\dots&\dots\\
 \end{tabular}
 \caption{KALIBRÁLÁS tábla}\label{kalib}
 \end{figure}
         
 
-A kulcsok közötti szabályok betartását a motor ellenőrzi, így a KALIBRÁLÁS tábla
-\textbf{dolgozókód} mezője csak olyan értéket vehet fel, ami szerepel a DOLGOZÓ
-tábla \textbf{dolgozókód} mezőjében. Vissza irányban is igaz, ha egy dolgozót 
-törlünk a DOLGOZÓ táblából, nem maradhat olyan rekord a KALIBRÁLÁS táblában, 
-ami a törölt dolgozóhoz tartozott. Megadható olyan szabály, ami törli az árván 
-maradó sorokat, vagy a \textbf{dolgozókód} mező értékét \textit{null} értékre 
-állítja, de olyan szabály is létezik, hogy nem törölhető az adat.
-Ugyan ez igaz arra az esetre is, ha a dolgzó kódja megváltozik. Ilyen esetben 
+Ha a kulcsok közötti szabályok betartását a motor ellenőrzi, akkor a KALIBRÁLÁS 
+tábla \textbf{dolgozókód} mezője csak olyan értéket vehet fel, ami szerepel a 
+DOLGOZÓ tábla \textbf{dolgozókód} mezőjében. Vissz irányban is igaz, ha egy 
+dolgozót törlünk a DOLGOZÓ táblából, nem maradhat olyan rekord a KALIBRÁLÁS 
+táblában, ami a törölt dolgozóhoz tartozott. Megadható olyan szabály, ami törli 
+az árván maradó sorokat, vagy a \textbf{dolgozókód} mező értékét \textit{null} 
+értékre állítja, de olyan szabály is létezik, hogy nem törölhető az adat.
+Ugyan ez igaz arra az esetre is, ha a dolgozó kódja megváltozik. Ilyen esetben 
 a motor automatikusan kicseréli a KALIBRÁLÁS tábla \textbf{dolgozókód} mezőjét 
 az új értékre.
 
 Az adatok, leírók egyik különleges értéke a \textit{null} érték. Nem keverendő
 össze a nulla $(0)$ szám értékkel, sem az üres értékkel, például karakteres
 adat esetén a '' azaz az üres karakterrel. A \textit{null} érték azt jelenti, 
-hogy az adott pillanatban a mező értéke még ismeretlen, vagy nem értelmezehtő.
+hogy az adott pillanatban a mező értéke még ismeretlen, vagy nem értelmezhető.
 A \textit{null} értékek kezelésére az adatbázis motorok nyújtanak 
 szolgáltatásokat. De vannak egyéb megkötések, mint például a kulcs, vagy 
 összetett kulcs eleme nem lehet \textit{null} értékű.
@@ -216,8 +223,8 @@ szolgáltatásokat. De vannak egyéb megkötések, mint például a kulcs, vagy
 \subsection{Kulcsok (azonosítók) képzése}
 
 \subsubsection{Belső képzésű azonosítók}
-A belső képzésű azonosítükat az adatbázis motor állítja elő, mint például a 
-belső sorszám jellegű, vagy véletlen szerű azonosítók. Ilyen esetekben a motor 
+A belső képzésű azonosítókat az adatbázis motor állítja elő, mint például a 
+belső sorszám, vagy véletlen szerű azonosítók. Ilyen esetekben a motor 
 biztosítja, hogy egy táblán belül ne ismétlődjenek a kiosztott azonosítók még 
 abban az esetben sem, ha az korábban törölve lett. Ehhez a motor 
 rendszertáblákat használ, melyekhez a hozzáférést a rendszer korlátozza. 
@@ -228,21 +235,21 @@ lekérdezhető az utolsó, vagy a következő azonosító.
 Természetesen lehetőség van tetszőleges tartalamú azonosítók előállítására, a 
 motor ilyen esetben is képes ellenőrzni azok egyediségét. A képzett azonosítók 
 valamilyen szabály, vagy logika mentén kerülenk előállításra. Ilyen képzett 
-azonosító a Kft. cikktörzsében a cikkszám, de ilyenek az EAN vonalkódrendszerek 
-is.
+azonosító a Kft. cikktörzsében a \textit{cikkszám}, de ilyenek az EAN 
+vonalkódrendszerek is.
 
 Képzett azonosítók esetén könnyen abba a hibába eshetünk, hogy valamilyen leíró
 tulajdonságokat az azonosítóba kódolunk. Tételezzük fel, hogy a cikkszám 7.
 karaktere egy szám, értékkészlete 0-9 közötti értéket vehet fel és valamilyen 
-jellemzőt ír le. Könnyen belátható, hogy 10 jellemzőt lehet ezzel a mezővel 
-leírni, de a 11. jellemzőt a szabály megszegése nélkül már nem, nem elég hozzá a 
-mező értékkészlete.
+jellemzőt takar. Könnyen belátható, hogy 10 jellemzőt lehet ezzel a mezővel 
+leírni, de a 11. tulajdonságot a szabály megszegése nélkül már nem, nem elég 
+hozzá a mező értékkészlete.
 
 Másik előforduló jelenség, hogy a termékstruktúra alapján határozzák meg a 
 cikkszámokat. Ezzel önmagában nincs probléma, ha kellő figyelmet fordítanak 
 arra, hogy az általános, több helyen is elődorduló, vagy felhasználható 
-kereskedelmi termékeket nem sorolják ide. Ezzel elkerülhető, hogy ugyan annak a 
-terméknek több cikkszáma is legyen.
+általában kereskedelmi termékeket nem sorolják ide. Ezzel elkerülhető, 
+hogy ugyan annak a terméknek több cikkszáma is legyen.
 
 \subsection{A meglévő rendszerek azonosítói}
 
@@ -250,28 +257,38 @@ Minden alrendszer esetén sérül \textbf{az adatbázis - egy} elv. Azaz nem len
 szabad olyan rendszereket létrehozni, amelyek új adatbázisok létrehozásával 
 járnak. Számos esetben mégis erre kényszerülünk, mert a meglévő rendszerek 
 bővítése jelentős költséggel járna, például a SAP esetében, vagy a kezelendő 
-adatok nem illeszkednek abba a rendszerbe, amibe kis ráfordítással de kezelni 
-lehetne azokat. Pédául a humánügyi adatok kezelését biztosító rendszerbe 
-nehezen képzelhető el egy mérőeszköz nyilvántartó rendszer integrálása.
+adatok nem illeszkednek abba a rendszerbe, amibe ugyan kis ráfordítással de 
+kezelni lehetne azokat. Pédául a humánügyi adatok kezelését biztosító 
+rendszerbe nehezen képzelhető el egy mérőeszköz nyilvántartó rendszer 
+integrálása, egyszerűen nem ott van a helye.
 
 Ilyen esetekben olyan közös azonosítókat kell választani, amivel biztosítható,
 hogy az egyik rendszer kimenete a másik rendszer bemenete lehessen, azaz a 
 \textit{master} rendszer kulcsának meg kell jelennie a \textit{slave} 
 rendszerben is, méghozzás ugyan olyan módon, ahogy a \textit{master} 
-rendszerben létezik.
+rendszerben létezik. 
 
 \subsubsection{A humánügyi rendszer}
 A humánügyi rendszerben minden dolgozó egyedi sorszámot kap. Ha egy dolgozó 
 munkaviszony megszűnik, majd ezek után ismét felvételre kerül, új azonosító 
 számot kap. Az azonosító neve a \textbf{törzsszám}.
+\paragraph*{probléma:}
+\textit{ 
+A kölcsönzött munkavállalók a humánügyi rendszerben nincsenek nyilvántartva, 
+így törzsszámuk sincs. Ennek ellenére a SAP rendszerben kezelni kell őket, 
+számukra is kiosztásra kerülnek eszközök, melyek könyvelése a SAP rendszerben 
+történik. Emiatt sérül az a szabály, miszerint a dolgozó törzsszámának utolsó 4 
+karaktere a dolgozói raktárhely azonosítója. Ehelyett minden kölcsönzött 
+munkavállaló a $8888$ raktárhely azonosítót kapja, a munkavállaló nevét a 
+könyvelési bizonylat fejrészébe rögzítik.
+}
 
 \subsubsection{A SAP rendszer}
-
 A SAP rendszerben a termékek azonosítására a \textbf{cikkszám} szolgál. Ezzel a
-mezővel önmagában azonosíthatók az azonos termékek csoportja, de ha a sok 
-azonos termék közül konkréten egy terméket (vagy termékcsoportot) kell 
+mezővel önmagában azonosíthatók az azonos termékek csoportjai, de ha a sok 
+azonos termék közül konkrétan egy terméket (vagy termékcsoportot) kell 
 azonosítani, legalább még egy azonosító szükséges. Ez a mező a \textbf{sarzs} 
-mező. Ilyen esetben a \textbf{cikkszám+sarzs} együtt azonosítja a konkrét 
+mező. Ilyen esetben a \textbf{cikkszám+sarzs} együtt azonosítja az adott 
 terméket. A SAP rendszerben mindkét mező tárolási hossza kötött, ezt az új 
 rendszerben is figyelembe kell venni.
 
@@ -311,35 +328,36 @@ kapcsolatokat.
 
 A korszerű kezelők használata során a fizikai szinttel - az adatok tényleges, 
 fájl szintű tárolásával - a tervezés során nem kell foglalkozni, az az 
-adatbázis motor feladata.
+adatbázis motor feladata. 
 
 
 
 \section{A probléma leírása}
-A probléma leírását a műszerek kalibrlása és annak nyilvántartása szempontjából
-vizsgáljuk. Az \textit{master} rendszerek folyamatai nem képzik a modell részét.
+A probléma leírását a műszerek kalibrálása és annak nyilvántartása szempontjából
+vizsgáljuk. Az \textit{master} rendszerek folyamatai nem képzik a modell 
+részét, de ha modell elkészítésre hatással vannak, azokat figyelembe kell venni.
+
 A Kft. nyilvántartásában több száz mérő-, ellenerző- és vizsgáló eszköz 
-- műszer - található. Ezek egy részé a Kft. Szerszámraktárában tárolják, másik 
+- műszer - található. Ezek egy részét a Kft. Szerszámraktárában tárolják, másik 
 része a dolgozók számára használatra van kiadva, harmadrészt a kalibrálás, vagy 
 hitelesítés elvégzése miatt a kalibrálónál, vagy külső félnél található. 
-A műszerek kalibrálási, vagy hitelesítési idővel rendelkeznek. A lejárt idejű 
+A műszerek kalibrálási, vagy hitelesítési idővel rendelkeznek, a lejárt idejű 
 műszerekkel mérést végezni nem szabad. A lejárt kalibrálási, vagy hitelesítési 
-idejű, vagy nem kalibrált, nem hitelesített műszereket az elős 
-használat előtt kalibrálni, vagy hitelesíteni kell.A kalibrálásról, vagy 
-hitelesítésről sorszámmal ellátott jegyzőkönyv készül. A jegyzőkönyv
-az összehasonlító mérések eredményétől függöen három kategóriába sorolja a
-műszereket:
+idejű, vagy nem kalibrált, nem hitelesített műszereket az első használat előtt 
+kalibrálni, vagy hitelesíteni kell. A kalibrálásról, vagy hitelesítésről 
+sorszámmal ellátott jegyzőkönyv készül. A jegyzőkönyv az összehasonlító mérések 
+eredményétől függöen három kategóriába sorolja a műszereket:
 \begin{itemize}
  \item kalibrált, vagy hitelesített,
  \item csak tájékoztató mérésre használható,
  \item selejt.
 \end{itemize}
-A megfelelt minősítéső műszerekre matrica kerül, míg a selejt műszerekről 
+A megfelelt minősítésű műszerekre matrica kerül, míg a selejt műszerekről 
 selejtezési javaslat készül. A selejt műszereket elkülönítetten kell tárolni, 
 további használatra tilos azokat kiadni.
  
-Évente egy alkalommal úgynevezett mérőeszköz rovancs keretében minden műszert a 
-rovancsot végzők lista alapján megkeresnek, azonosítanak, a kopott, 
+Évente egy alkalommal úgynevezett mérőeszköz rovancs keretében a rovancsot 
+végzők lista alapján minden műszert megkeresnek, azonosítanak, a kopott, 
 olvashatatlan érvényesítő matricákat pótolják. A listák készítése 
 költséghely-dolgozó-műszer bontásban készül.
  
@@ -350,12 +368,19 @@ még ki nem adott műszereket, melyek kalibrálását az első kiadás előtt v�
 el. A Szerszámkiadóban található műszerek, lehetnek lejárt kalibrálási idejűek 
 is, kiadás előtt a kalibrálást el kell végezni.
 
+Az újonann vásárolt műszerekre egyedi számot gravíroznak, mely szám felépítése 
+egyrészt információt hordoz a műszerről, másrészt sorszám jellegű. Csak egyedi 
+számmal ellátott műszert lehet használatra kiadni. Ez egyedi szám emellett 
+egyedileg is azonosítja a konkrét eszközt.
+
 Az egyes műszerek kalibrálási, vagy hitelesítési idejét jogszabályok, vagy egyéb
-rendelkezések határozzák meg. Jogszabályi előírás esetén ettől eltérni nem lehet.
-Az egyéb rendelkezések esetén figyelembe lehet venni a műszer használatának
-gyakoriságát, a használat körülményeit az időtartam meghatározásánál. 
-Így például az azonos paraméterekkel rendelkező műszer esetében az ,,A'' műszer
-365 napos, míg a ,,B'' műszer csak 120 napos kalibrálási idővel is rendelkezhet.
+rendelkezések határozzák meg. Jogszabályi előírás esetén ettől eltérni nem 
+lehet. Az egyéb rendelkezések esetén figyelembe lehet venni a műszer 
+használatának gyakoriságát, a használat körülményeit az időtartam 
+meghatározásánál. 
+Így például azonos paraméterekkel rendelkező műszer esetében az ,,A'' műszer
+365 napos, míg a ,,B'' műszer akár csak 120 napos kalibrálási idővel is 
+rendelkezhet.
 
 A műszerekről készült kalibrálási adatokat a műszer selejtezését követően is 
 meg kell őrizni, szükség szerint a kalibrálási jegyzőkönyvet változatlan 
@@ -364,18 +389,18 @@ adattartalommal is elő kell tudni állítani.
 Egy-egy műszerhez több feljegyzés is tartozhat, amelyek valamilyen plusz 
 információt tartalmaznak az adott műszerre vonatkozóan. 
 
-Esetenként előfordul, hogy a Kft. külső felek számára végez kalibrlási 
+Esetenként előfordul, hogy a Kft. külső felek számára végez kalibrálási 
 feladatokat. A folyamat nem tér el saját tulajdonú műszerek kalibrálási 
 folyamatától.
 
 \section{Felhasználói szerepek}
-A probléma leírásából kiolvasható, hogy többféle szerepkör is megjelenik. Így 
-van
+A probléma leírásából kiolvasható, hogy a rendszerben többféle szerepkör is 
+megjelenik. Így van
 \begin{itemize}
  \item \textbf{adminisztrátor}, aki a rendszerben található törzsadatok 
 kezelését végzi, listákat készít, gondoskodik a rendszer adatainak 
-naprakészségéért,
-\item \textbf{kalibráló}, aki a kalibrálásokt végzi, rögziti a kalibrálások 
+naprakészségéről,
+\item \textbf{kalibráló}, aki a kalibrálásokt végzi, rögzíti a kalibrálások 
 eredményét, elvégzi az eszközök minősítését,
 \item \textbf{lekérdező}, aki a rendszer adatait csak lekérdezi, semmilyen 
 létrehozó, módosító, törlő funkcióval nem rendelkezik,
@@ -385,10 +410,10 @@ stb\dots
 \end{itemize}
 
 \section{Az új rendszer táblái}
-A probléma leírása alapján elkészíthető a táblák durva felsorolása elsődleges 
-elnevezése, illetve a bennük tárolandó adatok vázlatos leírása. Ez a későbbiek 
-során bővülhet, szűkülhet, a megnevezések változhatnak. A tervezésnek ebben a 
-szakaszában még szabatos neveket használunk.
+A probléma leírása alapján elkészíthető a táblák nagyvonalú felsorolása, 
+elsődleges elnevezése, illetve a bennük tárolandó adatok vázlatos leírása. Ez a 
+későbbiek során bővülhet, szűkülhet, a megnevezések változhatnak. A tervezésnek 
+ebben a szakaszában még szabatos neveket használunk.
 A táblák előzetes felsorolását \aref{tablak-0} táblázat tartalmazza.
 A táblák közötti kapcsolatok \aref{tablak0-kapcs0} ábrán láthatók.
 \begin{figure}[ht!]
