@@ -8,6 +8,12 @@
 \setcounter{secnumdepth}{5}
 \usepackage{graphicx}
 
+\newcommand{\PK}[1]{\textbf{#1}}
+\newcommand{\FK}[1]{\underline{#1}}
+\newcommand{\TABLA}[1]{\MakeUppercase{#1}}
+\newcommand{\TMEZO}[2]{\MakeUppercase{#1}.{\underline{#2}}}
+
+
 %opening
 \title{%
     \Huge \textbf{Mérőeszköz kalibrálás \\ és nyilvántartó rendszer} \\
@@ -302,6 +308,18 @@ vevőtörzsben tarjuk nyilván. A megfelelő kulcsok a \textbf{szállítókód} 
 \textbf{vevőkód}. Ha a szállító egyben vevő is, mind a két törzsben kap 
 azonosítót.
 
+A dolgozók a SAP szemszögéből nézve ,,raktárak'', a kiadott és 
+visszavett műszerek nyilvántartása raktárak közötti átkönyveléssel történik. Az 
+azonosító mező összetett, a SAP-ban a \textbf{gyár+raktárhely} a kulcs.
+
+\paragraph*{probléma:}
+\textit{
+A SAP-ban a dolgozókón kívül költséghelyek is lehetnek tárhelyek. Egyes 
+műszereket nem személynek, hanem költséghelyre adnak ki. Ilyenek például a 
+telepített vizsgáló berendezések, vagy a bármely dolgozó által használható mérő 
+eszközök, mint a mérlegek.
+}
+
 \chapter{Az új rendszer tervezése}
 
 Az új rendszer adatbázist használ, ezért először azt kell megtervezni. 
@@ -460,6 +478,26 @@ kötelező-e, vagy opcionális, csupán jelezzük, hogy a táblák között van
 valamilyen kapcsolat. Nem jelezzük a kapcsolat fokát, ami lehet \textbf{1:1, 
 1:n, m:n} sem.
 
+\section{A táblák részletes leírása}
+A táblák leírása első lépésben szöveges formában történik, az alábbi 
+jelölésekkel:
+\begin{itemize}
+ \item \TABLA{nagybetűs} szedéssel a táblák neve szerepel: \TABLA{dolgozó}
+ \item a tábla mezői zárójelek között lesznek felsorolva:\\ 
+ \TABLA{DOLGOZÓ}(\PK{törzsszám}, \FK{költséghely}, név, aktív)
+ \item \PK{félkövér szedéssel} a tábla kulcsát jelöljük: \PK{törzsszám}
+ \item a idegen(külső) kulcsok \FK{aláhúzással} jelenek meg: 
+ \FK{költséghely}
+ \item félkövér és aláhúzott szöveg jelöli, ha a mező az egyik táblában kulcs 
+és egy másik tábla idegen kulcsa \PK{\FK{raktárhely}} 
+\item normál szedésse a tábla egyéb mezői fognak szerepelni.
+\item az összetett kulcsok mezőit $+$ jel köti össze: \PK{cikkszám+sarzs}
+\item abban az esetben, ha egy mező név több táblában is szerepel, a mezőt 
+a tábla nevével együtt írjuk le, a tábla neve és a mező neve közé .-ot 
+(pontot) teszünk: \TMEZO{KÖLTSÉGHELY}{költséghely}
+\item a pillanatnyilag érdektelen részeket a \dots jelöli:
+\TABLA{cikkszám}(\PK{cikkszám}, megnevezés, \dots, pontosság)
+\end{itemize}
 
 
 
