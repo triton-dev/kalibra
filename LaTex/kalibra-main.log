@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.10.8)  12 OCT 2020 15:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.10.14)  14 OCT 2020 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -234,30 +234,46 @@ File: kepek/tablak0-kapcs0.png Graphic file (type png)
 <use kepek/tablak0-kapcs0.png>
 Package pdftex.def Info: kepek/tablak0-kapcs0.png  used on input line 472.
 (pdftex.def)             Requested size: 369.88582pt x 260.72684pt.
-[12] [13 <./kepek/tablak0-kapcs0.png>] [14] (./kalibra-main.aux) ) 
+[12] [13 <./kepek/tablak0-kapcs0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 513--515
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 524--527
+
+ []
+
+[15] (./kalibra-main.aux) ) 
 Here is how much of TeX's memory you used:
- 3676 strings out of 493978
- 54379 string characters out of 6161122
- 131251 words of memory out of 5000000
- 7320 multiletter control sequences out of 15000+600000
- 19032 words of font info for 55 fonts, out of 8000000 for 9000
- 350 hyphenation exceptions out of 8191
+ 3687 strings out of 492615
+ 54486 string characters out of 6131389
+ 134851 words of memory out of 5000000
+ 7541 multiletter control sequences out of 15000+600000
+ 21972 words of font info for 61 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
  41i,8n,35p,300b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/gyuri
-/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.600pk> </home/gyur
-i/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> </home/gyu
-ri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/gy
-uri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/g
-yuri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/
-gyuri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home
-/gyuri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440.600pk> </hom
-e/gyuri/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on kalibra-main.pdf (15 pages, 189335 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-
+t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sftt1200.pfb>
+Output written on kalibra-main.pdf (16 pages, 262301 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

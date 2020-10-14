@@ -10,7 +10,7 @@
 
 \newcommand{\PK}[1]{\textbf{#1}}
 \newcommand{\FK}[1]{\underline{#1}}
-\newcommand{\TABLA}[1]{\MakeUppercase{#1}}
+\newcommand{\TABLA}[1]{\noindent\MakeUppercase{#1}}
 \newcommand{\TMEZO}[2]{\MakeUppercase{#1}.{\underline{#2}}}
 
 
@@ -498,6 +498,36 @@ a tábla nevével együtt írjuk le, a tábla neve és a mező neve közé .-ot
 \item a pillanatnyilag érdektelen részeket a \dots jelöli:
 \TABLA{cikkszám}(\PK{cikkszám}, megnevezés, \dots, pontosság)
 \end{itemize}
+
+A táblák leírását célszerű azokka kezdeni, amelyek úgynevezett 
+szótár-\footnote{kulcs--érték táblák. Például országkód--országnév}, vagy
+validáló\footnote{Ilyenek a kötelezően megadandó értékkészletek táblája. 
+Például a minősítés: kitűnő, jó, közepes, elégséges, elégtelen} táblák.
+Az ilyen táblákra jellemző, hogy ritkán változik a tartalmuk. A táblák 
+tartalmazhatnak olyan tulajdonságokat, amelyekkel a felhasználói
+programoknak nyújtunk segítséget, például azzal, hogy az érték
+kiválasztható-e, vagy sem, az értékek rendezést valamilyen súly alapján 
+végezhetik el.
+
+\subsection{SZEREP tábla}
+A \TABLA{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói 
+szerepek értékkészlete jelenik meg.\\
+
+\TABLA{SZEREP}(\PK{szerep}, aktív)
+
+\subsection{MINŐSÍTÉS tábla}
+A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
+
+\TABLA{MINŐSÍTÉS}(\PK{minősítés}, aktív)
+
+\subsection{KÖLTSÉGHELY tábla}
+A tábla azokat a költséghelyeket tartalmazza, amelyekhez dolgozók, vagy 
+műszerek rendelhetők. Egyes költséghelyek idővel megszűnnek, újak jönnek
+létre.\\
+
+\TABLA{KÖLTSÉGHELY}(\PK{költséghely}, költséghely neve, sorrend, aktív)
+
+
 
 
 

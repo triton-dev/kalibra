@@ -17,3 +17,6 @@
 \select@language {magyar} \contentsline {section}{\numberline {3.2}Felhaszn\IeC {\'a}l\IeC {\'o}i szerepek}{12}% 
 \select@language {magyar} \contentsline {section}{\numberline {3.3}Az \IeC {\'u}j rendszer t\IeC {\'a}bl\IeC {\'a}i}{12}% 
 \select@language {magyar} \contentsline {section}{\numberline {3.4}A t\IeC {\'a}bl\IeC {\'a}k r\IeC {\'e}szletes le\IeC {\'\i }r\IeC {\'a}sa}{14}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.1}SZEREP t\IeC {\'a}bla}{14}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.2}MIN\IeC {\H O}S\IeC {\'I}T\IeC {\'E}S t\IeC {\'a}bla}{15}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}K\IeC {\"O}LTS\IeC {\'E}GHELY t\IeC {\'a}bla}{15}% 
