@@ -527,7 +527,13 @@ létre.\\
 
 \TABLA{KÖLTSÉGHELY}(\PK{költséghely}, költséghely neve, sorrend, aktív)
 
+\subsection{FELHASZNÁLÓ tábla}
+A táblában a rendszer felhasználóit tartjuk nyilván. A rendszerhez csak 
+jogosult felhasználó férhet hozzá. A felhasználókról a minimális adatokat 
+tartunk nyilván\\
 
+\TABLA{felhasználó}(\PK{felhasználónév}, vezetéknév, keresztnév, 
+haramadiknév, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
 
 
 

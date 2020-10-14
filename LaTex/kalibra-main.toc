@@ -20,3 +20,4 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.1}SZEREP t\IeC {\'a}bla}{14}% 
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.2}MIN\IeC {\H O}S\IeC {\'I}T\IeC {\'E}S t\IeC {\'a}bla}{15}% 
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}K\IeC {\"O}LTS\IeC {\'E}GHELY t\IeC {\'a}bla}{15}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.4}FELHASZN\IeC {\'A}L\IeC {\'O} t\IeC {\'a}bla}{15}% 
