@@ -29,6 +29,8 @@
 \maketitle
 
 \tableofcontents
+\listoffigures
+\listoftables
 
 \part{Bevezetés}
 \chapter{A tervezett rendszer}
@@ -182,7 +184,7 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \hline
         \dots&\dots\\
         \end{tabular}
-        \caption{DOLGOZÓ tábla}\label{dolg}
+        \caption{Példa DOLGOZÓ tábla}\label{dolg}
 \end{figure}
 
 \begin{figure}[ht!]\centering
@@ -203,13 +205,13 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \hline
         \dots&\dots&\dots\\
 \end{tabular}
-\caption{KALIBRÁLÁS tábla}\label{kalib}
+\caption{Példa KALIBRÁLÁS tábla}\label{kalib}
 \end{figure}
         
 
 Ha a kulcsok közötti szabályok betartását a motor ellenőrzi, akkor a KALIBRÁLÁS 
 tábla \textbf{dolgozókód} mezője csak olyan értéket vehet fel, ami szerepel a 
-DOLGOZÓ tábla \textbf{dolgozókód} mezőjében. Vissz irányban is igaz, ha egy 
+DOLGOZÓ tábla \textbf{dolgozókód} mezőjében. Vissza irányban is igaz, ha egy 
 dolgozót törlünk a DOLGOZÓ táblából, nem maradhat olyan rekord a KALIBRÁLÁS 
 táblában, ami a törölt dolgozóhoz tartozott. Megadható olyan szabály, ami törli 
 az árván maradó sorokat, vagy a \textbf{dolgozókód} mező értékét \textit{null} 
@@ -497,9 +499,13 @@ a tábla nevével együtt írjuk le, a tábla neve és a mező neve közé .-ot
 (pontot) teszünk: \TMEZO{KÖLTSÉGHELY}{költséghely}
 \item a pillanatnyilag érdektelen részeket a \dots jelöli:
 \TABLA{cikkszám}(\PK{cikkszám}, megnevezés, \dots, pontosság)
+\item táblázatos megjelenítés esetén előfordul, hogy csak a fontos mezőket 
+mutatjuk be. Ilyen esetben a nem mutatott mezőket ,, \dots  '' (három pont) 
+jelzi. Ha a tábla alja nyitott, az azt jelzi, hogy vannak még sorok. Az 
+alul zárt tábla azt jelzi, hogy minden értéket megmutattunk.
 \end{itemize}
 
-A táblák leírását célszerű azokka kezdeni, amelyek úgynevezett 
+A táblák leírását célszerű azokkal kezdeni, amelyek úgynevezett 
 szótár-\footnote{kulcs--érték táblák. Például országkód--országnév}, vagy
 validáló\footnote{Ilyenek a kötelezően megadandó értékkészletek táblája. 
 Például a minősítés: kitűnő, jó, közepes, elégséges, elégtelen} táblák.
@@ -514,11 +520,36 @@ A \TABLA{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói
 szerepek értékkészlete jelenik meg.\\
 
 \TABLA{SZEREP}(\PK{szerep}, aktív)
+\begin{table}[ht!]
+\centering
+\begin{tabular}[t]{|l|l|}
+\hline
+ \textbf{szerep}&aktív\\\hline
+ \textbf{admin}&igen\\
+ \textbf{kalibráló}&igen\\
+ \textbf{\dots}&\dots\\
+\end{tabular}
+\caption{DOLGOZÓ tábla} \label{tabSZEREP}
+\end{table}
+
 
 \subsection{MINŐSÍTÉS tábla}
 A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
 
 \TABLA{MINŐSÍTÉS}(\PK{minősítés}, aktív)
+\begin{table}[ht!]
+\centering
+\begin{tabular}[t]{|l|l|}
+\hline
+ \textbf{minősítés}&aktív\\\hline
+ \textbf{megfelelt}&igen\\
+ \textbf{tájékoztató mérésre}&igen\\
+ \textbf{selejt}&igen\\
+ \hline
+\end{tabular}
+\caption{MINŐSÍTÉS tábla} \label{tabMINOSITES}
+\end{table}
+
 
 \subsection{KÖLTSÉGHELY tábla}
 A tábla azokat a költséghelyeket tartalmazza, amelyekhez dolgozók, vagy 
@@ -526,6 +557,18 @@ műszerek rendelhetők. Egyes költséghelyek idővel megszűnnek, újak jönnek
 létre.\\
 
 \TABLA{KÖLTSÉGHELY}(\PK{költséghely}, költséghely neve, sorrend, aktív)
+\begin{table}[ht!]
+\centering
+\begin{tabular}[t]{|l|l|l|l|}
+\hline
+ \textbf{költséghely}&költséghely neve&sorrend&aktív\\ \hline
+ \textbf{13-421-0}&Járműlakatos művezetőség&1&igen\\
+ \textbf{13-443-0}&Műszerész művezetőség&1&igen\\
+ \textbf{11-210-0}&Humánügyi és bérelsz. Oszt.&9&nem\\
+ \textbf{\dots}&\dots&\dots&\dots \\
+\end{tabular}
+\caption{KÖLTSÉGHELY tábla} \label{tabKOLTSEGHELY}
+\end{table}
 
 \subsection{FELHASZNÁLÓ tábla}
 A táblában a rendszer felhasználóit tartjuk nyilván. A rendszerhez csak 
@@ -533,7 +576,45 @@ jogosult felhasználó férhet hozzá. A felhasználókról a minimális adatoka
 tartunk nyilván\\
 
 \TABLA{felhasználó}(\PK{felhasználónév}, vezetéknév, keresztnév, 
-haramadiknév, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
+harmadik név, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
+
+\begin{table}[ht!]
+ \centering
+ \begin{tabular}[t]{|l|l|l|l|l|l|l|l|}
+  \hline
+  
+\textbf{felhasználónév}&vezetéknév&\dots&\FK{szerep}
+&aktív&kezdődátum&végdátum\\ \hline
+  \textbf{nagye}&Nagy&\dots&\FK{admin}&igen&2020.06.01&null \\
+  \textbf{kissg}&Kiss&\dots&\FK{kalibráló}&igen&2020.06.01&2021.04.24\\
+  \textbf{tothb}&Tóth&\dots&\FK{lekérdező}&nem&2020.06.01&2020.09.06\\
+ \end{tabular}
+\caption{FELHASZNÁLÓ tábla}\label{tabFEHASZNALO}
+\end{table}
+
+\subsection{DOLGOZÓ tábla}
+A tábla tartalmazza azokat a dolgozókat, akik mérőeszközökkel 
+rendelkeznek, vagy rendelkeztek. A dolgozókról a minimális, a rendszer 
+működése szempontjából fontos adatokat tartjuk csak nyilván.\\
+
+\TABLA{dolgozó}(\PK{törzsszám}, vezetéknév, keresztnév, harmadik név, 
+\FK{költséghely}, aktív)
+
+\begin{table}[ht!]
+ \centering
+ \begin{tabular}[t]{|l|l|l|l|l|}
+  \hline
+\textbf{törzsszám}&vezetéknév&\dots&\FK{költséghely}&aktív\\ 
+\hline
+  \textbf{93456}&Nagy&\dots&\FK{13-421-0}&igen \\
+  \textbf{92312}&Tóth&\dots&\FK{13-443-0}&nem \\
+  \textbf{95678}&Kiss&\dots&\FK{13-422-0}&igen\\
+ \end{tabular}
+\caption{DOLGOZÓ tábla}\label{tabDOLGOZO}
+\end{table}
+
+
+
 
 
 
