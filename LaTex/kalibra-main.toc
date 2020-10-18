@@ -22,3 +22,4 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}K\IeC {\"O}LTS\IeC {\'E}GHELY t\IeC {\'a}bla}{17}% 
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.4}FELHASZN\IeC {\'A}L\IeC {\'O} t\IeC {\'a}bla}{17}% 
 \select@language {magyar} \contentsline {subsection}{\numberline {3.4.5}DOLGOZ\IeC {\'O} t\IeC {\'a}bla}{18}% 
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.6}CIKKT\IeC {\"O}RZS t\IeC {\'a}bla}{18}% 
