@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage{hyperref}
+\usepackage{fancyhdr}
 \hypersetup{colorlinks,unicode, pdfborder=0 0 0}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -9,7 +10,6 @@
 \usepackage[magyar]{babel}
 \setcounter{secnumdepth}{5}
 \usepackage{graphicx}
-
 
 \newcommand{\PK}[1]{\textbf{#1}}
 \newcommand{\FK}[1]{\underline{#1}}
@@ -26,6 +26,16 @@
 
 \author{Szikora György}
 \date{2020}
+
+\pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{\scriptsize{\rightmark}}
+\fancyfoot[L]{\footnotesize{Szikora György}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 \begin{document}
 
@@ -267,21 +277,21 @@ hogy ugyan annak a terméknek több cikkszáma is legyen.
 Minden alrendszer esetén sérül \textbf{az adatbázis - egy} elv. Azaz nem lenne 
 szabad olyan rendszereket létrehozni, amelyek új adatbázisok létrehozásával 
 járnak. Számos esetben mégis erre kényszerülünk, mert a meglévő rendszerek 
-bővítése jelentős költséggel járna, például a SAP esetében, vagy a kezelendő 
+bővítése jelentős költséggel járna - például a SAP esetében -, vagy a kezelendő 
 adatok nem illeszkednek abba a rendszerbe, amibe ugyan kis ráfordítással de 
-kezelni lehetne azokat. Pédául a humánügyi adatok kezelését biztosító 
+kezelni lehetne azokat. Például a humánügyi adatok kezelését biztosító 
 rendszerbe nehezen képzelhető el egy mérőeszköz nyilvántartó rendszer 
 integrálása, egyszerűen nem ott van a helye.
 
 Ilyen esetekben olyan közös azonosítókat kell választani, amivel biztosítható,
 hogy az egyik rendszer kimenete a másik rendszer bemenete lehessen, azaz a 
 \textit{master} rendszer kulcsának meg kell jelennie a \textit{slave} 
-rendszerben is, méghozzás ugyan olyan módon, ahogy a \textit{master} 
+rendszerben is, méghozzá ugyan olyan formában, ahogy a \textit{master} 
 rendszerben létezik. 
 
 \subsubsection{A humánügyi rendszer}
 A humánügyi rendszerben minden dolgozó egyedi sorszámot kap. Ha egy dolgozó 
-munkaviszony megszűnik, majd ezek után ismét felvételre kerül, új azonosító 
+munkaviszonya megszűnik, majd ezek után ismét felvételre kerül, új azonosító 
 számot kap. Az azonosító neve a \textbf{törzsszám}.
 \paragraph*{probléma:}
 \textit{ 
@@ -297,7 +307,8 @@ könyvelési bizonylat fejrészébe rögzítik.
 \subsubsection{A SAP rendszer}
 A SAP rendszerben a termékek azonosítására a \textbf{cikkszám} szolgál. Ezzel a
 mezővel önmagában azonosíthatók az azonos termékek csoportjai, de ha a sok 
-azonos termék közül konkrétan egy terméket (vagy termékcsoportot) kell 
+azonos termék közül konkrétan egy terméket (vagy termékcsoportot, például egy 
+adott napon beszállított M12 csavaranya) kell 
 azonosítani, legalább még egy azonosító szükséges. Ez a mező a \textbf{sarzs} 
 mező. Ilyen esetben a \textbf{cikkszám+sarzs} együtt azonosítja az adott 
 terméket. A SAP rendszerben mindkét mező tárolási hossza kötött, ezt az új 
@@ -369,7 +380,7 @@ műszerekkel mérést végezni nem szabad. A lejárt kalibrálási, vagy hiteles
 idejű, vagy nem kalibrált, nem hitelesített műszereket az első használat előtt 
 kalibrálni, vagy hitelesíteni kell. A kalibrálásról, vagy hitelesítésről 
 sorszámmal ellátott jegyzőkönyv készül. A jegyzőkönyv az összehasonlító mérések 
-eredményétől függöen három kategóriába sorolja a műszereket:
+eredményétől függően három kategóriába sorolja a műszereket:
 \begin{itemize}
  \item kalibrált, vagy hitelesített,
  \item csak tájékoztató mérésre használható,
