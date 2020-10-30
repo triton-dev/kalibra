@@ -184,7 +184,8 @@ A \ref{dolg} és \ref{kalib} táblák között a \textbf{dolgozókód} mező ter
 kapcsolatot. A DOLGOZÓ táblában ez a mező \textbf{kulcs}, míg a KALIBRÁLÁS 
 táblában \textbf{idegen kulcs} szerepet tölt be.
 
-\begin{figure}[ht!] \centering
+\begin{table}[ht!]
+	\centering
 \begin{tabular}{|l|l|}
         \hline
         \multicolumn{2}{|c|}{\textbf{DOLGOZÓ}}\\
@@ -198,10 +199,10 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \dots&\dots\\
         \end{tabular}
         \caption{Példa DOLGOZÓ tábla}\label{dolg}
-\end{figure}
+\end{table}
 
-\begin{figure}[ht!]\centering
-
+\begin{table}[ht!]
+\centering
 \begin{tabular}{|r|c|l|}
         \hline
         \multicolumn{3}{|c|}{\textbf{KALIBRÁLÁS}}\\
@@ -219,7 +220,7 @@ táblában \textbf{idegen kulcs} szerepet tölt be.
         \dots&\dots&\dots\\
 \end{tabular}
 \caption{Példa KALIBRÁLÁS tábla}\label{kalib}
-\end{figure}
+\end{table}
         
 
 Ha a kulcsok közötti szabályok betartását a motor ellenőrzi, akkor a KALIBRÁLÁS 
@@ -443,14 +444,14 @@ feladatait látja el, mint például az adatbázis mentése, a naplózás elvég
 stb\dots
 \end{itemize}
 
-\section{Az új rendszer táblái}
+\section{Az új rendszer alaptáblái}
 A probléma leírása alapján elkészíthető a táblák nagyvonalú felsorolása, 
 elsődleges elnevezése, illetve a bennük tárolandó adatok vázlatos leírása. Ez a 
 későbbiek során bővülhet, szűkülhet, a megnevezések változhatnak. A tervezésnek 
 ebben a szakaszában még szabatos neveket használunk.
 A táblák előzetes felsorolását \aref{tablak-0} táblázat tartalmazza.
 A táblák közötti kapcsolatok \aref{tablak0-kapcs0} ábrán láthatók.
-\begin{figure}[ht!]
+\begin{table}[ht!]
 \centering
 \begin{tabular}{|c|l|}
 \hline
@@ -479,8 +480,8 @@ FELJEGYZÉS & műszerekhez tartozó feljegyzések\\
 NAPLÓ & a műveletek naplója\\
 \hline
 \end{tabular}
-\caption{Az új rendszer táblái}\label{tablak-0}
-\end{figure}
+\caption{Az új rendszer alaptáblái}\label{tablak-0}
+\end{table}
 \\
 
 \begin{figure}[ht!]\label{tablak0-kapcs0}
@@ -534,15 +535,16 @@ A \TABLA{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói
 szerepek értékkészlete jelenik meg.\\
 
 \TABLA{SZEREP}(\PK{szerep}, aktív)
+
 \begin{table}[ht!]
 \centering
-\begin{tabular}[t]{|l|l|}
+{\footnotesize \begin{tabular}[t]{|l|l|}
 \hline
  \textbf{szerep}&aktív\\\hline
  \textbf{admin}&igen\\
  \textbf{kalibráló}&igen\\
  \textbf{\dots}&\dots\\
-\end{tabular}
+\end{tabular}}
 \caption{DOLGOZÓ tábla} \label{tabSZEREP}
 \end{table}
 
@@ -553,6 +555,7 @@ A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
 \TABLA{MINŐSÍTÉS}(\PK{minősítés}, aktív)
 \begin{table}[ht!]
 \centering
+\begin{footnotesize}
 \begin{tabular}[t]{|l|l|}
 \hline
  \textbf{minősítés}&aktív\\\hline
@@ -561,6 +564,7 @@ A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
  \textbf{selejt}&igen\\
  \hline
 \end{tabular}
+\end{footnotesize}
 \caption{MINŐSÍTÉS tábla} \label{tabMINOSITES}
 \end{table}
 
@@ -571,8 +575,11 @@ műszerek rendelhetők. Egyes költséghelyek idővel megszűnnek, újak jönnek
 létre.\\
 
 \TABLA{KÖLTSÉGHELY}(\PK{költséghely}, költséghely neve, sorrend, aktív)
+
+
 \begin{table}[ht!]
 \centering
+	\begin{footnotesize}
 \begin{tabular}[t]{|l|l|l|l|}
 \hline
  \textbf{költséghely}&költséghely neve&sorrend&aktív\\ \hline
@@ -581,8 +588,10 @@ létre.\\
  \textbf{11-210-0}&Humánügyi és bérelsz. Oszt.&9&nem\\
  \textbf{\dots}&\dots&\dots&\dots \\
 \end{tabular}
+\end{footnotesize}
 \caption{KÖLTSÉGHELY tábla} \label{tabKOLTSEGHELY}
 \end{table}
+
 
 \subsection{FELHASZNÁLÓ tábla}
 A táblában a rendszer felhasználóit tartjuk nyilván. A rendszerhez csak 
@@ -592,19 +601,22 @@ tartunk nyilván\\
 \TABLA{felhasználó}(\PK{felhasználónév}, vezetéknév, keresztnév, 
 harmadik név, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
 
+
 \begin{table}[ht!]
  \centering
+ \begin{footnotesize}
  \begin{tabular}[t]{|l|l|l|l|l|l|l|l|}
   \hline
-  
 \textbf{felhasználónév}&vezetéknév&\dots&\FK{szerep}
 &aktív&kezdődátum&végdátum\\ \hline
   \textbf{nagye}&Nagy&\dots&\FK{admin}&igen&2020.06.01&null \\
   \textbf{kissg}&Kiss&\dots&\FK{kalibráló}&igen&2020.06.01&2021.04.24\\
   \textbf{tothb}&Tóth&\dots&\FK{lekérdező}&nem&2020.06.01&2020.09.06\\
  \end{tabular}
+\end{footnotesize}
 \caption{FELHASZNÁLÓ tábla}\label{tabFEHASZNALO}
 \end{table}
+
 
 \subsection{DOLGOZÓ tábla}
 A tábla tartalmazza azokat a dolgozókat, akik mérőeszközökkel 
@@ -614,8 +626,10 @@ működése szempontjából fontos adatokat tartjuk csak nyilván.\\
 \TABLA{dolgozó}(\PK{törzsszám}, vezetéknév, keresztnév, harmadik név, 
 \FK{költséghely}, aktív)
 
+
 \begin{table}[ht!]
  \centering
+ \begin{footnotesize}
  \begin{tabular}[t]{|l|l|l|l|l|}
   \hline
 \textbf{törzsszám}&vezetéknév&\dots&\FK{költséghely}&aktív\\ 
@@ -624,8 +638,10 @@ működése szempontjából fontos adatokat tartjuk csak nyilván.\\
   \textbf{92312}&Tóth&\dots&\FK{13-443-0}&nem \\
   \textbf{95678}&Kiss&\dots&\FK{13-422-0}&igen\\
  \end{tabular}
+\end{footnotesize}
 \caption{DOLGOZÓ tábla}\label{tabDOLGOZO}
 \end{table}
+
 
 \subsection{CIKKTÖRZS tábla}
 A táblában a SAP rendszer adatain túl olyan adatok is tárolása kerülnek, 
@@ -636,6 +652,7 @@ szempontjából lényegesek.\\
 
 \begin{table}[ht!]
 	\centering
+	\begin{footnotesize}
 	\begin{tabular}[t]{|l|l|l|r|r|l|}
 		\hline
 		\textbf{cikkszám}&megnevezés&\dots&pontosság&kalibr.gyak&aktív\\ 
@@ -644,16 +661,77 @@ szempontjából lényegesek.\\
 		\textbf{MEV0000036-1}&Maxwell multiméter&\dots&\,&365&igen \\
 		\textbf{MEV0000117-1}&Sauter mérőcella&\dots&0,1&180&igen \\
 	\end{tabular}
+\end{footnotesize}
 	\caption{CIKKTÖRZS tábla}\label{tabCIKKTORZS}
 \end{table}
 
 \subsection{MŰSZER tábla}
 Míg a \TABLA{CIKKTÖRZS} tábla az azonos műszerek fő jellemzőit tartalmazza, addig a \TABLA{műszer} tábla az egyedileg is azonosított eszközök tulajdonságainak rögzítésére hivatott.
 Az azonos műszerek között is lehetnek eltérő paraméterekkel rendelkező eszközök, ahogy a kalibrálás gyakorisága függhet a felhasználás intenzitásától, de egy-egy műszer lehet nem kalibrált státuszú, de akár selejt is.
-A \TABLA{MŰSZER} tábla a \TABLA{cikktörzs} tábla specializációja.
+A \TABLA{MŰSZER} tábla a \TABLA{cikktörzs} tábla specializációja.\\
+
+\TABLA{műszer}(\PK{egyedi szám}, \FK{cikkszám}, \dots, )
+
+\begin{table}[ht!]
+	\centering
+	\begin{footnotesize}
+	\begin{tabular}[t]{|l|l|c|}
+		\hline
+		\textbf{egyedi szám}&\textit{cikkszám}&\dots \\ \hline
+		\textbf{110123}&\textit{MEV0000000-1}&\dots\\
+		\textbf{134001}&\textit{MEV0000036-1}&\dots\\
+		\textbf{\dots}&\textit{\dots}&\dots\\
+	\end{tabular}
+\end{footnotesize}
+	\caption{MŰSZER tábla}\label{tabMUSZER}
+\end{table}
+
+
+\subsection{NYILVÁNTARTÁS tábla}
+A táblázat a műszerek dolgozók és raktár közötti mozgásait tartalmazza. A dolgozó a raktárból egy adott napon felveszi a műszert, majd egy másik napon, de akár még ugyanazon a napon visszaviszi és leadja azt. A táblázat segítségével egy adott pillanatban meg tudjuk mondani, melyik műszer éppen hol van, de azt is, de azt is kinél volt egy adott napon. \\
+
+\TABLA{nyilvántartás}(\PK{sorszám}, \FK{törzsszám}, \FK{egyedi szám}, mettől, meddig, \dots)\\
+
+\begin{table}[ht!]
+	\centering
+	\begin{footnotesize}
+	\begin{tabular}[t]{|r|c|c|c|c|c|}
+		\hline
+		\textbf{sorszám}&\textit{törzsszám}&\textit{egyedi szám}&mettől&meddig&\dots \\ \hline
+		\textbf{1}&\textit{93456}&\textit{110123}&2020-06-07 07:12:35&null&\dots\\
+		\textbf{2}&\textit{93456}&\textit{134001}&2020-06-07 07:12:35&2020-08-01 13:50:47&\dots\\
+		\textbf{3}&\textit{95221}&\textit{134001}&2020-08-15 10:41:05&null&\dots\\
+		\textbf{\dots}&\textit{\dots}&\textit{\dots}&\dots&\dots&\dots\\
+	\end{tabular}
+\end{footnotesize}
+	\caption{NYILVÁNTARTÁS tábla}\label{tabNYILVANTARTAS}
+\end{table}
+
+
+\begin{minipage}[t]{\linewidth}
+\textsf{
+		{\footnotesize \textbf{Az idő kezelésének problémája.}
+	Az idő mint folytonos adat az adatbázis szempontjából ,,szerencsétlen'' ismertet. 
+	Meg\-fi\-gyel\-he\-tő az a gyakorlat, hogy a kezdő- és/vagy végdátumnak egy minden előfordulható dátumnál kisebb, vagy nagyobb dátumot választanak, és alapértelmezetten ezt az értéket veszi fel az ,,ismeretlen'' érték.
+	A \TABLA{nyilvántartás} táblában a \textit{mettől} érték a műszer dolgozónak történő átadás időpontja, de a \textit{meddig} értéke nem lehet egy ,,kellően távoli dátum, például: 9999.12.31'' mert ez nem a valós tényeket tükrözné. Ehelyett a \textit{null} érték megadása a megfelelő, hiszen a műszer felvételének pillanatában még tudjuk pontosan, mikor vesszük vissza azt.
+	Az időfüggő ismeretek, mint például valami árának a kezelésére számos technika ismert. Az egyik ilyen technika, hogy például a termék aktuális árának rögzítése a termék táblában és egy másik táblában az árak változását kezeljük -tól -ig formában. Ebben az esetben az aktuális árat közvetlenül a termék tulajdonságaként értjük el, míg korábbi árak esetén az árak változását tartalmazó táblából kell kikeresni.
+	}
+}
+\end{minipage}
+
+\subsection{KALIBRÁLÁS tábla}
+A \TABLA{kalibrálás} táblában rögzítjük a műszerek kalibrálási adatait, annak eredményét. A kalibrálás során három kötelező és további három opcionális ellenőrző mérést kell vagy lehet végezni. Az ellenőrző mérések elvárt értékét a kalibráló határozza meg figyelembe véve az eszköz használati módját, és az elvért értékhez hasonlítja a mért értéket. A minősítést a műszer állapotától és az ellenőrző mérések eredményétől függően a kalibráló állapítja meg.
+\\
+
+\TABLA{kalibrálás}(\PK{sorszám}, \FK{egyedi szám}, \FK{felhasználónév}, időpont, hőmérséklet, páratartalom, elvárt1, mért1, elvárt2, mért2, elvárt3, mért3, elvárt4, mért4, elvárt5, mért5, elvárt6, mért6, \FK{minősítés})\\
 
 
 
+\subsection{FELJEGYZÉS tábla}
+
+\subsection{FELJEGYZÉS tábla}
+
+\subsection{NAPLÓ tábla}
 
 %
 %%
