@@ -630,9 +630,27 @@ működése szempontjából fontos adatokat tartjuk csak nyilván.\\
 \subsection{CIKKTÖRZS tábla}
 A táblában a SAP rendszer adatain túl olyan adatok is tárolása kerülnek, 
 amelyekre a SAP rendszer nem ad lehetőséget, viszont a műszerek
-szempontjából fontosak.
+szempontjából lényegesek.\\
 
+\TABLA{cikktörzs}(\PK{cikkszám}, megnevezés, típus, tartomány alsó határ, tartomány felső határ, osztás, pontosság, tolerancia+, tolerancia-, kalibrálási gyakoriság, aktív)
 
+\begin{table}[ht!]
+	\centering
+	\begin{tabular}[t]{|l|l|l|r|r|l|}
+		\hline
+		\textbf{cikkszám}&megnevezés&\dots&pontosság&kalibr.gyak&aktív\\ 
+		\hline
+		\textbf{MEV0000001-1}&Mitutoyo tolómérő&\dots&0,01&365&igen \\
+		\textbf{MEV0000036-1}&Maxwell multiméter&\dots&\,&365&igen \\
+		\textbf{MEV0000117-1}&Sauter mérőcella&\dots&0,1&180&igen \\
+	\end{tabular}
+	\caption{CIKKTÖRZS tábla}\label{tabCIKKTORZS}
+\end{table}
+
+\subsection{MŰSZER tábla}
+Míg a \TABLA{CIKKTÖRZS} tábla az azonos műszerek fő jellemzőit tartalmazza, addig a \TABLA{műszer} tábla az egyedileg is azonosított eszközök tulajdonságainak rögzítésére hivatott.
+Az azonos műszerek között is lehetnek eltérő paraméterekkel rendelkező eszközök, ahogy a kalibrálás gyakorisága függhet a felhasználás intenzitásától, de egy-egy műszer lehet nem kalibrált státuszú, de akár selejt is.
+A \TABLA{MŰSZER} tábla a \TABLA{cikktörzs} tábla specializációja.
 
 
 
