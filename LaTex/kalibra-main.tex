@@ -1,7 +1,8 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
-\hypersetup{colorlinks,unicode, pdfborder=0 0 0}
+\usepackage{xcolor}
+\hypersetup{colorlinks,unicode, pdfborder=0 0 0, linkcolor=[HTML]{000088}}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[T1]{fontenc}
@@ -11,10 +12,10 @@
 \setcounter{secnumdepth}{5}
 \usepackage{graphicx}
 
-\newcommand{\PK}[1]{\textbf{#1}}
-\newcommand{\FK}[1]{\underline{#1}}
-\newcommand{\TABLA}[1]{\noindent\MakeUppercase{#1}}
-\newcommand{\TMEZO}[2]{\MakeUppercase{#1}.{\underline{#2}}}
+\newcommand{\pk}[1]{\textbf{#1}} % primary key
+\newcommand{\fk}[1]{\underline{#1}} %foreign key
+\newcommand{\tabla}[1]{\noindent\MakeUppercase{#1}} %Tábla neve
+\newcommand{\tmezo}[2]{\MakeUppercase{#1}.{\underline{#2}}} %Tábla.idegenkulcs
 
 
 %opening
@@ -52,7 +53,7 @@ tevékenységeinek jelentős részét. A minőségbiztosítás fontos eleme a m�
 ellenőrző- és vizsgáló eszközök, berendezések nyilvántartása, megfelelő 
 működésük rendszeres ellenőrzése, a napi karbantartáson túlmutató ápolása, 
 esetleges javítása, a mért értékek helyességének biztosításának érdekében, 
-végzett kalibrálás, egyes esetekben a hitelesítés.
+végzett kalibrálás, egyes esetekben a hitelesítés. 
 
 A Kft. az 90-es évek végétől a mérő-, ellenőrző-, vizsgáló eszközök 
 nyilvántartására egy mára elavultnak tekinthető programot használ, ami nem,
@@ -76,9 +77,9 @@ környezetet.
 \chapter{A jelenlegi rendszer}
 \section{A jelenlegi rendszer bemutatása}
 A jelenleg használt mérőeszköz és azok kalibrálási állapotát tartalmazó rendszer 
-egy mára már elavult Clipper, vagy dBase alkalmazás. Erre utalnak a Kft.
+egy mára már elavult Clipper, vagy dBase \footnote{Ráadásul ezek a rendszerek valójában állomány, és nem adatbázis kezelő szoftverek.} alkalmazás. Erre utalnak a Kft.
 hálózati meghajtóján tárolt fájlok \textit{DBF}, illetve \textit{NTX} 
-kiterjesztése.
+kiterjesztése. 
 
 A hálózatos kialakítás előnye, hogy elvileg minden olyan eszközről elérhető az
 adatbázis, amely a keretprogramon keresztül képes csatlakozni hozzá. Egyúttal 
@@ -90,10 +91,10 @@ alkalmazással egyszerűen módosíthatók.
 A DBF fájlok tanulmányozása az alábbiakat tárta fel:
 \begin{itemize}
 \item az első bejegyzések 1999-ben keletkeztek,
-\item az adatbázis inkonzisztenciájára utaló jelek láthatók(!) ,
+\item az adatbázis inkonzisztenciájára\footnote{Egy adatbázis inkonzisztens, ha egymásnak ellentmondó értéket tartalmaz.} utaló jelek láthatók(!) ,
 \item egyes mezők kitöltése esetleges, nem következetes,
 \item az adatok egy része meglévő Kft.-s nyilvántartásokra épül, például a
-dolgozók azonosítása,
+dolgozók azonosítása, míg másoké nem,
 \item másrészt nem „SAP kompatibilis”, a SAP 2001-ben került bevezetésre, emiatt 
 az egyik rendszerből kinyert adat direkt módon nem használható fel a másik 
 rendszerben.
@@ -103,20 +104,20 @@ A keretprogram tanulmányozása rámutatott, hogy:
 \item a rendszerből releváns riportok kinyerésére csak képernyőkép útján van
 lehetőség,
 \item nincs mód az aktív-inaktív állapotok rögzítésére,
-\item az adattáblák kulcs és leíró mezői keverednek.
-\item az egyik fő hiba, hogy a jelenlegi ,,adatbázis'' inkonzisztens.
+\item az adattáblák kulcs és leíró mezői keverednek,
+\item egyik fő hiba, hogy a jelenlegi ,,adatbázis'' inkonzisztens.
 \end{itemize}
 
 \section{A jelenlegi rendszer további használatának lehetősége}
 
 A jelenlegi rendszer javítására nincs mód, az eredeti forráskód nincs meg, csak
 a futtatható állománnyal rendelkezik a Kft. 
-A karaktergrafikus alkalmazás egyébként a feladat elvégzéshez tökéletes lenne, 
+A karaktergrafikus alkalmazás egyébként a feladat elvégzéshez elégséges lenne, 
 azonban a fejlesztői környezetet meg kellene vásárolni, illetve licence díjat 
 kell fizetni érte.
 Nem elegendő a jelenlegi adatbázis átültetése egy másik adatbázis motorra, mert
 az eredeti adatbázis olyan tervezési hibákat tartalmaz, amit ki kell javítani, 
-különben az új adatbázis működésében komoly zavart okoznak.
+különben az új adatbázis működésében komoly zavart okoznának.
 
 A jelenlegi rendszer a működés folyamatosságának érdekében tovább használható, 
 de egyidejűleg el kell kezdeni a kialakítandó rendszer tervezését, a folyamatok 
@@ -126,7 +127,7 @@ A további inkonzisztencia növekedésének lassítása érdekében:
 \begin{itemize}
 \item lehetőleg kerülni kell új mérőeszköz típusok rögzítését,
 \item  szöveges mezők kitöltésénél törekedni kell az azonos értékek azonos módon
-történő rögzítésére,
+történő rögzítésére\footnote{Nem mindegy, hogy Kovács, KOVÁCS, kovács\dots},
 \item az azonosító szerepű mezők kitöltése előtt ellenőrizni kell, hogy az 
 azonosító létezik-e.
 \end{itemize}
@@ -145,6 +146,7 @@ sorai az \textit{egyed} előfordulások, a táblák oszlopai a
 közötti összefüggéseket, viszonyokat a táblák közötti \textit{kapcsolat} írja 
 le.
 
+Az adatbázisban nem fordulhat elő olyan eset, amikor egy adattáblán belül kettő, vagy több sor minden tulajdonsága teljesen egyforma. Kell lennie legalább egy olyan tulajdonságnak, ami megkülönbözteti azokat.
 Azokat a tulajdonságot, vagy tulajdonságokat, amelyek egyértelműen azonosítanak
 egy-egy egyed előfordulást \textit{kulcs}nak nevezzük. Ha \textit{kulcs} egy 
 elemű akkor egyszerű, ha több elemű akkor \textit{összetett kulcs}nak nevezzük.
@@ -171,14 +173,17 @@ kapcsolatban, ha az egyik tábla tartalmazza a másik tábla kulcsát.
 
 Az összekapcsolás hiánya oda vezethet, hogy
 \begin{itemize}
-\item a felhasználó programnak kell ellenőrznie a kulcs szabályait,
+\item a felhasználó programnak kell ellenőriznie a kulcs szabályait,
 \item ugyan ennek a programnak a feladata a szabály sérülésének kezelése,
-\item ha a fentiek nem teljesünek, az adatbázis inkonzisztensé válhat.
+\item ha a fentiek nem teljesülnek, az adatbázis inkonzisztensé válhat.
 \end{itemize}
-
 Az inkonzisztencia veszélye abban nyilvánul meg, hogy lesznek olyan sorok az 
 egyik táblában, amelyhez nem tartozik sor egy másik, a táblával kapcsolatban 
 álló táblában.
+
+Összekapcsolni azonban csak a valóságban is összekapcsolható táblákat szabad, ellenkező esetben értelmetlen adatokhoz jutunk. (Például a \tmezo{kocsi}{típus} és \tmezo{szerződés}{típus} táblákat a \underline{típus} mezővel nem szabad összekapcsolni, mert mindkét egyedben mást jelent a típus tulajdonság.)
+
+
 
 A \ref{dolg} és \ref{kalib} táblák között a \textbf{dolgozókód} mező teremt
 kapcsolatot. A DOLGOZÓ táblában ez a mező \textbf{kulcs}, míg a KALIBRÁLÁS 
@@ -235,12 +240,11 @@ a motor automatikusan kicseréli a KALIBRÁLÁS tábla \textbf{dolgozókód} mez
 az új értékre.
 
 Az adatok, leírók egyik különleges értéke a \textit{null} érték. Nem keverendő
-össze a nulla $(0)$ szám értékkel, sem az üres értékkel, például karakteres
-adat esetén a '' azaz az üres karakterrel. A \textit{null} érték azt jelenti, 
+össze a nulla $(0)$ szám értékkel, sem az üres (szóköz), sem karakteres
+'' azaz az üres karakterrel. A \textit{null} érték azt jelenti, 
 hogy az adott pillanatban a mező értéke még ismeretlen, vagy nem értelmezhető.
 A \textit{null} értékek kezelésére az adatbázis motorok nyújtanak 
-szolgáltatásokat. De vannak egyéb megkötések, mint például a kulcs, vagy 
-összetett kulcs eleme nem lehet \textit{null} értékű.
+szolgáltatásokat. Léteznek a \textit{null} érték használatára megkötések is, mint például a kulcs, vagy összetett kulcs eleme nem lehet \textit{null} értékű.
 
 \subsection{Kulcsok (azonosítók) képzése}
 
@@ -254,24 +258,23 @@ Legtöbbször megadhatók viszont a kezdő- és végértékek esetleg a lépésk
 lekérdezhető az utolsó, vagy a következő azonosító.
 
 \subsubsection{Képzett azonosítók}
-Természetesen lehetőség van tetszőleges tartalamú azonosítók előállítására, a 
-motor ilyen esetben is képes ellenőrzni azok egyediségét. A képzett azonosítók 
-valamilyen szabály, vagy logika mentén kerülenk előállításra. Ilyen képzett 
+Természetesen lehetőség van tetszőleges tartalmú azonosítók előállítására, a 
+motor ilyen esetben is képes ellenőrizni azok egyediségét. A képzett azonosítók 
+valamilyen szabály, vagy logika mentén kerülnek előállításra. Ilyen képzett 
 azonosító a Kft. cikktörzsében a \textit{cikkszám}, de ilyenek az EAN 
 vonalkódrendszerek is.
 
 Képzett azonosítók esetén könnyen abba a hibába eshetünk, hogy valamilyen leíró
-tulajdonságokat az azonosítóba kódolunk. Tételezzük fel, hogy a cikkszám 7.
-karaktere egy szám, értékkészlete 0-9 közötti értéket vehet fel és valamilyen 
-jellemzőt takar. Könnyen belátható, hogy 10 jellemzőt lehet ezzel a mezővel 
-leírni, de a 11. tulajdonságot a szabály megszegése nélkül már nem, nem elég 
-hozzá a mező értékkészlete.
+tulajdonságokat az azonosítóba próbálunk kódolni.
+Tételezzük fel, hogy a cikkszám 7.karaktere egy szám, értékkészlete 0-9 közötti értéket vehet fel és valamilyen jellemzőt takar. Könnyen belátható, hogy 10 jellemzőt lehet ezzel a mezővel leírni, de a 11. tulajdonságot a szabály megszegése nélkül már nem, mert nem elég hozzá a mező értékkészlete.
 
 Másik előforduló jelenség, hogy a termékstruktúra alapján határozzák meg a 
 cikkszámokat. Ezzel önmagában nincs probléma, ha kellő figyelmet fordítanak 
-arra, hogy az általános, több helyen is elődorduló, vagy felhasználható 
+arra, hogy az általános, több helyen is előforduló, vagy felhasználható 
 általában kereskedelmi termékeket nem sorolják ide. Ezzel elkerülhető, 
 hogy ugyan annak a terméknek több cikkszáma is legyen.
+
+Több helyen találkozni a túlminősítéssel. Ilyen esetben egy általánosan használt anyagot például annak a dolognak a nevével minősítjuk, amibe az beépül. Például ,,SPOT IZZO VAN-HOOL'' helyesebben ,,24V 40W spot izzó'', mert nem csak a Van-Hool buszban létezik ilyen izzó.. Ennek ellentéte az alul minősítés ,,PERSELY'', ,,CSAP'', ,,RETESZ''. Ilyenkor jó lenne tudni, hogy hová való az alkatrész, például ,,RETESZ'' helyett ,,X.Y. motor ékszíjtárcsa rögzítő retesz''
 
 \subsection{A meglévő rendszerek azonosítói}
 
@@ -302,7 +305,7 @@ számukra is kiosztásra kerülnek eszközök, melyek könyvelése a SAP rendsze
 történik. Emiatt sérül az a szabály, miszerint a dolgozó törzsszámának utolsó 4 
 karaktere a dolgozói raktárhely azonosítója. Ehelyett minden kölcsönzött 
 munkavállaló a $8888$ raktárhely azonosítót kapja, a munkavállaló nevét a 
-könyvelési bizonylat fejrészébe rögzítik.
+könyvelési bizonylat fejrészébe rögzítik, onnan kell visszakeresni azokat.
 }
 
 \subsubsection{A SAP rendszer}
@@ -329,7 +332,7 @@ A dolgozók a SAP szemszögéből nézve ,,raktárak'', a kiadott és
 visszavett műszerek nyilvántartása raktárak közötti átkönyveléssel történik. Az 
 azonosító mező összetett, a SAP-ban a \textbf{gyár+raktárhely} a kulcs.
 
-\paragraph*{probléma:}
+\paragraph*{Probléma:}
 \textit{
 A SAP-ban a dolgozókón kívül költséghelyek is lehetnek tárhelyek. Egyes 
 műszereket nem személynek, hanem költséghelyre adnak ki. Ilyenek például a 
@@ -354,15 +357,14 @@ Az adatmodell akkor tekinthető megfelelőnek, ha:
  \item \textbf{mentes a redundaciától}, normalizált, azaz minden adatot csak 
 egyszer tárol,
  \item \textbf{következetes}, azaz a modell elkészítésekor azonos jelrendszert 
-használ azonos dolgok ábrázolásához. Ezek lehetnek ábrák, szövegek, szabványos, 
-vagy kvázi szabványos jelölések.
+használ az azonos dolgok ábrázolásához. Ezek lehetnek ábrák, szövegek, szabványos, vagy kvázi szabványos jelölések.
 \end{itemize}
 Ez az adatbázis fogalmi-logikai szintje. Nem tartalmazza a mezők típusát, 
 hosszát, csupán leírja az egyedek (táblák) szerkezét és a táblák közötti 
 kapcsolatokat.
 
-A korszerű kezelők használata során a fizikai szinttel - az adatok tényleges, 
-fájl szintű tárolásával - a tervezés során nem kell foglalkozni, az az 
+A korszerű kezelők használata során a fizikai szinttel - az adatok tényleges
+tárolási módjával - a tervezés során nem kell foglalkozni, az az 
 adatbázis motor feladata. 
 
 
@@ -372,7 +374,7 @@ A probléma leírását a műszerek kalibrálása és annak nyilvántartása sze
 vizsgáljuk. Az \textit{master} rendszerek folyamatai nem képzik a modell 
 részét, de ha modell elkészítésre hatással vannak, azokat figyelembe kell venni.
 
-A Kft. nyilvántartásában több száz mérő-, ellenerző- és vizsgáló eszköz 
+A Kft. nyilvántartásában több száz mérő-, ellenőrző- és vizsgáló eszköz 
 - műszer - található. Ezek egy részét a Kft. Szerszámraktárában tárolják, másik 
 része a dolgozók számára használatra van kiadva, harmadrészt a kalibrálás, vagy 
 hitelesítés elvégzése miatt a kalibrálónál, vagy külső félnél található. 
@@ -388,11 +390,11 @@ eredményétől függően három kategóriába sorolja a műszereket:
  \item selejt.
 \end{itemize}
 A megfelelt minősítésű műszerekre matrica kerül, míg a selejt műszerekről 
-selejtezési javaslat készül. A selejt műszereket elkülönítetten kell tárolni, 
+selejtezési javaslat készül. Az ilyen műszereket elkülönítetten kell tárolni, 
 további használatra tilos azokat kiadni.
  
-Évente egy alkalommal úgynevezett mérőeszköz rovancs keretében a rovancsot 
-végzők lista alapján minden műszert megkeresnek, azonosítanak, a kopott, 
+Évente legalább egy alkalommal úgynevezett mérőeszköz rovancs keretében a
+rovancsot végzők lista alapján minden műszert megkeresnek, azonosítanak, a kopott, 
 olvashatatlan érvényesítő matricákat pótolják. A listák készítése 
 költséghely-dolgozó-műszer bontásban készül.
  
@@ -403,19 +405,16 @@ még ki nem adott műszereket, melyek kalibrálását az első kiadás előtt v�
 el. A Szerszámkiadóban található műszerek, lehetnek lejárt kalibrálási idejűek 
 is, kiadás előtt a kalibrálást el kell végezni.
 
-Az újonann vásárolt műszerekre egyedi számot gravíroznak, mely szám felépítése 
+Az újonnan vásárolt műszerekre egyedi számot gravíroznak, mely szám felépítése 
 egyrészt információt hordoz a műszerről, másrészt sorszám jellegű. Csak egyedi 
-számmal ellátott műszert lehet használatra kiadni. Ez egyedi szám emellett 
-egyedileg is azonosítja a konkrét eszközt.
+számmal ellátott műszert lehet használatra kiadni. 
 
 Az egyes műszerek kalibrálási, vagy hitelesítési idejét jogszabályok, vagy egyéb
 rendelkezések határozzák meg. Jogszabályi előírás esetén ettől eltérni nem 
-lehet. Az egyéb rendelkezések esetén figyelembe lehet venni a műszer 
-használatának gyakoriságát, a használat körülményeit az időtartam 
-meghatározásánál. 
+lehet. Az egyéb rendelkezések hiányában az időtartam meghatározásánál figyelembe
+lehet venni a műszer használatának gyakoriságát, a használat körülményeit.
 Így például azonos paraméterekkel rendelkező műszer esetében az ,,A'' műszer
-365 napos, míg a ,,B'' műszer akár csak 120 napos kalibrálási idővel is 
-rendelkezhet.
+365 napos, míg a ,,B'' műszer akár csak 120 napos kalibrálási idővel is rendelkezhet.
 
 A műszerekről készült kalibrálási adatokat a műszer selejtezését követően is 
 meg kell őrizni, szükség szerint a kalibrálási jegyzőkönyvet változatlan 
@@ -427,6 +426,9 @@ információt tartalmaznak az adott műszerre vonatkozóan.
 Esetenként előfordul, hogy a Kft. külső felek számára végez kalibrálási 
 feladatokat. A folyamat nem tér el saját tulajdonú műszerek kalibrálási 
 folyamatától.
+
+Egyes eszközök kalibrálását külső fél végzi el. A kalibrálás eredményéről jegyzőkönyv
+készül. A jegyzőkönyvben szereplő minősítés alapján lesz megállapítva az adott műszer státusza.
 
 \section{Felhasználói szerepek}
 A probléma leírásából kiolvasható, hogy a rendszerben többféle szerepkör is 
@@ -499,21 +501,21 @@ valamilyen kapcsolat. Nem jelezzük a kapcsolat fokát, ami lehet \textbf{1:1,
 A táblák leírása első lépésben szöveges formában történik, az alábbi 
 jelölésekkel:
 \begin{itemize}
- \item \TABLA{nagybetűs} szedéssel a táblák neve szerepel: \TABLA{dolgozó}
+ \item \tabla{nagybetűs} szedéssel a táblák neve szerepel: \tabla{dolgozó}
  \item a tábla mezői zárójelek között lesznek felsorolva:\\ 
- \TABLA{DOLGOZÓ}(\PK{törzsszám}, \FK{költséghely}, név, aktív)
- \item \PK{félkövér szedéssel} a tábla kulcsát jelöljük: \PK{törzsszám}
- \item a idegen(külső) kulcsok \FK{aláhúzással} jelenek meg: 
- \FK{költséghely}
+ \tabla{DOLGOZÓ}(\pk{törzsszám}, \fk{költséghely}, név, aktív)
+ \item \pk{félkövér szedéssel} a tábla kulcsát jelöljük: \pk{törzsszám}
+ \item a idegen(külső) kulcsok \fk{aláhúzással} jelenek meg: 
+ \fk{költséghely}
  \item félkövér és aláhúzott szöveg jelöli, ha a mező az egyik táblában kulcs 
-és egy másik tábla idegen kulcsa \PK{\FK{raktárhely}} 
+és egy másik tábla idegen kulcsa \pk{\fk{raktárhely}} 
 \item normál szedésse a tábla egyéb mezői fognak szerepelni.
-\item az összetett kulcsok mezőit $+$ jel köti össze: \PK{cikkszám+sarzs}
+\item az összetett kulcsok mezőit $+$ jel köti össze: \pk{cikkszám+sarzs}
 \item abban az esetben, ha egy mező név több táblában is szerepel, a mezőt 
 a tábla nevével együtt írjuk le, a tábla neve és a mező neve közé .-ot 
-(pontot) teszünk: \TMEZO{KÖLTSÉGHELY}{költséghely}
+(pontot) teszünk: \tmezo{KÖLTSÉGHELY}{költséghely}
 \item a pillanatnyilag érdektelen részeket a \dots jelöli:
-\TABLA{cikkszám}(\PK{cikkszám}, megnevezés, \dots, pontosság)
+\tabla{cikkszám}(\pk{cikkszám}, megnevezés, \dots, pontosság)
 \item táblázatos megjelenítés esetén előfordul, hogy csak a fontos mezőket 
 mutatjuk be. Ilyen esetben a nem mutatott mezőket ,, \dots  '' (három pont) 
 jelzi. Ha a tábla alja nyitott, az azt jelzi, hogy vannak még sorok. Az 
@@ -531,10 +533,10 @@ kiválasztható-e, vagy sem, az értékek rendezést valamilyen súly alapján
 végezhetik el.
 
 \subsection{SZEREP tábla}
-A \TABLA{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói 
+A \tabla{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói 
 szerepek értékkészlete jelenik meg.\\
 
-\TABLA{SZEREP}(\PK{szerep}, aktív)
+\tabla{SZEREP}(\pk{szerep}, aktív)
 
 \begin{table}[ht!]
 \centering
@@ -552,7 +554,7 @@ szerepek értékkészlete jelenik meg.\\
 \subsection{MINŐSÍTÉS tábla}
 A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
 
-\TABLA{MINŐSÍTÉS}(\PK{minősítés}, aktív)
+\tabla{MINŐSÍTÉS}(\pk{minősítés}, aktív)
 \begin{table}[ht!]
 \centering
 \begin{footnotesize}
@@ -574,7 +576,7 @@ A tábla azokat a költséghelyeket tartalmazza, amelyekhez dolgozók, vagy
 műszerek rendelhetők. Egyes költséghelyek idővel megszűnnek, újak jönnek
 létre.\\
 
-\TABLA{KÖLTSÉGHELY}(\PK{költséghely}, költséghely neve, sorrend, aktív)
+\tabla{KÖLTSÉGHELY}(\pk{költséghely}, költséghely neve, sorrend, aktív)
 
 
 \begin{table}[ht!]
@@ -598,8 +600,8 @@ A táblában a rendszer felhasználóit tartjuk nyilván. A rendszerhez csak
 jogosult felhasználó férhet hozzá. A felhasználókról a minimális adatokat 
 tartunk nyilván\\
 
-\TABLA{felhasználó}(\PK{felhasználónév}, vezetéknév, keresztnév, 
-harmadik név, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
+\tabla{felhasználó}(\pk{felhasználónév}, vezetéknév, keresztnév, 
+harmadik név, titulus, jelszó, \fk{szerep}, aktív, kezdődátum, végdátum)
 
 
 \begin{table}[ht!]
@@ -607,11 +609,11 @@ harmadik név, titulus, jelszó, \FK{szerep}, aktív, kezdődátum, végdátum)
  \begin{footnotesize}
  \begin{tabular}[t]{|l|l|l|l|l|l|l|l|}
   \hline
-\textbf{felhasználónév}&vezetéknév&\dots&\FK{szerep}
+\textbf{felhasználónév}&vezetéknév&\dots&\fk{szerep}
 &aktív&kezdődátum&végdátum\\ \hline
-  \textbf{nagye}&Nagy&\dots&\FK{admin}&igen&2020.06.01&null \\
-  \textbf{kissg}&Kiss&\dots&\FK{kalibráló}&igen&2020.06.01&2021.04.24\\
-  \textbf{tothb}&Tóth&\dots&\FK{lekérdező}&nem&2020.06.01&2020.09.06\\
+  \textbf{nagye}&Nagy&\dots&\fk{admin}&igen&2020.06.01&null \\
+  \textbf{kissg}&Kiss&\dots&\fk{kalibráló}&igen&2020.06.01&2021.04.24\\
+  \textbf{tothb}&Tóth&\dots&\fk{lekérdező}&nem&2020.06.01&2020.09.06\\
  \end{tabular}
 \end{footnotesize}
 \caption{FELHASZNÁLÓ tábla}\label{tabFEHASZNALO}
@@ -623,8 +625,8 @@ A tábla tartalmazza azokat a dolgozókat, akik mérőeszközökkel
 rendelkeznek, vagy rendelkeztek. A dolgozókról a minimális, a rendszer 
 működése szempontjából fontos adatokat tartjuk csak nyilván.\\
 
-\TABLA{dolgozó}(\PK{törzsszám}, vezetéknév, keresztnév, harmadik név, 
-\FK{költséghely}, aktív)
+\tabla{dolgozó}(\pk{törzsszám}, vezetéknév, keresztnév, harmadik név, 
+\fk{költséghely}, aktív)
 
 
 \begin{table}[ht!]
@@ -632,11 +634,11 @@ működése szempontjából fontos adatokat tartjuk csak nyilván.\\
  \begin{footnotesize}
  \begin{tabular}[t]{|l|l|l|l|l|}
   \hline
-\textbf{törzsszám}&vezetéknév&\dots&\FK{költséghely}&aktív\\ 
+\textbf{törzsszám}&vezetéknév&\dots&\fk{költséghely}&aktív\\ 
 \hline
-  \textbf{93456}&Nagy&\dots&\FK{13-421-0}&igen \\
-  \textbf{92312}&Tóth&\dots&\FK{13-443-0}&nem \\
-  \textbf{95678}&Kiss&\dots&\FK{13-422-0}&igen\\
+  \textbf{93456}&Nagy&\dots&\fk{13-421-0}&igen \\
+  \textbf{92312}&Tóth&\dots&\fk{13-443-0}&nem \\
+  \textbf{95678}&Kiss&\dots&\fk{13-422-0}&igen\\
  \end{tabular}
 \end{footnotesize}
 \caption{DOLGOZÓ tábla}\label{tabDOLGOZO}
@@ -648,7 +650,7 @@ A táblában a SAP rendszer adatain túl olyan adatok is tárolása kerülnek,
 amelyekre a SAP rendszer nem ad lehetőséget, viszont a műszerek
 szempontjából lényegesek.\\
 
-\TABLA{cikktörzs}(\PK{cikkszám}, megnevezés, típus, tartomány alsó határ, tartomány felső határ, osztás, pontosság, tolerancia+, tolerancia-, kalibrálási gyakoriság, aktív)
+\tabla{cikktörzs}(\pk{cikkszám}, megnevezés, típus, tartomány alsó határ, tartomány felső határ, osztás, pontosság, tolerancia+, tolerancia-, kalibrálási gyakoriság, aktív)
 
 \begin{table}[ht!]
 	\centering
@@ -666,11 +668,11 @@ szempontjából lényegesek.\\
 \end{table}
 
 \subsection{MŰSZER tábla}
-Míg a \TABLA{CIKKTÖRZS} tábla az azonos műszerek fő jellemzőit tartalmazza, addig a \TABLA{műszer} tábla az egyedileg is azonosított eszközök tulajdonságainak rögzítésére hivatott.
+Míg a \tabla{CIKKTÖRZS} tábla az azonos műszerek fő jellemzőit tartalmazza, addig a \tabla{műszer} tábla az egyedileg is azonosított eszközök tulajdonságainak rögzítésére hivatott.
 Az azonos műszerek között is lehetnek eltérő paraméterekkel rendelkező eszközök, ahogy a kalibrálás gyakorisága függhet a felhasználás intenzitásától, de egy-egy műszer lehet nem kalibrált státuszú, de akár selejt is.
-A \TABLA{MŰSZER} tábla a \TABLA{cikktörzs} tábla specializációja.\\
+A \tabla{MŰSZER} tábla a \tabla{cikktörzs} tábla specializációja.\\
 
-\TABLA{műszer}(\PK{egyedi szám}, \FK{cikkszám}, \dots, )
+\tabla{műszer}(\pk{egyedi szám}, \fk{cikkszám}, \dots, )
 
 \begin{table}[ht!]
 	\centering
@@ -690,7 +692,7 @@ A \TABLA{MŰSZER} tábla a \TABLA{cikktörzs} tábla specializációja.\\
 \subsection{NYILVÁNTARTÁS tábla}
 A táblázat a műszerek dolgozók és raktár közötti mozgásait tartalmazza. A dolgozó a raktárból egy adott napon felveszi a műszert, majd egy másik napon, de akár még ugyanazon a napon visszaviszi és leadja azt. A táblázat segítségével egy adott pillanatban meg tudjuk mondani, melyik műszer éppen hol van, de azt is, de azt is kinél volt egy adott napon. \\
 
-\TABLA{nyilvántartás}(\PK{sorszám}, \FK{törzsszám}, \FK{egyedi szám}, mettől, meddig, \dots)\\
+\tabla{nyilvántartás}(\pk{sorszám}, \fk{törzsszám}, \fk{egyedi szám}, mettől, meddig, \dots)\\
 
 \begin{table}[ht!]
 	\centering
@@ -713,17 +715,17 @@ A táblázat a műszerek dolgozók és raktár közötti mozgásait tartalmazza.
 		{\footnotesize \textbf{Az idő kezelésének problémája.}
 	Az idő mint folytonos adat az adatbázis szempontjából ,,szerencsétlen'' ismertet. 
 	Meg\-fi\-gyel\-he\-tő az a gyakorlat, hogy a kezdő- és/vagy végdátumnak egy minden előfordulható dátumnál kisebb, vagy nagyobb dátumot választanak, és alapértelmezetten ezt az értéket veszi fel az ,,ismeretlen'' érték.
-	A \TABLA{nyilvántartás} táblában a \textit{mettől} érték a műszer dolgozónak történő átadás időpontja, de a \textit{meddig} értéke nem lehet egy ,,kellően távoli dátum, például: 9999.12.31'' mert ez nem a valós tényeket tükrözné. Ehelyett a \textit{null} érték megadása a megfelelő, hiszen a műszer felvételének pillanatában még tudjuk pontosan, mikor vesszük vissza azt.
+	A \tabla{nyilvántartás} táblában a \textit{mettől} érték a műszer dolgozónak történő átadás időpontja, de a \textit{meddig} értéke nem lehet egy ,,kellően távoli dátum, például: 9999.12.31'' mert ez nem a valós tényeket tükrözné. Ehelyett a \textit{null} érték megadása a megfelelő, hiszen a műszer felvételének pillanatában még tudjuk pontosan, mikor vesszük vissza azt.
 	Az időfüggő ismeretek, mint például valami árának a kezelésére számos technika ismert. Az egyik ilyen technika, hogy például a termék aktuális árának rögzítése a termék táblában és egy másik táblában az árak változását kezeljük -tól -ig formában. Ebben az esetben az aktuális árat közvetlenül a termék tulajdonságaként értjük el, míg korábbi árak esetén az árak változását tartalmazó táblából kell kikeresni.
 	}
 }
 \end{minipage}
 
 \subsection{KALIBRÁLÁS tábla}
-A \TABLA{kalibrálás} táblában rögzítjük a műszerek kalibrálási adatait, annak eredményét. A kalibrálás során három kötelező és további három opcionális ellenőrző mérést kell vagy lehet végezni. Az ellenőrző mérések elvárt értékét a kalibráló határozza meg figyelembe véve az eszköz használati módját, és az elvért értékhez hasonlítja a mért értéket. A minősítést a műszer állapotától és az ellenőrző mérések eredményétől függően a kalibráló állapítja meg.
+A \tabla{kalibrálás} táblában rögzítjük a műszerek kalibrálási adatait, annak eredményét. A kalibrálás során három kötelező és további három opcionális ellenőrző mérést kell vagy lehet végezni. Az ellenőrző mérések elvárt értékét a kalibráló határozza meg figyelembe véve az eszköz használati módját, és az elvért értékhez hasonlítja a mért értéket. A minősítést a műszer állapotától és az ellenőrző mérések eredményétől függően a kalibráló állapítja meg.
 \\
 
-\TABLA{kalibrálás}(\PK{sorszám}, \FK{egyedi szám}, \FK{felhasználónév}, időpont, hőmérséklet, páratartalom, elvárt1, mért1, elvárt2, mért2, elvárt3, mért3, elvárt4, mért4, elvárt5, mért5, elvárt6, mért6, \FK{minősítés})\\
+\tabla{kalibrálás}(\pk{sorszám}, \fk{egyedi szám}, \fk{felhasználónév}, időpont, hőmérséklet, páratartalom, elvárt1, mért1, elvárt2, mért2, elvárt3, mért3, elvárt4, mért4, elvárt5, mért5, elvárt6, mért6, \fk{minősítés})\\
 
 
 
