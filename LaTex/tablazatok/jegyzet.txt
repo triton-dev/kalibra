@@ -1,0 +1,31 @@
+Dolgozói nyilvántartás vezetése kell.
+
+Dolgozói fluktuáció kezelése. (ki hogyan és ki kezeli)
+
+Mérőeszkoz pontosság kellene, emrt ezzel a jelenleg
+selejtezendő eszközt ki kell dobni, pedig még más
+tevékenységhez lehetne használni, ha a technológia is leírná.
+
+Kalibrálási ciklusidőt a tulajdonos határozza meg a 
+használat, elhasználódás, technilógia figyelembevételével.
+
+SZEREP	mérőeszköz felügyelő:	fogadja kalibráláshoz, használat, állapot ellenőrzése,
+								üzemszerű használat körülmények ellenőrzése,
+								előkészítés selejtezésre.
+		laborvezető			:	felsőfokú végzettséggel (felsőfokú végzettséggel)
+								jóváhagyások, metrológus és mérőszekoz felügyelő
+								munkájának ellenőrzése, jóváhagyása. Selejtezés
+								jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál
+		metrológus 			:	kalibrálások elvégzése, bejövő eszközök minőségének
+								ellenőrzése, nyilvántartásba vétel (gravírszám),
+								és gravírozza, jelzi a raktárnak a gravírszámot (sarzs),
+								(a raktár bevételezi), ha nem kerül felhasználásra, 
+								beviszi a raktárba és a helyére teszi (minden eszköznek
+								a raktárban tárhelye van tárhely:műszer N:M)
+								kalibrálási jegyzőköny készítése, jóváhagyatja, matricázza,
+								Selejt, vagy csere esetén a névhez hozzárendeli, raktárat 
+								értesíti.
+		lekérdező			:	a rendszer adatinak lekérdezése
+								
+TÖRZSADAT	Zoliékkal tovább egyeztetni
+								
