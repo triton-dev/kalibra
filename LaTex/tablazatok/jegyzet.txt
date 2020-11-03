@@ -1,31 +1,70 @@
-Dolgozói nyilvántartás vezetése kell.
+Dolgozói nyilvántartás vezetése kell!
 
-Dolgozói fluktuáció kezelése. (ki hogyan és ki kezeli)
+"Kalibrálási ciklusidőt a tulajdonos határozza meg a 
+használat, elhasználódás, technológia figyelembevételével."
 
-Mérőeszkoz pontosság kellene, emrt ezzel a jelenleg
+Hitelesíteni azt kell, amit a https://mkeh.gov.hu/meresugy/kotelezo_hitelesitesu
+felsorol.
+
+Dolgozói fluktuáció kezelése. (Ki hogyan és ki kezeli?)
+
+Mérőeszkoz pontosság kellene, mert enélkül a jelenleg
 selejtezendő eszközt ki kell dobni, pedig még más
 tevékenységhez lehetne használni, ha a technológia is leírná.
+(pl.: mérőszalag eleje rossz, de utána nagyobb érték mérésére még megfelelő lenne,
+vagy százados mérésre nem jó, de tizedesre, ahol ez is elég igen...)
 
-Kalibrálási ciklusidőt a tulajdonos határozza meg a 
-használat, elhasználódás, technilógia figyelembevételével.
+Kalibrálási ciklusidő - kalibrálás gyakorisága szinonimája
+Kalibrálási időtartam - a tárgy negyedév utolsó napja (most a matrica ezt mutatja).
+Kalibrálás gyakorisága - napban adja milyen sűrűn kell kalibrálni.
 
-SZEREP	mérőeszköz felügyelő:	fogadja kalibráláshoz, használat, állapot ellenőrzése,
-								üzemszerű használat körülmények ellenőrzése,
-								előkészítés selejtezésre.
-		laborvezető			:	felsőfokú végzettséggel (felsőfokú végzettséggel)
-								jóváhagyások, metrológus és mérőszekoz felügyelő
-								munkájának ellenőrzése, jóváhagyása. Selejtezés
-								jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál
-		metrológus 			:	kalibrálások elvégzése, bejövő eszközök minőségének
-								ellenőrzése, nyilvántartásba vétel (gravírszám),
-								és gravírozza, jelzi a raktárnak a gravírszámot (sarzs),
-								(a raktár bevételezi), ha nem kerül felhasználásra, 
-								beviszi a raktárba és a helyére teszi (minden eszköznek
-								a raktárban tárhelye van tárhely:műszer N:M)
-								kalibrálási jegyzőköny készítése, jóváhagyatja, matricázza,
-								Selejt, vagy csere esetén a névhez hozzárendeli, raktárat 
-								értesíti.
-		lekérdező			:	a rendszer adatinak lekérdezése
-								
-TÖRZSADAT	Zoliékkal tovább egyeztetni
-								
+
+DOLGOZÓ	
+	A kölcsönzött munkavállalókait is nyilván kell tartani az új rendszerben
+	annak ellenére, hogy a Humán rendszerben nem léteznek.
+
+SZEREP	
+	mérőeszköz felügyelő:	fogadja kalibráláshoz, használat, állapot ellenőrzése,
+							üzemszerű használat körülményeinek ellenőrzése,
+							előkészítés selejtezésre.
+							
+	laborvezető			:	felsőfokú végzettséggel(!)
+							jóváhagyások, metrológus és mérőszekoz felügyelő
+							munkájának ellenőrzése, jóváhagyása. Selejtezés
+							jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál is.
+							
+	metrológus 			:	kalibrálások elvégzése, bejövő eszközök minőségének
+							ellenőrzése, nyilvántartásba vétel (gravírszám),
+							és gravírozza, jelzi a raktárnak a gravírszámot (sarzs),
+							(a raktár bevételezi), ha nem kerül felhasználásra, 
+							beviszi a raktárba és a helyére teszi (minden eszköznek
+							a raktárban tárhelye van tárhely:műszer N:M)
+							kalibrálási jegyzőköny készítése, jóváhagyatja, matricázza,
+							Selejt, vagy csere esetén a névhez hozzárendeli, raktárat értesíti.
+							
+	lekérdező			:	CSAK a rendszer adatinak lekérdezése. (pl raktáros,
+							tárgyi eszköz nyilvántartó, belső ellenőr, technológus...)
+							
+							
+TÖRZSADAT
+	Zoliékkal tovább egyeztetni! pl.: FAJTA{mérőórás, nóniuszos, digitális, (és ami egyik sem?)} 
+							TÍPUS{csőrős, egyoladalas, mélységmérős...)
+							A FAJTA és a TÍPUS erősen függ a mérőeszköztől (mérőórás derékszőg?)
+							
+							Gyártmány+megnevezés+tipusjel kell a beszerzéshez.
+							
+							új tulajdonság: törzs mérőeszköz amivel a kalibrálásokat végzik,
+							a többi nem.  
+							
+MÉRŐESZKÖZ
+	selejtezési javaslat dátuma		: innentől az eszköz nem használható
+	selejetezés dátuma				: amikor tényleges selejtezik (vagy lesz információ róla, vagy nem)
+	technológia						: mihez lesz használva
+				
+BELSŐ KALIBRÁLÁS
+	az elvárt és mért értékeket valamint a minősítést külön kellene venni
+	(3 mérés minimum kell, ha egyébként nem azonnal selejt az eszköz, több mérést is lehet végezni.)
+	
+KÜLSŐ KALIBRÁLÁS
+	javasolt ciklusidő	: 	a külső kalibráló javasolhat más kalibrálási ciklusidőt, mint amit
+							korábban meghatároztunk.
