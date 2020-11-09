@@ -17,6 +17,7 @@
 \newcommand{\tabla}[1]{\noindent\MakeUppercase{#1}} %Tábla neve
 \newcommand{\tmezo}[2]{\MakeUppercase{#1}.{\underline{#2}}} %Tábla.idegenkulcs
 
+\includeonly{fogalmak}
 
 %opening
 \title{%
@@ -183,8 +184,6 @@ egyik táblában, amelyhez nem tartozik sor egy másik, a táblával kapcsolatba
 
 Összekapcsolni azonban csak a valóságban is összekapcsolható táblákat szabad, ellenkező esetben értelmetlen adatokhoz jutunk. (Például a \tmezo{kocsi}{típus} és \tmezo{szerződés}{típus} táblákat a \underline{típus} mezővel nem szabad összekapcsolni, mert mindkét egyedben mást jelent a típus tulajdonság.)
 
-
-
 A \ref{dolg} és \ref{kalib} táblák között a \textbf{dolgozókód} mező teremt
 kapcsolatot. A DOLGOZÓ táblában ez a mező \textbf{kulcs}, míg a KALIBRÁLÁS 
 táblában \textbf{idegen kulcs} szerepet tölt be.
@@ -279,7 +278,7 @@ Több helyen találkozni a túlminősítéssel. Ilyen esetben egy általánosan 
 \subsection{A meglévő rendszerek azonosítói}
 
 Minden alrendszer esetén sérül \textbf{az adatbázis - egy} elv. Azaz nem lenne 
-szabad olyan rendszereket létrehozni, amelyek új adatbázisok létrehozásával 
+szabad olyan rendszereket létrehozni, amelyek újabb adatbázisok létrehozásával 
 járnak. Számos esetben mégis erre kényszerülünk, mert a meglévő rendszerek 
 bővítése jelentős költséggel járna - például a SAP esetében -, vagy a kezelendő 
 adatok nem illeszkednek abba a rendszerbe, amibe ugyan kis ráfordítással de 
@@ -430,6 +429,13 @@ folyamatától.
 Egyes eszközök kalibrálását külső fél végzi el. A kalibrálás eredményéről jegyzőkönyv
 készül. A jegyzőkönyvben szereplő minősítés alapján lesz megállapítva az adott műszer státusza.
 
+\section{Fogalmak}
+
+\let\clearpage\relax
+\include{fogalmak}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Felhasználói szerepek}
 A probléma leírásából kiolvasható, hogy a rendszerben többféle szerepkör is 
 megjelenik. Így van
@@ -492,7 +498,7 @@ NAPLÓ & a műveletek naplója\\
 \caption{A táblák és a közöttük lévő előzetes kapcsolatok}
 \end{figure}
 
-A kapcsolatok ábrázolásánál most még foglalkozunk azzal hogy a kapcsolat 
+A kapcsolatok ábrázolásánál most még nem foglalkozunk azzal hogy a kapcsolat 
 kötelező-e, vagy opcionális, csupán jelezzük, hogy a táblák között van 
 valamilyen kapcsolat. Nem jelezzük a kapcsolat fokát, ami lehet \textbf{1:1, 
 1:n, m:n} sem.
@@ -536,7 +542,7 @@ végezhetik el.
 A \tabla{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói 
 szerepek értékkészlete jelenik meg.\\
 
-\tabla{SZEREP}(\pk{szerep}, aktív)
+\tabla{SZEREP}(\pk{szerep}, aktív szerep)
 
 \begin{table}[ht!]
 \centering
@@ -547,7 +553,7 @@ szerepek értékkészlete jelenik meg.\\
  \textbf{kalibráló}&igen\\
  \textbf{\dots}&\dots\\
 \end{tabular}}
-\caption{DOLGOZÓ tábla} \label{tabSZEREP}
+\caption{SZEREP tábla} \label{tabSZEREP}
 \end{table}
 
 
@@ -601,7 +607,7 @@ jogosult felhasználó férhet hozzá. A felhasználókról a minimális adatoka
 tartunk nyilván\\
 
 \tabla{felhasználó}(\pk{felhasználónév}, vezetéknév, keresztnév, 
-harmadik név, titulus, jelszó, \fk{szerep}, aktív, kezdődátum, végdátum)
+harmadik név, titulus, jelszó, \fk{szerep}, aktív felhasználó, kezdődátum, végdátum)
 
 
 \begin{table}[ht!]
