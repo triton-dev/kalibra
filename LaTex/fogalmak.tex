@@ -1,66 +1,119 @@
 % Fontosabb fogalmak
-Az adatbázistervezés egyik fontos eleme a fogalmi modell megalkotása. A fogalmi modell
-a valóság kompromisszumoktól mentes képe\footnote{Legalábbis az adott probléma
-megoldása tekintetében.}. A fogalmi modell készítése során a használt fogalmakat meg
-kell magyarázni annak érdekében, mindenki számára egyértelmű legyen azok jelentése.
-
-Ugyancsak a fogalmi modell jellemzője, hogy a modellben természetes és teljes
-megjelöléseket használunk. Rövidíteni csak teljesen egyértelmű esetekben szabad.
-Például fogalmi modellben a \textit{Költséghely kód} helyett még nem írható \textit{ktgkod}
-rövidítés. 
 
 \subsection{A modellben használt fontosabb fogalmak}
+
 \paragraph*{törzsszám} A dolgozók egyedi azonosító jele a Humánügyi rendszerben. 
+
 \paragraph*{titulus} A dolgozó neve előtt álló például \textit{dr.}, \textit{özv.}, \textit{ifj.} stb.
 jelző.
+
 \paragraph*{költséghely kód} A SAP rendszerből átvett, a költséghelyek azonosítására 
 szolgáló kötött formátumú kód. Formája \textit{dd-ddd-d}, ahol a \textit{d} $0-9$ közötti
 számot jelent.
+
 \paragraph*{szerep} A rendszer felhasználóinak a rendszer szempontjából fontos
 szerepköre. Az egyese szerephez más-más felhasználói funkciók tartozhatnak.
+
 \paragraph*{aktív szerep} Egyes szerepek idővel megszűnhetnek, vagy átmenetileg
 nincs szükség rájuk. Ez törlés helyett az \textit{aktív szerep} tulajdonságon keresztül vezérelhető.
+
 \paragraph*{mérőeszköz minősítése} Az ellenőrzés, vagy kalibrálás során az adott
 eszköz használhatóság megállapításának eredménye.
+
 \paragraph*{kalibrálás} Olyan tevékenységek összessége, amellyel meghatározzuk az
 összefüggést a mérőeszköz értékmutatása, valamint a mérendő mennyiség valós
 tulajdonságai között. A kalibrálás során általában egy rendkívül pontos, úgynevezett
 etalon mérőműszer értékeivel vetjük össze a vizsgált eszközt.
+
 \paragraph*{felhasználónév} A rendszer használatához szükséges, a felhasználót a 
 felhasználó jelszavával együtt azonosító jelsorozat.
+
 \paragraph*{jelszó} A felhasználó által megadott jelsorozat. A jelszó egyirányú kódolás
 után nyert képe kerül tárolásra.
+
 \paragraph*{törzsadat} Törzsadatnak nevezzük azokat az adatokat, melyek leírják a közös
 tulajdonsággal bíró egyedeket.
+
 \paragraph*{cikkszám} A SAP rendszerben is használható cikket (terméket) azonosító
 kód. Hossza maximum 12 karakter lehet, tartalmazhat betűt, számot, írásjelet, egyéb 
 karaktereket. 
+
 \paragraph*{mérőeszköz fajta} A mérőeszköz működési-kijelzési módjára utaló ismeret
 (nóniuszos, mérőórás, \dots).
+
 \paragraph*{mérőeszköz típusa} A mérés végrehajtásához szükséges alak, vagy forma meghatározása (csőrös, mélységmérős, \dots).
+
 \paragraph*{osztás} A mérőeszköz fő skálájának legkisebb osztásának mértékegysége 
 (mm, kg, univerzális, \dots)
+
 \paragraph*{pontosság} A mérőeszközzel végzett mérés pontossága (0,01; 0,5; 10)
+
 \paragraph*{mérési tartomány} Az eszközzel végezhető mérés alsó és felső határértéke.
 (0-150, 50-75, 0-1500)
+
 \paragraph*{mérési tartomány mértékegysége} A mérési tartományhoz rendelt
 mértékegység. Nem feltétlenül azonos az osztás mértékegységével.
+
 \paragraph*{kalibrálási időtartama} Azon napok száma mely két kalibrálás között eltelhet.
+
 \paragraph*{gravírszám} A mérőeszközre gravírozott, vagy más maradandó módon felvitt
 egyedi azonosító szám.
+
 \paragraph*{gyári szám} A eszköz gyártó által meghatározott száma.
+
 \paragraph*{leltári szám} A SAP rendszerben rögzített tárgyi eszköz azonosító szám.
+
 \paragraph*{törzs márőeszköz} Azon eszköz, amellyel a többi mérőeszköz ellenőrzését 
 végzik.
+
 \paragraph*{üzembe helyezés dátuma} A mérőeszköz első használatra történő 
 kiadásának dátuma, tárgyi eszköz esetén az aktiválás dátuma.
-\paragraph*{selejtezésre felajánlás dátuma} Az a dátum, amikor az eszközről kiállításra
-kerül a selejtezési javaslat.
-\paragraph{selejtezés dátuma} A Selejtezési Bizottság ,,Selejtezési Jegyzőkönyv'' 
-dátuma.
-\paragraph*{mérőeszköz státusza} A kalibráltság állapotát mutatja.
-\paragraph*{belső kalibrálás sorszáma} Az elvégzett kalibrálás sorszáma, később ebből képződik a kalibrálási jegyzőkönyv sorszáma.
-\paragraph*{külső kalibrálás sorszáma} A külső kalibrálók kalibrálási jegyzőkönyvének
-jele, száma.
-\paragraph*{partnerkód} A külső kalibrálást végzők SAP-n belüli kódja.
 
+\paragraph*{selejtezésre felajánlás dátuma} az a dátum, amikor az eszközről kiállításra
+kerül a selejtezési javaslat.
+
+\paragraph{selejtezés dátuma} a Selejtezési Bizottság ,,Selejtezési Jegyzőkönyv'' 
+dátuma.
+
+\paragraph*{mérőeszköz státusza} a kalibráltság állapotát mutatja.
+
+\paragraph*{belső kalibrálás sorszáma} az elvégzett kalibrálás sorszáma, később ebből képződik a kalibrálási jegyzőkönyv sorszáma. A kalibrálás során minimum három mérést
+kell végezni, ha a vizuális vizsgálat alapján az eszköz nem azonnal selejt (például törött).
+
+\paragraph*{elvárt érték} A kalibrálás során előre rögzített érték, méret, stb,, amelyet a kalibrálandó eszközzel megmérünk, ellenőrzünk.
+
+\paragraph*{mért érték} a kalibrálás során mért, megfigyelt érték.
+
+\paragraph*{külső kalibrálás sorszáma}  külső kalibrálók kalibrálási jegyzőkönyvének
+jele, száma.
+
+\paragraph*{partnerkód} külső kalibrálást végzők SAP-n belüli kódja.
+mérőeszköz felügyelő:	a műszereket fogadja a kalibráláshoz, használat, állapot 
+ellenőrzése, üzemszerű használat körülményeinek ellenőrzése, előkészítés selejtezésre.
+
+\paragraph*{laborvezető}	felsőfokú végzettséggel(!) rendelkező személy, feladata a
+metrológus és mérőeszköz felügyelő munkájának ellenőrzése, jóváhagyása. Selejtezés
+jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál is.
+
+\paragraph*{metrológus} feladata a kalibrálások elvégzése, bejövő eszközök
+minőségének ellenőrzése, nyilvántartásba vétel (gravírszám kiosztása és gravírozása),
+jelzi a raktárnak a gravírszámot (sarzs), (a raktár bevételezi), ha nem kerül felhasználásra, 
+beviszi a raktárba és a helyére teszi (minden eszköznek a raktárban tárhelye van
+tárhely:műszer $\rightarrow$ N:M), kalibrálási jegyzőköny készítése, jóváhagyatja, matricázza az eszközt. Selejt, vagy csere esetén a névhez hozzárendeli az új eszközt, a régit a nyilvántartásból leveszi a dolgozótól, raktárat értesíti.
+
+\paragraph*{érvényesítő matrica} -- vagy kalibrálási matrica. Olyan fém fólia matrica, 
+melynek felső részén az év, alatta négy részre osztott piros-zöld színű táblázat mutatja a
+kalibrálás érvényességének negyedévét. A zöld színű negyedévek jelzik a kalibrálás
+érvényességi idejét. Az érvényesség ideje a matrica alapján a tárgy negyedév utolsó
+napja. 
+
+\paragraph*{lekérdező}	\textit{csak} a rendszer adatinak lekérdezésére jogosult
+felhasználó (például raktáros, tárgyi eszköz nyilvántartó, belső ellenőr, technológus\dots)
+
+\paragraph*{javasolt ciklusidő} külső kalibrálási jegyzőkönyv tartalmazhat javaslatot a 
+két kalibrálás között eltelt időre. 
+
+\paragraph*{pontossági osztály} a mérőeszközök olyan csoportja, amely a hibák
+specifikált határok között tartása céljából meghatározott metrológiai követelményeknek
+eleget tesz. A pontossági osztályt rendszerint megállapodás szerinti számmal, vagy jellel
+jelölik, és ezt osztályjelnek nevezik.

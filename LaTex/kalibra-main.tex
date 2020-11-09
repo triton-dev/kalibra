@@ -17,7 +17,7 @@
 \newcommand{\tabla}[1]{\noindent\MakeUppercase{#1}} %Tábla neve
 \newcommand{\tmezo}[2]{\MakeUppercase{#1}.{\underline{#2}}} %Tábla.idegenkulcs
 
-\includeonly{fogalmak}
+\includeonly{fogalmak,alaptablak}
 
 %opening
 \title{%
@@ -273,7 +273,7 @@ arra, hogy az általános, több helyen is előforduló, vagy felhasználható
 általában kereskedelmi termékeket nem sorolják ide. Ezzel elkerülhető, 
 hogy ugyan annak a terméknek több cikkszáma is legyen.
 
-Több helyen találkozni a túlminősítéssel. Ilyen esetben egy általánosan használt anyagot például annak a dolognak a nevével minősítjuk, amibe az beépül. Például ,,SPOT IZZO VAN-HOOL'' helyesebben ,,24V 40W spot izzó'', mert nem csak a Van-Hool buszban létezik ilyen izzó.. Ennek ellentéte az alul minősítés ,,PERSELY'', ,,CSAP'', ,,RETESZ''. Ilyenkor jó lenne tudni, hogy hová való az alkatrész, például ,,RETESZ'' helyett ,,X.Y. motor ékszíjtárcsa rögzítő retesz''
+Több helyen találkozni a túlminősítéssel. Ilyen esetben egy általánosan használt anyagot például annak a dolognak a nevével minősítjuk, amibe az beépül. Például ,,SPOT IZZO VAN-HOOL'' helyesebben ,,24V 40W spot izzó'', mert nem csak a Van-Hool buszban létezik ilyen izzó.. Ennek ellentéte az alul minősítés ,,PERSELY'', ,,CSAP'', ,,RETESZ''. Ilyenkor jó lenne tudni, hogy hová való az alkatrész, például ,,RETESZ'' helyett ,,X.Y. motor ékszíjtárcsa rögzítő retesz''.
 
 \subsection{A meglévő rendszerek azonosítói}
 
@@ -366,6 +366,20 @@ A korszerű kezelők használata során a fizikai szinttel - az adatok ténylege
 tárolási módjával - a tervezés során nem kell foglalkozni, az az 
 adatbázis motor feladata. 
 
+Az adatbázistervezés egyik fontos eleme a fogalmi modell megalkotása. A fogalmi modell
+a valóság kompromisszumoktól mentes képe\footnote{Legalábbis az adott probléma
+megoldása tekintetében.}.
+
+,,\textit{Ha a fejlesztőnek fogalma sincs a valóságról, akkor képtelen a célszerű
+adatszerkezet megalkotására. Ezért legeslegelső feladata a felhasználó fogalmainak a
+megismerése és elrendezése. Elrendezése, mert a fogalmak nem pusztán önálló
+lényegek, hanem egymással össze is függenek}.''\footnote{Halassy Béla - Ember
+Információ Rendszer}
+
+Ugyancsak a fogalmi modell jellemzője, hogy a modellben természetes és teljes
+megjelöléseket használunk. Rövidíteni csak teljesen egyértelmű esetekben szabad.
+Például fogalmi modellben a \textit{Költséghely kód} helyett még nem írható \textit{ktgkod}
+rövidítés.
 
 
 \section{A probléma leírása}
@@ -430,80 +444,28 @@ Egyes eszközök kalibrálását külső fél végzi el. A kalibrálás eredmén
 készül. A jegyzőkönyvben szereplő minősítés alapján lesz megállapítva az adott műszer státusza.
 
 \section{Fogalmak}
-
 \let\clearpage\relax
 \include{fogalmak}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Felhasználói szerepek}
-A probléma leírásából kiolvasható, hogy a rendszerben többféle szerepkör is 
-megjelenik. Így van
+A probléma leírásából kiolvasható, de a jelenlegi kulcsfelhasználóval történt megbeszélés alapján pontosításra került, hogy a rendszerben többféle szerepkör is megjelenik. Így van:
 \begin{itemize}
- \item \textbf{adminisztrátor}, aki a rendszerben található törzsadatok 
-kezelését végzi, listákat készít, gondoskodik a rendszer adatainak 
-naprakészségéről,
-\item \textbf{kalibráló}, aki a kalibrálásokt végzi, rögzíti a kalibrálások 
-eredményét, elvégzi az eszközök minősítését,
-\item \textbf{lekérdező}, aki a rendszer adatait csak lekérdezi, semmilyen 
-létrehozó, módosító, törlő funkcióval nem rendelkezik,
+\item laborvezető
+\item metrológus
+\item mérőeszköz felügyelő
+\item lekérdező
 \item és kell lennie olyan nem nevesített szerepnek is, ami a rendszer belső 
 feladatait látja el, mint például az adatbázis mentése, a naplózás elvégzése, 
-stb\dots
+stb.
 \end{itemize}
 
-\section{Az új rendszer alaptáblái}
-A probléma leírása alapján elkészíthető a táblák nagyvonalú felsorolása, 
-elsődleges elnevezése, illetve a bennük tárolandó adatok vázlatos leírása. Ez a 
-későbbiek során bővülhet, szűkülhet, a megnevezések változhatnak. A tervezésnek 
-ebben a szakaszában még szabatos neveket használunk.
-A táblák előzetes felsorolását \aref{tablak-0} táblázat tartalmazza.
-A táblák közötti kapcsolatok \aref{tablak0-kapcs0} ábrán láthatók.
-\begin{table}[ht!]
-\centering
-\begin{tabular}{|c|l|}
-\hline
-\textbf{Tábla neve}&\textbf{Tartalma}\\
-\hline
-FELHASZNÁLÓ & a tervezett rendszer felhasználóinak adatai\\
-\hline
-SZEREP & felhasználói szerepek felsorolása\\
-\hline
-DOLGOZÓ & dolgozói törzsadatok\\
-\hline
-KÖLTSÉGHELY & költséghelyek felsorolása\\
-\hline
-CIKKTÖRZS & mérőeszközök általános tulajdonságai\\
-\hline
-MŰSZER & mérőeszközök egyedi tulajdonságai\\
-\hline
-NYILVÁNTARTÁS & melyik eszköz melyik dolgozónál volt, van\\
-\hline
-KALIBRÁLÁS & kalibrálási adatok\\
-\hline
-MINŐSÍTÉS & a minősítések felsorolása\\
-\hline
-FELJEGYZÉS & műszerekhez tartozó feljegyzések\\
-\hline
-NAPLÓ & a műveletek naplója\\
-\hline
-\end{tabular}
-\caption{Az új rendszer alaptáblái}\label{tablak-0}
-\end{table}
-\\
+%\section{Az új rendszer táblái}
+%\let\clearpage\relax
+%\include{alaptablak}
 
-\begin{figure}[ht!]\label{tablak0-kapcs0}
-\centering
-\includegraphics[width=13cm]{kepek/tablak0-kapcs0.png}
-\caption{A táblák és a közöttük lévő előzetes kapcsolatok}
-\end{figure}
-
-A kapcsolatok ábrázolásánál most még nem foglalkozunk azzal hogy a kapcsolat 
-kötelező-e, vagy opcionális, csupán jelezzük, hogy a táblák között van 
-valamilyen kapcsolat. Nem jelezzük a kapcsolat fokát, ami lehet \textbf{1:1, 
-1:n, m:n} sem.
-
-\section{A táblák részletes leírása}
+\section{A táblák szöveges leírásának jelrendszere}
 A táblák leírása első lépésben szöveges formában történik, az alábbi 
 jelölésekkel:
 \begin{itemize}

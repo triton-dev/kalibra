@@ -25,11 +25,11 @@ DOLGOZÓ
 	annak ellenére, hogy a Humán rendszerben nem léteznek.
 
 SZEREP	
-	mérőeszköz felügyelő:	fogadja kalibráláshoz, használat, állapot 
+	mérőeszköz felügyelő:	a műszereket fogadja a kalibráláshoz, használat, állapot 
 							ellenőrzése, üzemszerű használat körülményeinek ellenőrzése, előkészítés selejtezésre.
 							
 	laborvezető			:	felsőfokú végzettséggel(!)
-							jóváhagyások, metrológus és mérőszekoz felügyelő
+							jóváhagyások, metrológus és mérőeszköz felügyelő
 							munkájának ellenőrzése, jóváhagyása. Selejtezés
 							jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál is.
 							
@@ -60,7 +60,7 @@ TÖRZSADAT
 							
 MÉRŐESZKÖZ
 	selejtezési javaslat dátuma	: innentől az eszköz nem használható
-	selejetezés dátuma			: amikor tényleges selejtezik (vagy lesz 	
+	selejtezés dátuma			: amikor tényleges selejtezik (vagy lesz 	
 								  információ róla, vagy nem)
 	technológia					: mihez lesz használva
 				
