@@ -17,7 +17,7 @@
 \newcommand{\tabla}[1]{\noindent\MakeUppercase{#1}} %Tábla neve
 \newcommand{\tmezo}[2]{\MakeUppercase{#1}.{\underline{#2}}} %Tábla.idegenkulcs
 
-\includeonly{fogalmak,alaptablak}
+\includeonly{fogalmak,alaptablak,mintasorok,nftablak}
 
 %opening
 \title{%
@@ -443,23 +443,141 @@ folyamatától.
 Egyes eszközök kalibrálását külső fél végzi el. A kalibrálás eredményéről jegyzőkönyv
 készül. A jegyzőkönyvben szereplő minősítés alapján lesz megállapítva az adott műszer státusza.
 
+A probléma leírásából kiolvasható, de a jelenlegi kulcsfelhasználóval történt megbeszélés alapján pontosításra került, hogy a rendszerben többféle \textbf{szerepkör} is megjelenik. Így van:
+\begin{itemize}
+	\item laborvezető
+	\item metrológus
+	\item mérőeszköz felügyelő
+	\item lekérdező
+	\item és kell lennie olyan nem nevesített szerepnek is, ami a rendszer belső 
+	feladatait látja el, mint például az adatbázis mentése, a naplózás elvégzése, 
+	stb.
+\end{itemize}
+
 \section{Fogalmak}
-\let\clearpage\relax
-\include{fogalmak}
+%\let\clearpage\relax
+%\include{fogalmak}
+\subsection{A modellben használt fontosabb fogalmak}
+
+\paragraph*{törzsszám} A dolgozók egyedi azonosító jele a Humánügyi rendszerben. 
+
+\paragraph*{titulus} A dolgozó neve előtt álló például \textit{dr.}, \textit{özv.}, \textit{ifj.} stb.
+jelző.
+
+\paragraph*{költséghely kód} A SAP rendszerből átvett, a költséghelyek azonosítására 
+szolgáló kötött formátumú kód. Formája \textit{dd-ddd-d}, ahol a \textit{d} $0-9$ közötti
+számot jelent.
+
+\paragraph*{szerep} A rendszer felhasználóinak a rendszer szempontjából fontos
+szerepköre. Az egyese szerephez más-más felhasználói funkciók tartozhatnak.
+
+\paragraph*{aktív szerep} Egyes szerepek idővel megszűnhetnek, vagy átmenetileg
+nincs szükség rájuk. Ez törlés helyett az \textit{aktív szerep} tulajdonságon keresztül vezérelhető.
+
+\paragraph*{mérőeszköz minősítése} Az ellenőrzés, vagy kalibrálás során az adott
+eszköz használhatóság megállapításának eredménye.
+
+\paragraph*{kalibrálás} Olyan tevékenységek összessége, amellyel meghatározzuk az
+összefüggést a mérőeszköz értékmutatása, valamint a mérendő mennyiség valós
+tulajdonságai között. A kalibrálás során általában egy rendkívül pontos, úgynevezett
+etalon mérőműszer értékeivel vetjük össze a vizsgált eszközt.
+
+\paragraph*{felhasználónév} A rendszer használatához szükséges, a felhasználót a 
+felhasználó jelszavával együtt azonosító jelsorozat.
+
+\paragraph*{jelszó} A felhasználó által megadott jelsorozat. A jelszó egyirányú kódolás
+után nyert képe kerül tárolásra.
+
+\paragraph*{törzsadat} Törzsadatnak nevezzük azokat az adatokat, melyek leírják a közös
+tulajdonsággal bíró egyedeket.
+
+\paragraph*{cikkszám} A SAP rendszerben is használható cikket (terméket) azonosító
+kód. Hossza maximum 12 karakter lehet, tartalmazhat betűt, számot, írásjelet, egyéb 
+karaktereket. 
+
+\paragraph*{mérőeszköz fajta} A mérőeszköz működési-kijelzési módjára utaló ismeret
+(nóniuszos, mérőórás, \dots).
+
+\paragraph*{mérőeszköz típusa} A mérés végrehajtásához szükséges alak, vagy forma meghatározása (csőrös, mélységmérős, \dots).
+
+\paragraph*{osztás} A mérőeszköz fő skálájának legkisebb osztásának mértékegysége 
+(mm, kg, univerzális, \dots)
+
+\paragraph*{pontosság} A mérőeszközzel végzett mérés pontossága (0,01; 0,5; 10)
+
+\paragraph*{mérési tartomány} Az eszközzel végezhető mérés alsó és felső határértéke.
+(0-150, 50-75, 0-1500)
+
+\paragraph*{mérési tartomány mértékegysége} A mérési tartományhoz rendelt
+mértékegység. Nem feltétlenül azonos az osztás mértékegységével.
+
+\paragraph*{kalibrálási időtartama} Azon napok száma mely két kalibrálás között eltelhet.
+
+\paragraph*{gravírszám} A mérőeszközre gravírozott, vagy más maradandó módon felvitt
+egyedi azonosító szám.
+
+\paragraph*{gyári szám} A eszköz gyártó által meghatározott száma.
+
+\paragraph*{leltári szám} A SAP rendszerben rögzített tárgyi eszköz azonosító szám.
+
+\paragraph*{törzs márőeszköz} Azon eszköz, amellyel a többi mérőeszköz ellenőrzését 
+végzik.
+
+\paragraph*{üzembe helyezés dátuma} A mérőeszköz első használatra történő 
+kiadásának dátuma, tárgyi eszköz esetén az aktiválás dátuma.
+
+\paragraph*{selejtezésre felajánlás dátuma} az a dátum, amikor az eszközről kiállításra
+kerül a selejtezési javaslat.
+
+\paragraph{selejtezés dátuma} a Selejtezési Bizottság ,,Selejtezési Jegyzőkönyv'' 
+dátuma.
+
+\paragraph*{mérőeszköz státusza} a kalibráltság állapotát mutatja.
+
+\paragraph*{belső kalibrálás sorszáma} az elvégzett kalibrálás sorszáma, később ebből képződik a kalibrálási jegyzőkönyv sorszáma. A kalibrálás során minimum három mérést
+kell végezni, ha a vizuális vizsgálat alapján az eszköz nem azonnal selejt (például törött).
+
+\paragraph*{elvárt érték} A kalibrálás során előre rögzített érték, méret, stb,, amelyet a kalibrálandó eszközzel megmérünk, ellenőrzünk.
+
+\paragraph*{mért érték} a kalibrálás során mért, megfigyelt érték.
+
+\paragraph*{külső kalibrálás sorszáma}  külső kalibrálók kalibrálási jegyzőkönyvének
+jele, száma.
+
+\paragraph*{partnerkód} külső kalibrálást végzők SAP-n belüli kódja.
+mérőeszköz felügyelő:	a műszereket fogadja a kalibráláshoz, használat, állapot 
+ellenőrzése, üzemszerű használat körülményeinek ellenőrzése, előkészítés selejtezésre.
+
+\paragraph*{laborvezető}	felsőfokú végzettséggel(!) rendelkező személy, feladata a
+metrológus és mérőeszköz felügyelő munkájának ellenőrzése, jóváhagyása. Selejtezés
+jóváhagyása, kalibrálás ellenőrzése és esetenként kalibrál is.
+
+\paragraph*{metrológus} feladata a kalibrálások elvégzése, bejövő eszközök
+minőségének ellenőrzése, nyilvántartásba vétel (gravírszám kiosztása és gravírozása),
+jelzi a raktárnak a gravírszámot (sarzs), (a raktár bevételezi), ha nem kerül felhasználásra, 
+beviszi a raktárba és a helyére teszi (minden eszköznek a raktárban tárhelye van
+tárhely:műszer $\rightarrow$ N:M), kalibrálási jegyzőköny készítése, jóváhagyatja, matricázza az eszközt. Selejt, vagy csere esetén a névhez hozzárendeli az új eszközt, a régit a nyilvántartásból leveszi a dolgozótól, raktárat értesíti.
+
+\paragraph*{érvényesítő matrica} -- vagy kalibrálási matrica. Olyan fém fólia matrica, 
+melynek felső részén az év, alatta négy részre osztott piros-zöld színű táblázat mutatja a
+kalibrálás érvényességének negyedévét. A zöld színű negyedévek jelzik a kalibrálás
+érvényességi idejét. Az érvényesség ideje a matrica alapján a tárgy negyedév utolsó
+napja. 
+
+\paragraph*{lekérdező}	\textit{csak} a rendszer adatinak lekérdezésére jogosult
+felhasználó (például raktáros, tárgyi eszköz nyilvántartó, belső ellenőr, technológus\dots)
+
+\paragraph*{javasolt ciklusidő} külső kalibrálási jegyzőkönyv tartalmazhat javaslatot a 
+két kalibrálás között eltelt időre. 
+
+\paragraph*{pontossági osztály} a mérőeszközök olyan csoportja, amely a hibák
+specifikált határok között tartása céljából meghatározott metrológiai követelményeknek
+eleget tesz. A pontossági osztályt rendszerint megállapodás szerinti számmal, vagy jellel
+jelölik, és ezt osztályjelnek nevezik.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Felhasználói szerepek}
-A probléma leírásából kiolvasható, de a jelenlegi kulcsfelhasználóval történt megbeszélés alapján pontosításra került, hogy a rendszerben többféle szerepkör is megjelenik. Így van:
-\begin{itemize}
-\item laborvezető
-\item metrológus
-\item mérőeszköz felügyelő
-\item lekérdező
-\item és kell lennie olyan nem nevesített szerepnek is, ami a rendszer belső 
-feladatait látja el, mint például az adatbázis mentése, a naplózás elvégzése, 
-stb.
-\end{itemize}
 
 %\section{Az új rendszer táblái}
 %\let\clearpage\relax
@@ -488,220 +606,80 @@ a tábla nevével együtt írjuk le, a tábla neve és a mező neve közé .-ot
 mutatjuk be. Ilyen esetben a nem mutatott mezőket ,, \dots  '' (három pont) 
 jelzi. Ha a tábla alja nyitott, az azt jelzi, hogy vannak még sorok. Az 
 alul zárt tábla azt jelzi, hogy minden értéket megmutattunk.
+\item $\rightarrow$ funkcionális függés. A nyíl bal oldalán található funkcionálisan meghatározza a nyíl jobb oldalán állót. (költséghely$\rightarrow$költséghely név)
 \end{itemize}
 
 A táblák leírását célszerű azokkal kezdeni, amelyek úgynevezett 
-szótár-\footnote{kulcs--érték táblák. Például országkód--országnév}, vagy
-validáló\footnote{Ilyenek a kötelezően megadandó értékkészletek táblája. 
-Például a minősítés: kitűnő, jó, közepes, elégséges, elégtelen} táblák.
+validáló\footnote{Ilyenek a kötelezően megadandó értékkészletek táblája.} tábla, vagy
+szótár tábla\footnote{Kulcs--érték táblák. Például országkód--országnév}. 
 Az ilyen táblákra jellemző, hogy ritkán változik a tartalmuk. A táblák 
 tartalmazhatnak olyan tulajdonságokat, amelyekkel a felhasználói
 programoknak nyújtunk segítséget, például azzal, hogy az érték
 kiválasztható-e, vagy sem, az értékek rendezést valamilyen súly alapján 
 végezhetik el.
 
-\subsection{SZEREP tábla}
-A \tabla{szerep} táblában a rendszer felhasználóihoz rendelet felhasználói 
-szerepek értékkészlete jelenik meg.\\
 
-\tabla{SZEREP}(\pk{szerep}, aktív szerep)
+\section{Normalizált táblák}
+%\let\clearpage\relax
+%\include{nftablak}
 
-\begin{table}[ht!]
-\centering
-{\footnotesize \begin{tabular}[t]{|l|l|}
-\hline
- \textbf{szerep}&aktív\\\hline
- \textbf{admin}&igen\\
- \textbf{kalibráló}&igen\\
- \textbf{\dots}&\dots\\
-\end{tabular}}
-\caption{SZEREP tábla} \label{tabSZEREP}
-\end{table}
+\tabla{szerep} (\pk{szerep})\\
 
+\tabla{mértékegység} (\pk{mértékegység})\\
 
-\subsection{MINŐSÍTÉS tábla}
-A tábla tartalmazza a műszerek minősítéséhez használható értékeket.\\
+\tabla{státusz} (\pk{státusz})\\
 
-\tabla{MINŐSÍTÉS}(\pk{minősítés}, aktív)
-\begin{table}[ht!]
-\centering
-\begin{footnotesize}
-\begin{tabular}[t]{|l|l|}
-\hline
- \textbf{minősítés}&aktív\\\hline
- \textbf{megfelelt}&igen\\
- \textbf{tájékoztató mérésre}&igen\\
- \textbf{selejt}&igen\\
- \hline
-\end{tabular}
-\end{footnotesize}
-\caption{MINŐSÍTÉS tábla} \label{tabMINOSITES}
-\end{table}
+\tabla{minősítés} (\pk{minősítés})\\
 
+\tabla{partner} (\pk{partnerkód}, partnernév)\\
 
-\subsection{KÖLTSÉGHELY tábla}
-A tábla azokat a költséghelyeket tartalmazza, amelyekhez dolgozók, vagy 
-műszerek rendelhetők. Egyes költséghelyek idővel megszűnnek, újak jönnek
-létre.\\
+\tabla{költséghely} (\pk{költséghely kód}, költséghely név)\\
 
-\tabla{KÖLTSÉGHELY}(\pk{költséghely}, költséghely neve, sorrend, aktív)
+\tabla{dolgozó} (\pk{törzsszám}, vezetéknév, keresztnév, harmadik név,
+ titulus,\\ \fk{költséghely kód}, kilépett)\\
+ 
+\tabla{felhasznaló} (\pk{felhasználónév}, vezetéknév, keresztnév, harmadik név, jelszó,
+\fk{szerep}, aktív felhasználó)\\
 
+\tabla{törzsadat} (\pk{cikkszám}, megnevezés, gyártó, típus, működési mód, eszköztípus,
+\fk{osztás mértékegysége}, pontosság, mérési tartomány, \\
+\fk{mérési tartomány mértékegysége}, általános kalibrálási ciklus, zárolt cikk)\\
 
-\begin{table}[ht!]
-\centering
-	\begin{footnotesize}
-\begin{tabular}[t]{|l|l|l|l|}
-\hline
- \textbf{költséghely}&költséghely neve&sorrend&aktív\\ \hline
- \textbf{13-421-0}&Járműlakatos művezetőség&1&igen\\
- \textbf{13-443-0}&Műszerész művezetőség&1&igen\\
- \textbf{11-210-0}&Humánügyi és bérelsz. Oszt.&9&nem\\
- \textbf{\dots}&\dots&\dots&\dots \\
-\end{tabular}
-\end{footnotesize}
-\caption{KÖLTSÉGHELY tábla} \label{tabKOLTSEGHELY}
-\end{table}
+\tabla{mérőeszköz} (\pk{gravírszám}, \fk{cikkszám}, gyári szám, leltári szám,
+törzs mérőeszköz, \fk{státusz}, egyedi kalibrálási ciklus, kalibrálás lejár, üzembehelyezés
+dátuma, selejtezési javaslat dátuma, selejtezés dátuma)\\
 
+\tabla{mérőeszköz-technológia} (\pk{gravírszám+technológia})\\
 
-\subsection{FELHASZNÁLÓ tábla}
-A táblában a rendszer felhasználóit tartjuk nyilván. A rendszerhez csak 
-jogosult felhasználó férhet hozzá. A felhasználókról a minimális adatokat 
-tartunk nyilván\\
+\tabla{mozgás-dolgozó} (\pk{sorszám}, \fk{gravírszám}, \fk{törzsszám}, mettől, meddig)\\
 
-\tabla{felhasználó}(\pk{felhasználónév}, vezetéknév, keresztnév, 
-harmadik név, titulus, jelszó, \fk{szerep}, aktív felhasználó, kezdődátum, végdátum)
+\tabla{mozgás-költséghely} (\pk{sorszám}, \fk{gravírszám}, \fk{költséghely kód}, mettől,
+meddig)\\
 
+\tabla{belső kalibrálás fej sorszám} (\pk{belső kalibrálási sorszám},\\ \{\pk{\fk{gravírszám}+\fk{felhasználónév}+kalibrálás időpontja}\}, hőmérséklet, 
+páratartalom)\\
 
-\begin{table}[ht!]
- \centering
- \begin{footnotesize}
- \begin{tabular}[t]{|l|l|l|l|l|l|l|l|}
-  \hline
-\textbf{felhasználónév}&vezetéknév&\dots&\fk{szerep}
-&aktív&kezdődátum&végdátum\\ \hline
-  \textbf{nagye}&Nagy&\dots&\fk{admin}&igen&2020.06.01&null \\
-  \textbf{kissg}&Kiss&\dots&\fk{kalibráló}&igen&2020.06.01&2021.04.24\\
-  \textbf{tothb}&Tóth&\dots&\fk{lekérdező}&nem&2020.06.01&2020.09.06\\
- \end{tabular}
-\end{footnotesize}
-\caption{FELHASZNÁLÓ tábla}\label{tabFEHASZNALO}
-\end{table}
+\tabla{belső kalibrálás tétel} (\pk{\fk{belső kalibrálási sorszám}+tételszám}, elvárt érték,
+mért érték)\\
 
-
-\subsection{DOLGOZÓ tábla}
-A tábla tartalmazza azokat a dolgozókat, akik mérőeszközökkel 
-rendelkeznek, vagy rendelkeztek. A dolgozókról a minimális, a rendszer 
-működése szempontjából fontos adatokat tartjuk csak nyilván.\\
-
-\tabla{dolgozó}(\pk{törzsszám}, vezetéknév, keresztnév, harmadik név, 
-\fk{költséghely}, aktív)
-
-
-\begin{table}[ht!]
- \centering
- \begin{footnotesize}
- \begin{tabular}[t]{|l|l|l|l|l|}
-  \hline
-\textbf{törzsszám}&vezetéknév&\dots&\fk{költséghely}&aktív\\ 
-\hline
-  \textbf{93456}&Nagy&\dots&\fk{13-421-0}&igen \\
-  \textbf{92312}&Tóth&\dots&\fk{13-443-0}&nem \\
-  \textbf{95678}&Kiss&\dots&\fk{13-422-0}&igen\\
- \end{tabular}
-\end{footnotesize}
-\caption{DOLGOZÓ tábla}\label{tabDOLGOZO}
-\end{table}
-
-
-\subsection{CIKKTÖRZS tábla}
-A táblában a SAP rendszer adatain túl olyan adatok is tárolása kerülnek, 
-amelyekre a SAP rendszer nem ad lehetőséget, viszont a műszerek
-szempontjából lényegesek.\\
-
-\tabla{cikktörzs}(\pk{cikkszám}, megnevezés, típus, tartomány alsó határ, tartomány felső határ, osztás, pontosság, tolerancia+, tolerancia-, kalibrálási gyakoriság, aktív)
-
-\begin{table}[ht!]
-	\centering
-	\begin{footnotesize}
-	\begin{tabular}[t]{|l|l|l|r|r|l|}
-		\hline
-		\textbf{cikkszám}&megnevezés&\dots&pontosság&kalibr.gyak&aktív\\ 
-		\hline
-		\textbf{MEV0000001-1}&Mitutoyo tolómérő&\dots&0,01&365&igen \\
-		\textbf{MEV0000036-1}&Maxwell multiméter&\dots&\,&365&igen \\
-		\textbf{MEV0000117-1}&Sauter mérőcella&\dots&0,1&180&igen \\
-	\end{tabular}
-\end{footnotesize}
-	\caption{CIKKTÖRZS tábla}\label{tabCIKKTORZS}
-\end{table}
-
-\subsection{MŰSZER tábla}
-Míg a \tabla{CIKKTÖRZS} tábla az azonos műszerek fő jellemzőit tartalmazza, addig a \tabla{műszer} tábla az egyedileg is azonosított eszközök tulajdonságainak rögzítésére hivatott.
-Az azonos műszerek között is lehetnek eltérő paraméterekkel rendelkező eszközök, ahogy a kalibrálás gyakorisága függhet a felhasználás intenzitásától, de egy-egy műszer lehet nem kalibrált státuszú, de akár selejt is.
-A \tabla{MŰSZER} tábla a \tabla{cikktörzs} tábla specializációja.\\
-
-\tabla{műszer}(\pk{egyedi szám}, \fk{cikkszám}, \dots, )
-
-\begin{table}[ht!]
-	\centering
-	\begin{footnotesize}
-	\begin{tabular}[t]{|l|l|c|}
-		\hline
-		\textbf{egyedi szám}&\textit{cikkszám}&\dots \\ \hline
-		\textbf{110123}&\textit{MEV0000000-1}&\dots\\
-		\textbf{134001}&\textit{MEV0000036-1}&\dots\\
-		\textbf{\dots}&\textit{\dots}&\dots\\
-	\end{tabular}
-\end{footnotesize}
-	\caption{MŰSZER tábla}\label{tabMUSZER}
-\end{table}
-
-
-\subsection{NYILVÁNTARTÁS tábla}
-A táblázat a műszerek dolgozók és raktár közötti mozgásait tartalmazza. A dolgozó a raktárból egy adott napon felveszi a műszert, majd egy másik napon, de akár még ugyanazon a napon visszaviszi és leadja azt. A táblázat segítségével egy adott pillanatban meg tudjuk mondani, melyik műszer éppen hol van, de azt is, de azt is kinél volt egy adott napon. \\
-
-\tabla{nyilvántartás}(\pk{sorszám}, \fk{törzsszám}, \fk{egyedi szám}, mettől, meddig, \dots)\\
-
-\begin{table}[ht!]
-	\centering
-	\begin{footnotesize}
-	\begin{tabular}[t]{|r|c|c|c|c|c|}
-		\hline
-		\textbf{sorszám}&\textit{törzsszám}&\textit{egyedi szám}&mettől&meddig&\dots \\ \hline
-		\textbf{1}&\textit{93456}&\textit{110123}&2020-06-07 07:12:35&null&\dots\\
-		\textbf{2}&\textit{93456}&\textit{134001}&2020-06-07 07:12:35&2020-08-01 13:50:47&\dots\\
-		\textbf{3}&\textit{95221}&\textit{134001}&2020-08-15 10:41:05&null&\dots\\
-		\textbf{\dots}&\textit{\dots}&\textit{\dots}&\dots&\dots&\dots\\
-	\end{tabular}
-\end{footnotesize}
-	\caption{NYILVÁNTARTÁS tábla}\label{tabNYILVANTARTAS}
-\end{table}
-
-
-\begin{minipage}[t]{\linewidth}
-\textsf{
-		{\footnotesize \textbf{Az idő kezelésének problémája.}
-	Az idő mint folytonos adat az adatbázis szempontjából ,,szerencsétlen'' ismertet. 
-	Meg\-fi\-gyel\-he\-tő az a gyakorlat, hogy a kezdő- és/vagy végdátumnak egy minden előfordulható dátumnál kisebb, vagy nagyobb dátumot választanak, és alapértelmezetten ezt az értéket veszi fel az ,,ismeretlen'' érték.
-	A \tabla{nyilvántartás} táblában a \textit{mettől} érték a műszer dolgozónak történő átadás időpontja, de a \textit{meddig} értéke nem lehet egy ,,kellően távoli dátum, például: 9999.12.31'' mert ez nem a valós tényeket tükrözné. Ehelyett a \textit{null} érték megadása a megfelelő, hiszen a műszer felvételének pillanatában még tudjuk pontosan, mikor vesszük vissza azt.
-	Az időfüggő ismeretek, mint például valami árának a kezelésére számos technika ismert. Az egyik ilyen technika, hogy például a termék aktuális árának rögzítése a termék táblában és egy másik táblában az árak változását kezeljük -tól -ig formában. Ebben az esetben az aktuális árat közvetlenül a termék tulajdonságaként értjük el, míg korábbi árak esetén az árak változását tartalmazó táblából kell kikeresni.
-	}
-}
-\end{minipage}
-
-\subsection{KALIBRÁLÁS tábla}
-A \tabla{kalibrálás} táblában rögzítjük a műszerek kalibrálási adatait, annak eredményét. A kalibrálás során három kötelező és további három opcionális ellenőrző mérést kell vagy lehet végezni. Az ellenőrző mérések elvárt értékét a kalibráló határozza meg figyelembe véve az eszköz használati módját, és az elvért értékhez hasonlítja a mért értéket. A minősítést a műszer állapotától és az ellenőrző mérések eredményétől függően a kalibráló állapítja meg.
-\\
-
-\tabla{kalibrálás}(\pk{sorszám}, \fk{egyedi szám}, \fk{felhasználónév}, időpont, hőmérséklet, páratartalom, elvárt1, mért1, elvárt2, mért2, elvárt3, mért3, elvárt4, mért4, elvárt5, mért5, elvárt6, mért6, \fk{minősítés})\\
+\tabla{belső kalibrálás eredménye} (\pk{\fk{belső kalibrálási sorszám}},\\ \fk{minősítés},
+megjegyzés)\\
 
 
 
-\subsection{FELJEGYZÉS tábla}
 
-\subsection{FELJEGYZÉS tábla}
 
-\subsection{NAPLÓ tábla}
+
+
+%\section{Mintasorok}
+%\let\clearpage\relax
+%\include{mintasorok}
+
+
+
+%\section{Mintasorok}
+%\let\clearpage\relax
+%\include{mintasorok}
 
 %
 %%
