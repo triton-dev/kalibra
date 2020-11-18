@@ -631,6 +631,10 @@ végezhetik el.
 
 \tabla{minősítés} (\pk{minősítés})\\
 
+\tabla{működési mód} (\pk{működési mód})\\
+
+\tabla{eszköztípus} (\pk{eszköztípus})\\
+
 \tabla{partner} (\pk{partnerkód}, partnernév)\\
 
 \tabla{költséghely} (\pk{költséghely kód}, költséghely név)\\
@@ -641,12 +645,12 @@ végezhetik el.
 \tabla{felhasznaló} (\pk{felhasználónév}, vezetéknév, keresztnév, harmadik név, jelszó,
 \fk{szerep}, aktív felhasználó)\\
 
-\tabla{törzsadat} (\pk{cikkszám}, megnevezés, gyártó, típus, működési mód, eszköztípus,
-\fk{osztás mértékegysége}, pontosság, mérési tartomány, \\
+\tabla{törzsadat} (\pk{cikkszám}, megnevezés, gyártó, típus, \fk{működési mód},
+ \fk{eszköztípus}, osztás, \fk{osztás mértékegysége}, pontosság, mérési tartomány, \\
 \fk{mérési tartomány mértékegysége}, általános kalibrálási ciklus, zárolt cikk)\\
 
 \tabla{mérőeszköz} (\pk{gravírszám}, \fk{cikkszám}, gyári szám, leltári szám,
-törzs mérőeszköz, \fk{státusz}, egyedi kalibrálási ciklus, kalibrálás lejár, üzembehelyezés
+törzs mérőeszköz, \fk{minősítés}, egyedi kalibrálási ciklus, kalibrálás lejár, üzembehelyezés
 dátuma, selejtezési javaslat dátuma, selejtezés dátuma)\\
 
 \tabla{mérőeszköz-technológia} (\pk{gravírszám+technológia})\\
@@ -656,7 +660,7 @@ dátuma, selejtezési javaslat dátuma, selejtezés dátuma)\\
 \tabla{mozgás-költséghely} (\pk{sorszám}, \fk{gravírszám}, \fk{költséghely kód}, mettől,
 meddig)\\
 
-\tabla{belső kalibrálás fej sorszám} (\pk{belső kalibrálási sorszám},\\ \{\pk{\fk{gravírszám}+\fk{felhasználónév}+kalibrálás időpontja}\}, hőmérséklet, 
+\tabla{belső kalibrálás fej} (\pk{belső kalibrálási sorszám},\\ \{\pk{\fk{gravírszám}+\fk{felhasználónév}+kalibrálás időpontja}\}, hőmérséklet, 
 páratartalom)\\
 
 \tabla{belső kalibrálás tétel} (\pk{\fk{belső kalibrálási sorszám}+tételszám}, elvárt érték,
@@ -664,6 +668,15 @@ mért érték)\\
 
 \tabla{belső kalibrálás eredménye} (\pk{\fk{belső kalibrálási sorszám}},\\ \fk{minősítés},
 megjegyzés)\\
+
+\tabla{külső kalibrálás} (\pk{külső kalibrálás sorszám},\{\fk{partnerkód}, jegyzőkönyv szám\}, külső kalibrálás dátuma, \fk{gravírszám}, \fk{minősítés}, kalibrálás érvényessége, 
+javasolt ciklusidő, \fk{rögzítő felhasználónév}, rögzítés időpontja)\\
+
+\tabla{selejtezés} (\pk{selejtezési javaslat sorszáma}, gravírszám, indoklás, javaslat időpontja, felhasználónév)
+
+\tabla{fénykép} (\pk{cikkszám, sorszám}, \{fájlnév\}, leírás)\\
+
+\tabla{csatolmány} (\pk{gravírszám, sorszám}, \{fájlnév\}, leírás)\\
 
 
 
