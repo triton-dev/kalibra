@@ -6,9 +6,9 @@
 --
 -------------------------------------------------------------------------------
 
-\c template0
+\c template1
 
-drop database if exist kalibra;
+drop database if exists kalibra;
 create database kalibra;
 
 \c kalibra
@@ -50,13 +50,13 @@ drop domain if exists d_idobelyeg;
 create domain d_idobelyeg as TIMESTAMP(0) default null;
 
 drop domain if exists d_igaz;
-create domain d_igaz as BOOLEAN defalut true;
+create domain d_igaz as BOOLEAN default true;
 
 drop domain if exists d_int;
 create domain d_int as INTEGER;
 
 drop domain if exists d_jelszo;
-create domain d_jelszo as TEXT default md5(’init’);
+create domain d_jelszo as TEXT default md5('init');
 
 drop domain if exists d_jkvszam;
 create domain d_jkvszam as VARCHAR(50);
@@ -91,9 +91,6 @@ create domain d_osztas as VARCHAR(25);
 drop domain if exists d_partnerkod;
 create domain d_partnerkod as VARCHAR(4);
 
-drop domain if exists d_serial;
-create domain d_serial as SERIAL;
-
 drop domain if exists d_szerep;
 create domain d_szerep as VARCHAR(25);
 
@@ -111,6 +108,27 @@ create domain d_torzsszam as VARCHAR(5);
 
 drop domain if exists d_txt;
 create domain d_txt as TEXT;
+
+create sequence seq_mozgdolg;
+create domain d_mozgdolg as integer default nextval('seq_mozgdolg');
+
+create sequence seq_mozgktgh;
+create domain d_mozgktgh as integer default nextval('seq_mozgktgh');
+
+create sequence seq_bkalibfej;
+create domain d_bkalibfej as integer default nextval('seq_bkalibfej');
+
+create sequence seq_kkalib;
+create domain d_kkalib as integer default nextval('seq_kkalib');
+
+create sequence seq_selejtezes;
+create domain d_selejtezes as integer default nextval('seq_selejtezes');
+
+create sequence seq_fenykep;
+create domain d_fenykep as integer default nextval('seq_fenykep');
+
+create sequence seq_csatolmany;
+create domain d_csatolmany as integer default nextval('seq_csatolmany');
 --
 --
 --
@@ -181,11 +199,11 @@ create table torzsadat(
 		on update cascade on delete restrict,
 	eszkoztipus d_eszktipus references eszktipus(eszktipus)
 		on update cascade on delete restrict,
-	osztas d_osztas
+	osztas d_osztas,
 	osztasme d_megyseg references me(me)
 		on update cascade on delete restrict,
-	pontossag d_osztas
-	tartomany d_tartomany
+	pontossag d_osztas,
+	tartomany d_tartomany,
 	tartomanyme d_megyseg references me(me)
 		on update cascade on delete restrict,
 	kalibciklus d_int,
@@ -195,15 +213,15 @@ create table torzsadat(
 
 create table eszkoz(
 	gravirszam d_gravir primary key,
-	cikkszam d_cikk references torzsadat(cikk),
+	cikkszam d_cikk references torzsadat(cikkszam)
 		on update cascade on delete restrict,
-	gysz d_gysz
+	gysz d_gysz,
 	eszkozszam d_eszkszam default null,
-	eszkozalszam d_eszkaszam default null,
+	eszkozalszam d_eszkszam default null,
 	torzseszkoz d_hamis,
 	minosites d_minosites references minosites(minosites)
 		on update cascade on delete restrict,
-	ekalibciklus d_integer default 365,
+	ekalibciklus d_int default 365,
 	kaliblejar d_datum,
 	uzemdatum d_datum,
 	seljavdatum d_datum,
@@ -223,7 +241,7 @@ create table technologia(
 )with oids;
 
 create table mozgdolg(
-	sorszam d_serial primary key
+	sorszam d_mozgdolg primary key,
 	gravirszam d_gravir references eszkoz(gravirszam)
 		on update cascade on delete restrict,
 	torzsszam d_torzsszam references dolgozo(torzsszam)
@@ -234,7 +252,7 @@ create table mozgdolg(
 )with oids;
 
 create table mozgktgh(
-	sorszam d_serial primary key,
+	sorszam d_mozgktgh primary key,
 	gravirszam d_gravir references eszkoz(gravirszam)
 		on update cascade on delete restrict,
 	ktghely d_ktghely references koltseghely(ktghely)
@@ -245,7 +263,7 @@ create table mozgktgh(
 )with oids;
 
 create table bkalibfej(
-	bksorszam d_serial primary key,
+	bksorszam d_bkalibfej primary key,
 	gravirszam d_gravir references eszkoz(gravirszam)
 		on update cascade on delete restrict,
 	fhnev d_fhnev references felhasznalo(fhnev)
@@ -258,12 +276,12 @@ create table bkalibfej(
 )with oids;
 
 create table bkalibtetel(
-bksorszam d_int references bkalibfej(bksorszam) 
-	on update cascade on delete restrict,
-tetelszam d_int,
-elvart d_num9_4,
-mert d_num9_4,
-primary key(bksorszam, tetelszam)
+	bksorszam d_int references bkalibfej(bksorszam) 
+		on update cascade on delete restrict,
+	tetelszam d_int,
+	elvart d_num9_4,
+	mert d_num9_4,
+	primary key(bksorszam, tetelszam)
 )with oids;
 
 create table bkaliberedmeny(
@@ -274,7 +292,7 @@ create table bkaliberedmeny(
 )with oids;
 
 create table kkalib(
-	kksorszám d_serial primary key,
+	kksorszám d_kkalib primary key,
 	partnerkod d_partnerkod references partner(partnerkod)
 		on update cascade on delete restrict,
 	jkvszam d_jkvszam,
@@ -289,12 +307,12 @@ create table kkalib(
 		on update cascade on delete restrict,
 	rogzidopont d_curidobelyeg,
 	constraint letezo_partner_jegyzokonyvszam_kalibdatum 
-		unique(partnerkod, jkvszam, kalidatum),
+		unique(partnerkod, jkvszam, kalibdatum),
 	constraint rossz_ciklusido check(jciklido >= 0)
 )with oids;
 
 create table selejtezes(
-	selsorszam d_serial primary key,
+	selsorszam d_selejtezes primary key,
 	gravirszam d_gravir references eszkoz(gravirszam)
 		on update cascade on delete restrict,
 	indoklas d_txt,
@@ -306,7 +324,7 @@ create table selejtezes(
 create table fenykep(
 	cikkszam d_cikk references torzsadat(cikkszam)
 		on update cascade on delete restrict,
-	sorszam d_serial,
+	sorszam d_fenykep,
 	fajlnev d_fajl,
 	leiras d_leiras,
 	primary key(cikkszam, sorszam)
@@ -315,7 +333,7 @@ create table fenykep(
 create table csatolmany(
 	gravirszam d_gravir references eszkoz(gravirszam)
 		on update cascade on delete restrict,
-	sorszam d_serial,
+	sorszam d_csatolmany,
 	fajlnev d_fajl,
 	leiras d_leiras,
 	primary key(gravirszam, sorszam)
