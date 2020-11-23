@@ -142,7 +142,8 @@ create table szerep(
 )with oids;
 
 create table me(
-	me d_megyseg primary key
+	me d_megyseg primary key,
+	meleiras d_nev
 )with oids;
 
 create table minosites(
@@ -164,7 +165,8 @@ create table partner(
 
 create table koltseghely(
 	ktghely d_ktghely primary key,
-	ktghelynev d_nev not null
+	ktghelynev d_nev not null,
+	aktiv d_igaz
 )with oids;
 
 create table dolgozo(
