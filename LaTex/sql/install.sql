@@ -205,6 +205,8 @@ create table torzsadat(
 	osztasme d_megyseg references me(me)
 		on update cascade on delete restrict,
 	pontossag d_osztas,
+	pontossagme d_megyseg references me(me)
+		on update cascade on delete restrict,
 	tartomany d_tartomany,
 	tartomanyme d_megyseg references me(me)
 		on update cascade on delete restrict,
