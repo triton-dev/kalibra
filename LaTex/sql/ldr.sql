@@ -8,4 +8,7 @@
 \i ld_eszkoztipusok.sql
 \i ld_mukodesmodok.sql
 \i ld_torzsadatok.sql
+\i ld_minosites.sql
+\i ld_eszkozok.sql
+
 
