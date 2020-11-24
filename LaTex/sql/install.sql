@@ -374,3 +374,13 @@ create table csatolmany(
 	leiras d_leiras,
 	primary key(gravirszam, sorszam)
 )with oids;
+
+drop table if exists kiadotteszkoz;
+create table kiadotteszkoz (
+	gravirszam d_gravir references eszkoz(gravirszam)
+		on update cascade on delete restrict,
+	mettol d_curidobelyeg,
+	meddig d_idobelyeg default null,
+	hol d_ktghely default null,
+	primary key(gravirszam, mettol)
+) with oids;
