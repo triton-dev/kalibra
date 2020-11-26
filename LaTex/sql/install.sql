@@ -143,6 +143,8 @@ create domain d_csatolmany as integer default nextval('seq_csatolmany');
 --
 --
 
+
+
 --
 -- Táblák létrehozása.
 --
@@ -193,7 +195,8 @@ create table dolgozo(
 	hnev d_nev default null,
 	titulus d_titulus default null,
 	ktghely d_ktghely references koltseghely(ktghely) 
-		on update cascade on delete restrict,
+		on update cascade on delete restrict
+		check (fn_aktiv_koltseghely(ktghely)),
 	kilepett d_hamis
 )with oids;
 
@@ -238,7 +241,8 @@ drop table if exists eszkoz cascade;
 create table eszkoz(
 	gravirszam d_gravir primary key,
 	cikkszam d_cikk references torzsadat(cikkszam)
-		on update cascade on delete restrict,
+		on update cascade on delete restrict
+		constraint 'Zárolt cikkszám!' check(fn_zarolt_cikk(cikkszam)=false),
 	gysz d_gysz,
 	eszkozszam d_eszkszam default null,
 	eszkozalszam d_eszkszam default null,
@@ -261,7 +265,8 @@ create table eszkoz(
 
 drop table if exists technologia cascade;
 create table technologia(
-	gravirszam d_gravir,
+	gravirszam d_gravir references eszkoz(gravirszam)
+		on update cascade on delete restrict,
 	technologia d_tech,
 	constraint letezo_gravirszam_technologia_paros 
 		primary key(gravirszam, technologia)
@@ -317,7 +322,8 @@ create table bkalibtetel(
 
 drop table if exists bkaliberedmeny cascade;
 create table bkaliberedmeny(
-	bksorszam d_int primary key,
+	bksorszam d_int references bkalibfej(bksorszam)
+		on update cascade on delete restrict primary key,
 	minosites d_minosites references minosites(minosites)
 		on update cascade on delete restrict,
 	megjegyzes d_txt
