@@ -242,7 +242,7 @@ create table eszkoz(
 	gravirszam d_gravir primary key,
 	cikkszam d_cikk references torzsadat(cikkszam)
 		on update cascade on delete restrict
-		constraint 'Zárolt cikkszám!' check(fn_zarolt_cikk(cikkszam)=false),
+		constraint zarolt_cikksazam check(fn_zarolt_cikk(cikkszam)=false),
 	gysz d_gysz,
 	eszkozszam d_eszkszam default null,
 	eszkozalszam d_eszkszam default null,

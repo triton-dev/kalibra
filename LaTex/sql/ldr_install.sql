@@ -240,9 +240,8 @@ create table torzsadat(
 drop table if exists eszkoz cascade;
 create table eszkoz(
 	gravirszam d_gravir primary key,
-	cikkszam d_cikk references torzsadat(cikkszam)
-		on update cascade on delete restrict
-		constraint 'Zárolt cikkszám!' check(fn_zarolt_cikk(cikkszam)=false),
+	cikkszam d_cikk
+		constraint "Zárolt cikkszám" check(fn_zarolt_cikk(cikkszam)=false),
 	gysz d_gysz,
 	eszkozszam d_eszkszam default null,
 	eszkozalszam d_eszkszam default null,
@@ -256,6 +255,8 @@ create table eszkoz(
 	seldatum d_datum,
 	tarhely d_tarhely,
 	kiadva d_hamis,
+	foreign key (cikkszam) references torzsadat(cikkszam)
+		on update cascade on delete restrict,
 	constraint rossz_kalibciklus check(ekalibciklus >= 0),
 	constraint eszkoz_alszam_egyedi unique(eszkozszam, eszkozalszam),
 	constraint rossz_kaliblejar_datum check(kaliblejar > uzemdatum),
