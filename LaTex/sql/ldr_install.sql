@@ -11,7 +11,7 @@
 -- drop database if exists kalibra;
 -- create database kalibra;
 
-\c kalibra
+-- \c kalibra
 
 --
 -- Domainek létrehozása.
