@@ -150,41 +150,47 @@ create domain d_csatolmany as integer default nextval('seq_csatolmany');
 --
 drop table if exists szerep cascade;
 create table szerep(
-	szerep d_szerep primary key
+	szerep d_szerep primary key,
+	aktivszerep d_igaz
 )with oids;
 
 drop table if exists me cascade;
 create table me(
 	me d_megyseg primary key,
-	meleiras d_nev
+	meleiras d_nev,
+	aktivme d_igaz,
 )with oids;
 
 drop table if exists minosites cascade;
 create table minosites(
-	minosites d_minosites primary key
+	minosites d_minosites primary key,
+	aktivminosites d_igaz
 )with oids;
 
 drop table if exists mukmod cascade;
 create table mukmod(
-	mukmod d_mukmod primary key
+	mukmod d_mukmod primary key,
+	aktivmukmod d_igaz
 )with oids;
 
 drop table if exists eszktipus cascade;
 create table eszktipus(
-	eszktipus d_eszktipus primary key
+	eszktipus d_eszktipus primary key,
+	aktiveszktipus d_igaz
 )with oids;
 
 drop table if exists partner cascade;
 create table partner(
 	partnerkod d_partnerkod primary key,
-	partnernev d_nev not null
+	partnernev d_nev not null,
+	aktivpartner d_igaz
 )with oids;
 
 drop table if exists koltseghely cascade;
 create table koltseghely(
 	ktghely d_ktghely primary key,
 	ktghelynev d_nev not null,
-	aktiv d_igaz
+	aktivktghely d_igaz
 )with oids;
 
 drop table if exists dolgozo cascade;
@@ -210,7 +216,7 @@ create table felhasznalo(
 	jelszo d_jelszo,
 	szerep d_szerep references szerep(szerep)
 		on update cascade on delete restrict,
-	aktiv d_igaz
+	aktivfelhasznalo d_igaz
 )with oids;
 
 drop table if exists torzsadat cascade;
@@ -241,8 +247,7 @@ drop table if exists eszkoz cascade;
 create table eszkoz(
 	gravirszam d_gravir primary key,
 	cikkszam d_cikk references torzsadat(cikkszam)
-		on update cascade on delete restrict
-		constraint zarolt_cikksazam check(fn_zarolt_cikk(cikkszam)=false),
+		on update cascade on delete restrict,
 	gysz d_gysz,
 	eszkozszam d_eszkszam default null,
 	eszkozalszam d_eszkszam default null,
