@@ -7,7 +7,7 @@
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
--- \i install.sql
+-- \i ldr_install.sql
 -- Csak Linux psql konzolos létrehozás esetén kell a következő 4 sor.
 -- \c template1
 -- drop database if exists kalibra;
@@ -612,8 +612,6 @@ language plpgsql;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- Adatok betöltése.
-
--- Költséghelyek:
 insert into koltseghely(ktghely,ktghelynev) values
 ('11-110-0','Törzs Ügyvezető'),
 ('11-120-0','Folyamatszervezési és Informatikai Ö.Cs.'),
@@ -649,8 +647,6 @@ insert into koltseghely(ktghely,ktghelynev) values
 ('12-340-0','Állapotfelvevők'),
 ('13-333-0','Hibajavítók'),
 ('14-460-0','Szakmunkásképző csoport');
-
--- Dolgozók:
 insert into dolgozo(torzsszam,vnev,knev,hnev,titulus,ktghely) values
 ('95248','Balaskó','Angéla','Ildikó','dr.','11-110-0'),
 ('95481','Bassola','Eszter','','dr.','11-110-0'),
@@ -997,30 +993,16 @@ insert into dolgozo(torzsszam,vnev,knev,hnev,titulus,ktghely) values
 ('94989','Sasvári','Krisztina','Judit','','14-460-0'),
 ('93293','Sebestyén','Tibor','','','14-460-0'),
 ('95516','Tisóczki','Richárd','Zsolt','','14-460-0');
-
--- Szerepek:
 insert into szerep values
 ('mérőeszköz felügyelő'),
 ('metrológus'),
 ('laborvezető'),
 ('lekérdező'),
 ('admin');
-
--- Felhasználók:
-insert into felhasznalo(fhnev,vnev,knev,hnev,titulus,szerep) values
-('jobbanz','Jobban','Zoltán','Tibor','','laborvezető'),
-('sasvarik','Sasvári','Krisztina','Judit','','mérőeszköz felügyelő'),
-('ipachc','Ipach','Corina','','','metrológus'),
-('gsm','Gulyásné Sasvári','Mária','Erzsébet','','lekérdező'),
-('kalibadmin','Kalibra','Rendszer','Adminisztárot','','admin');
-
--- Minősítések:
 insert into minosites values
 ('kalibrált'),
 ('nem kalibrált'),
 ('selejt');
-
--- Mennyiségi egységek:
 insert into me values
 ('UNI','univerzális'),
 ('-','határozatlan'),
@@ -1115,8 +1097,6 @@ insert into me values
 ('V','Volt'),
 ('VA','Voltamper'),
 ('W','Watt');
-
--- Eszköztípusok:
 insert into eszktipus values
 ('mechanikus'),
 ('mélységmérős'),
@@ -1125,8 +1105,6 @@ insert into eszktipus values
 ('univerzális'),
 ('kengyeles'),
 ('-');
-
--- Műlödési módok:
 insert into mukmod values
 ('mechanikus'),
 ('nóniuszos'),
@@ -1134,8 +1112,6 @@ insert into mukmod values
 ('digitális'),
 ('univerzális'),
 ('-');
-
--- Teszt Törzsadatok:
 insert into torzsadat values
 ('MEV0000001-1','tolóméró','Mitutoyo','15A2','nóniuszos','mélységmérős','1','mm','0.02','mm','0-150','mm',365,false),
 ('MEV0000002-2','mérőszalag','OBI','','mechanikus','mechanikus','1','mm','1','mm','0-3','m',180,false),
@@ -1143,7 +1119,6 @@ insert into torzsadat values
 ('MEV0000004-4','multiméter','Voltcraft','CAT III.','univerzális','univerzális','','-','','-','','-',720,false),
 ('MEV0000005-5','mikorméter','Mitutoyo','5075','nóniuszos','kengyeles','0.5','mm','0.01','mm','50-75','mm',90,false);
 
--- Teszt eszközök:
  insert into eszkoz(gravirszam,cikkszam,gysz,minosites,ekalibciklus,kaliblejar,uzemdatum) values
 ('100','MEV0000001-1','My 1234','kalibrált',180,'2020-12-31','2019-11-23'),
 ('101','MEV0000001-1','My 1872','kalibrált',360,'2021-12-31','2020-01-01'),
@@ -1151,6 +1126,11 @@ insert into torzsadat values
 ('103','MEV0000001-1','My 1882','kalibrált',720,'2020-12-31','2020-04-08'),
 ('104','MEV0000001-1','My 8712','kalibrált',540,'2022-06-17','2020-06-01');
 
-
+insert into felhasznalo(fhnev,vnev,knev,hnev,titulus,szerep) values
+('jobbanz','Jobban','Zoltán','Tibor','','laborvezető'),
+('sasvarik','Sasvári','Krisztina','Judit','','mérőeszköz felügyelő'),
+('ipachc','Ipach','Corina','','','metrológus'),
+('gsm','Gulyásné Sasvári','Mária','Erzsébet','','lekérdező'),
+('kalibadmin','Kalibra','Rendszer','Adminisztárot','','admin');
 
  

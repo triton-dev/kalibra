@@ -6,14 +6,12 @@
 --
 -------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
--- \i ldr_install.sql
--- Csak Linux psql konzolos létrehozás esetén kell a következő 4 sor.
--- \c template1
--- drop database if exists kalibra;
--- create database kalibra;
--- \c kalibra
--------------------------------------------------------------------------------
+\c template1
+
+drop database if exists kalibra;
+create database kalibra;
+
+\c kalibra
 
 --
 -- Domainek létrehozása.
@@ -160,7 +158,7 @@ drop table if exists me cascade;
 create table me(
 	me d_megyseg primary key,
 	meleiras d_nev,
-	aktivme d_igaz
+	aktivme d_igaz,
 )with oids;
 
 drop table if exists minosites cascade;
@@ -205,7 +203,7 @@ create table dolgozo(
 	ktghely d_ktghely references koltseghely(ktghely) 
 		on update cascade on delete restrict
 		check (fn_aktiv_koltseghely(ktghely)),
-	aktivdolgozo d_igaz
+	kilepett d_hamis
 )with oids;
 
 drop table if exists felhasznalo cascade;
@@ -241,7 +239,7 @@ create table torzsadat(
 	tartomanyme d_megyseg references me(me)
 		on update cascade on delete restrict,
 	kalibciklus d_int,
-	zarolt d_hamis, -- aktív cikk
+	zarolt d_hamis,
 	constraint rossz_kalibciklus check(kalibciklus >= 0)
 )with oids;
 
@@ -262,9 +260,7 @@ create table eszkoz(
 	seljavdatum d_datum,
 	seldatum d_datum,
 	tarhely d_tarhely,
-	aktiveszkoz d_igaz, 
-	foreign key (cikkszam) references torzsadat(cikkszam)
-		on update cascade on delete restrict,
+	kiadva d_hamis,
 	constraint rossz_kalibciklus check(ekalibciklus >= 0),
 	constraint eszkoz_alszam_egyedi unique(eszkozszam, eszkozalszam),
 	constraint rossz_kaliblejar_datum check(kaliblejar > uzemdatum),
@@ -399,208 +395,3 @@ create table kiadotteszkoz (
 	hol d_ktghely default null,
 	primary key(gravirszam, mettol)
 ) with oids;
-
--------------------------------------------------------------------------------
--- Függvények létrehozása
--------------------------------------------------------------------------------
-
--- Aktív dolgozó ellenőrzése
-create or replace function fn_aktiv_dolgozo(tsz varchar)
-	returns boolean as
-$$
-declare
-	aktiv dolgozo.aktivdolgozo%type;
-	tszam alias for $1;
-begin
-	select aktivdolgozo into aktiv from dolgozo where torzsszam=tszam;
-	if not found then
-		raise notice '% törzsszámú dolgozó nem létezik.',tszam;
-		return false;
-	end if;
-	return aktiv;
-end;
-$$	
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Aktív felhasználó ellenőrzése
-create or replace function fn_aktiv_felhasznalo (f varchar)
-	returns boolean as
-$$
-declare
-	aktiv felhasznalo.aktivfelhasznalo%type;
-	felh alias for $1;
-begin
-	select aktivfelhasznalo into aktiv where felhasznalo=felh;
-	if not found then
-		raise notice '% felhasználó nem létezik.',felh;
-		return false;
-	end if;
-	return aktiv;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Aktív költséghely ellenőrzése.
-create or replace function fn_aktiv_koltseghely(k varchar) 
-	returns boolean as
-$$
-declare
-	ktg alias for $1;
-	aktiv koltseghely.aktivktghely%type;
-begin
-	select aktivktghely into aktiv from koltseghely where ktghely=ktg;
-	if not found then
-		raise notice '% költséghely nem létezik.',ktg;
-		return false;
-	end if;
-	return aktiv;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Cikkszám zárolásának ellenőrzése
-create or replace function fn_zarolt_cikk(c varchar)
-	returns boolean as
-$$
-declare
-	cikk alias for $1;
-	zar torzsadat.zarolt%type;
-begin
-	select zarolt into zar from torzsadat where cikkszam=cikk;
-	if not found then
-		raise notice '% cikkszám nem létezik.',cikk;
-		return true;
-	end if;
-	return zar;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Aktív eszköz ellenőrzése.
-create or replace function fn_aktiv_eszkoz (gr varchar) 
-	returns boolean as
-$$
-declare
-	aktiv eszkoz.aktiveszkoz%type;
-	gravir alias for $1;
-begin
-	select aktiveszkoz into aktiv from eszkoz where gravirszam=gravir;
-	if not found then
-		raise notice '% gravírszámú eszköz nem létezik.',gravir;
-		return false;
-	end if;
-	return aktiv;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Aktív partner ellenőrzése
-create or replace function fn_aktiv_partner(p varchar)
-	returns boolean as
-$$
-declare
-	
-begin
-
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
-
-
-
-
--- Eszköz kiadása költséghelyre, vagy dolgozónak.
-create or replace function fn_eszkozkiadas
-	(grav varchar, dolg boolean, helyre varchar)
-		returns boolean as
-$$
-declare
-	gravir alias for $1;
-	dolgozonak alias for $2;
-	hely alias for $3;
-	holvan varchar;
-	mikor kiadotteszkoz.mettol%type;
-	aktiv dolgozo.aktivdolgozo%type;
-
-begin
-	-- Csak olyan eszköt adhatunk ki, ami nincs kiadva.
-	select hol,mettol into holvan,mikor from kiadotteszkoz
-		where gravirszam=gravir and meddig is null;
-	if found then
-		raise notice '% gravírszámú eszköz % időpontban kiadva % -nak/nek.',
-			gravir,mikor,holvan;
-		return false;
-	end if;
-	
-	-- Csak aktív eszközt adunk ki.
-	if not fn_aktiv_eszkoz(gravir) then
-		raise notice '% gravírszámú eszköz nem aktív.',gravir;
-		return false;
-	end if;
-		
-	if dolgozonak then
-		-- Csak aktív dolgozónak adunk eszközt.
-		select fn_aktiv_dolgozo(hely) into aktiv;
-		if aktiv then
-			insert into mozgdolg(gravirszam,torzsszam) values(gravir,hely);
-			insert into kiadotteszkoz(gravirszam,hol) values(gravir, hely);
-			return true;
-		else
-			raise notice '% törzsszámú dolgozó nem aktív.',hely;
-			return false;
-		end if;
-	else
-		-- Csak aktív költséghelyre adunk eszközt.
-		select fn_aktiv_koltseghely(hely) into aktiv;
-		if aktiv then
-			insert into mozgktgh(gravirszam, ktghely) values(gravir,hely);
-			insert into kiadotteszkoz(gravirszam,hol) values(gravir, hely);
-			return true;
-		else
-			raise notice '% költséghely nem aktív.',hely;
-			return false;
-		end if;
-	end if;
-	return true;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
--- Eszköz visszavétele.
-create or replace function fn_eszkozvisszavet(g varchar)
-	returns boolean as
-$$
-declare
-	gravir alias for $1;
-begin
-	perform gravir from kiadotteszkoz 
-		where gravirszam=gravir and meddig is null;
-	
-	if not found then
-		raise notice '% gravírszámú eszköz nincs kiadva.',gravir;
-		return false;
-	end if;
-	
-	update mozgdolg set meddig=current_timestamp 
-		where gravirszam=gravir and meddig is null;
-		
-	update mozgktgh set meddig=current_timestamp
-		where gravirszam=gravir and meddig is null;
-	
-	update kiadotteszkoz set meddig=current_timestamp
-		where gravirszam=gravir and meddig is null;
-		
-	return true;
-end;
-$$
-language plpgsql;
--------------------------------------------------------------------------------
-
