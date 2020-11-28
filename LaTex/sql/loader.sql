@@ -511,5 +511,12 @@ insert into torzsadat values
 ('102','MEV0000001-1','My 9812','kalibrált',120,'2021-03-31','2020-03-19'),
 ('103','MEV0000001-1','My 1882','kalibrált',720,'2020-12-31','2020-04-08'),
 ('104','MEV0000001-1','My 8712','kalibrált',540,'2022-06-17','2020-06-01');
-	 
+
+insert into felhasznalo(fhnev,vnev,knev,hnev,titulus,szerep) values
+('jobbanz','Jobban','Zoltán','Tibor','','laborvezető'),
+('sasvarik','Sasvári','Krisztina','Judit','','mérőeszköz felügyelő'),
+('ipachc','Ipach','Corina','','','metrológus'),
+('gsm','Gulyásné Sasvári','Mária','Erzsébet','','lekérdező'),
+('kalibadmin','Kalibra','Rendszer','Adminisztárot','','admin');
+
  
