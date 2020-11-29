@@ -607,6 +607,71 @@ $$
 language plpgsql;
 -------------------------------------------------------------------------------
 
+-- Nézetek létrehozása
+
+-- Aktiv MINŐSTÉS
+drop view if exists v_aktivminosites cascade;
+create view v_aktivminosites as
+	select * from minosites where aktivminosites;
+
+-- Aktív ESZKÖZTÍPUS
+drop view if exists v_aktiveszktipus cascade;
+create view v_aktiveszktipus as
+	select * from eszktipus where aktiv;
+	
+-- Aktív MŰKÖDÉSMÓD
+drop view is exists v_aktivmukmod cascade;
+create view v_aktivmukmod as
+	select * from mukmod where aktivmukmod;
+	
+-- Aktív ME (mértékegység)
+drop view if exists aktivme cascade;
+create view v_aktivme as
+	select * from me where aktivme;
+	
+-- Aktiv SZEREP
+drop view if exists v_aktivszerep cascade;
+create view v_aktivszerep as
+	select * from szerep where aktivszerep;
+
+-- Aktív PARTNER
+drop view if exists v_aktivpartner cascade;
+create view v_aktivpartner as
+	select * from partner where aktivpartner;
+	
+-- Aktív DOLGOZO
+drop view if exists v_aktivdolgozo cascade;
+create view v_aktivdolgozo as
+	select torzsszam, titulus, vnev||' '||knev||' '||hnev as nev,
+	ktghely, ktghelynev, 
+	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz 
+	from dolgozo join koltseghely using(ktghely) 
+	where aktivdolgozo order by vnev,knev,hnev;
+
+-- Passzív DOLGOZO
+drop view if exists v_passzivdolgozo cascade;
+create view v_passzivdolgozo as
+	select torzsszam, titulus, vnev||' '||knev||' '||hnev as nev,
+	ktghely, ktghelynev, 
+	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz 
+	from dolgozo join koltseghely using(ktghely) 
+	where not aktivdolgozo order by vnev,knev,hnev;
+
+-- Dolgozók listája
+drop view if exists v_dolgozo cascade;
+create view v_dolgozo as
+	select * from v_aktivdolgozo
+	union
+	select * from v_passzivdolgozo
+	order by nev;
+
+
+
+
+
+
+
+
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
