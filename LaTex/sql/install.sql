@@ -617,10 +617,10 @@ create view v_aktivminosites as
 -- Aktív ESZKÖZTÍPUS
 drop view if exists v_aktiveszktipus cascade;
 create view v_aktiveszktipus as
-	select * from eszktipus where aktiv;
+	select * from eszktipus where aktiveszktipus;
 	
 -- Aktív MŰKÖDÉSMÓD
-drop view is exists v_aktivmukmod cascade;
+drop view if exists v_aktivmukmod cascade;
 create view v_aktivmukmod as
 	select * from mukmod where aktivmukmod;
 	
