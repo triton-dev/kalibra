@@ -644,7 +644,8 @@ drop view if exists v_aktivdolgozo cascade;
 create view v_aktivdolgozo as
 	select torzsszam, titulus, vnev||' '||knev||' '||hnev as nev,
 	ktghely, ktghelynev, 
-	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz 
+	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz,
+	aktivdolgozo
 	from dolgozo join koltseghely using(ktghely) 
 	where aktivdolgozo order by vnev,knev,hnev;
 
@@ -653,7 +654,8 @@ drop view if exists v_passzivdolgozo cascade;
 create view v_passzivdolgozo as
 	select torzsszam, titulus, vnev||' '||knev||' '||hnev as nev,
 	ktghely, ktghelynev, 
-	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz 
+	case when aktivdolgozo then 'aktív' else 'passzív' end as statusz,
+	aktivdolgozo
 	from dolgozo join koltseghely using(ktghely) 
 	where not aktivdolgozo order by vnev,knev,hnev;
 
