@@ -226,7 +226,7 @@ create table torzsadat(
 	cikkszam d_cikk primary key,
 	megnevezes d_nev not null,
 	gyarto d_nev,
-	típus d_nev,
+	tipus d_nev,
 	mukodes d_mukmod references mukmod(mukmod)
 		on update cascade on delete restrict,
 	eszkoztipus d_eszktipus references eszktipus(eszktipus)
