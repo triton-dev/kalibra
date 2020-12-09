@@ -741,11 +741,13 @@ create view v_dolgozo as
 	select * from v_passzivdolgozo
 	order by nev;
 
-
-
-
-
-
+-- Felhasználó nézet bejelentkezési adatokhoz
+drop view if exists v_felhasznalo_login cascade;
+create view v_felhasznalo_login as
+	select (case when titulus='' then vnev||' '||knev else titulus||' '
+		||vnev||' '||knev end) || 
+		case when hnev!='' then ' '||hnev else '' end as nev, 
+		fhnev,szerep, aktivfelhasznalo from felhasznalo;
 
 
 
