@@ -9,10 +9,10 @@
 -------------------------------------------------------------------------------
 -- \i install.sql
 -- Csak Linux psql konzolos létrehozás esetén kell a következő 4 sor.
--- \c template1
--- drop database if exists kalibra;
--- create database kalibra;
--- \c kalibra
+ \c template1
+ drop database if exists kalibra;
+ create database kalibra;
+ \c kalibra
 -------------------------------------------------------------------------------
 
 --
@@ -669,7 +669,7 @@ declare
 	jsz alias for $2;
 begin
 	perform fhnev from felhasznalo where md5(fhnev) = md5(fh)
-		and jelszo = md5(jsz);
+		and jelszo = md5(jsz) and aktivfelhasznalo;
 	if found then 
 		return true;
 	end if; -- sikeres bejelentkezés
