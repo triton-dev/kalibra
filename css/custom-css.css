@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* Glyph */
+.icon-lg{height:2rem;width:auto}
+.icon-md{height:1.5rem;width:auto}
+.icon-sm{height:1rem;width:auto}
+.icon-xs{height:0.75rem;width:auto}
+.icon-xss{height:0.5rem;width:auto}
+
+input[type='text']:required {
+	background-color:#ffefef;
+}
+
+.select {
+	padding:0.5rem;
+	border-radius:0.1rem;
+	box-sizing:border-box;
+	background-color:white;
+	color:#7f7f7f;
+}
+
+#top h1 {font-size:150%;}
+
+#top h2 {font-size:100%;}
+
+#login-form {
+	max-width:30%;
+	border:3px solid buttonface;
+	border-radius:1rem;
+	margin:1rem auto;
+	padding:1rem;
+}
+
+#logout-form {
+	max-width:30%;
+	border:3px solid #991630;
+	border-radius:1rem;
+	margin:1rem auto;
+	padding:1rem;
+}
+
+footer {margin-top:1rem;}
+
+@media print {
+	#closeButton {display:none;}
+}
