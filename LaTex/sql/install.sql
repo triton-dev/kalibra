@@ -747,7 +747,9 @@ create view v_felhasznalo_login as
 	select (case when titulus='' then vnev||' '||knev else titulus||' '
 		||vnev||' '||knev end) || 
 		case when hnev!='' then ' '||hnev else '' end as nev, 
-		fhnev,szerep, aktivfelhasznalo from felhasznalo;
+		fhnev,szerep, aktivfelhasznalo, 
+		case when jelszo=md5('init') then true 
+		else false end as alapjelszo from felhasznalo;
 
 
 
