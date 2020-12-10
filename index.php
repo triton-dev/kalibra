@@ -31,11 +31,11 @@ echo"
   <li class='nav-item dropdown'>
     <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Dolgozók</a>
     <div class='dropdown-menu'>
-      <a class='dropdown-item' href='/kalibra/#/'>Aktív dolgozók</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Nem aktív dolgozók</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Minden dolgozó</a>
+      <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=a'>Aktív dolgozók</a>
+      <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=p'>Nem aktív dolgozók</a>
+      <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=m'>Minden dolgozó</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Új dolgozó</a>
+      <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=n'>Új dolgozó</a>
     </div>
   </li>
     <li class='nav-item dropdown'>
