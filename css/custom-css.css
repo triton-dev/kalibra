@@ -37,6 +37,14 @@ input[type='text']:required {
 	margin:1rem auto;
 	padding:1rem;
 }
+#sajatadat-form {
+	max-width:50%;
+	border:3px solid #991630;
+	border-radius:1rem;
+	margin:1rem auto;
+	padding:1rem;
+	
+}
 
 footer {margin-top:1rem;}
 

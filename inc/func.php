@@ -218,5 +218,8 @@ function endOfPage() {
         html_footer();
         die;
        }    
+       
+    
+
 ?>
 
