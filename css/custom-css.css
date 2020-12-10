@@ -46,6 +46,12 @@ input[type='text']:required {
 	
 }
 
+.sticky {
+	position: -webkit-sticky; 
+	position: sticky; 
+	top:0px;
+}
+
 footer {margin-top:1rem;}
 
 @media print {

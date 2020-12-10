@@ -45,6 +45,8 @@ switch($_GET['m']) {
 }
 
 htmlHeader();
+btnBackTopSticky();
+
 $res = $pg->query($q);
 echo"
 <table class='table table-bordered table-stripped'>
@@ -80,6 +82,5 @@ echo "
 </table>
 ";
 
-btnBack();
 htmlFooter()
 ?>

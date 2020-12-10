@@ -212,6 +212,11 @@ function btnBack() {
         echo "<p><a href='index.php'><button class='btn btn-primary'>Vissza</button></a></p>";
 }
 
+function btnBackTopSticky() {
+        echo "<p style='margin:0.5rem auto;' class='text-center sticky'>
+			<a href='index.php'><button class='btn btn-primary'>Vissza</button></a>
+		</p>";
+}
 
 function endOfPage() {
         vissza();
