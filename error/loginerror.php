@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * Hibás bejelentkezés
+ */
 require_once '../inc/func.php';
 
 
