@@ -20,25 +20,15 @@ if(isset($_POST['mentes']) && $_POST['mentes'] != '') {
 	$q  = "select jelszocsere('$fhnev','$uj1','$uj2','$regi');";
 	$res = $pg->query($q);
 	$result = $res->fetch(PDO::FETCH_NUM)[0];
-	
-	
 }
 
 htmlHeader();
 if ($result === true) {
-		$_SESSION['kalib_alapjelszo'] = false;
-	echo "
-		<div class='contener-fluid alert alert-success text-center' >
-			<h2 class='text-center' >Sikeres jelszócsere</h2>
-			<a href='/kalibra/index.php'><button class='btn btn-success'>Vissza</button></a>
-		</div>";
-
+	$_SESSION['kalib_alapjelszo'] = false;
+	header("Location: /kalibra/msg/jelszocseremsg.php?m=t");
 }
 else {
-	echo "<div class='contener-fluid alert alert-danger text-center' >
-			<h2 class='text-center' >A jelszó megváltoztatása nem sikerült.</h2>
-			<a href='/kalibra/index.php'><button class='btn btn-danger'>Vissza</button></a>
-		</div>";
+	header("Location: /kalibra/msg/jelszocseremsg.php?m=f");
 }
 htmlFooter();
 ?>

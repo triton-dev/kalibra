@@ -25,7 +25,7 @@ if(isset($_POST['login'])) {
 		header("Location: /kalibra/index.php");
 	}
 	else {
-		header("Location: /kalibra/error/loginerror.php");
+		header("Location: /kalibra/msg/loginerror.php");
 	} 
 }
 
