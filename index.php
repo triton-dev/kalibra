@@ -44,8 +44,8 @@ echo"
       <a class='dropdown-item' href='/kalibra/#/'>Cikktörzs</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új cikk</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Költséghelyek</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Új Költséghely</a>
+      <a class='dropdown-item' href='/kalibra/ktghely/'>Költséghelyek</a>
+      <a class='dropdown-item' href='/kalibra/ktghely/ujktghely.php/'>Új Költséghely</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/#/'>Partnerek</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új partner</a>
