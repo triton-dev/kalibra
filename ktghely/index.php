@@ -62,19 +62,19 @@ echo"
 	</tr>
     <tr>
 		<th scope='col'>
-			<a href='index.php?o=ka'><button class='btn btn-secondary'><sup>A</sup>&dArr;<sub>Z</sub></button></a>
+			<a href='index.php?o=ka'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Költséghely
-			<a href='index.php?o=kd'><button class='btn btn-secondary'><sup>Z</sup>&uArr;<sub>A</sub></button></a>
+			<a href='index.php?o=kd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=na'><button class='btn btn-secondary'><sup>A</sup>&dArr;<sub>Z</sub></button></a>
+			<a href='index.php?o=na'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Költséghely neve
-			<a href='index.php?o=nd'><button class='btn btn-secondary'><sup>Z</sup>&uArr;<sub>A</sub></button></a>
+			<a href='index.php?o=nd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=sa'><button class='btn btn-secondary'><sup>A</sup>&dArr;<sub>Z</sub></button></a>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Státusz
-			<a href='index.php?o=sd'><button class='btn btn-secondary'><sup>Z</sup>&uArr;<sub>A</sub></button></a>
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
     </tr>
   </thead>
