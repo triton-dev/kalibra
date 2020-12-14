@@ -44,8 +44,8 @@ echo"
       <a class='dropdown-item' href='/kalibra/#/'>Cikktörzs</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új cikk</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/ktghely/'>Költséghelyek</a>
-      <a class='dropdown-item' href='/kalibra/ktghely/ujktghely.php/'>Új Költséghely</a>
+      <a class='dropdown-item' href='/kalibra/ktghelyek/'>Költséghelyek</a>
+      <a class='dropdown-item' href='/kalibra/ujktghely/'>Új Költséghely</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/#/'>Partnerek</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új partner</a>
@@ -53,13 +53,13 @@ echo"
       <a class='dropdown-item' href='/kalibra/#/'>Felhasználók</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új felhasználó</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Szerepek</a>
+      <a class='dropdown-item' href='/kalibra/szerepek/'>Szerepek</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új szerep</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Minősítések</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Eszköztípusok</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Működési módok</a>
-      <a class='dropdown-item' href='/kalibra/#/'>Mértékegységek</a>
+      <a class='dropdown-item' href='/kalibra/minositesek/'>Minősítések</a>
+      <a class='dropdown-item' href='/kalibra/eszktipusok/'>Eszköztípusok</a>
+      <a class='dropdown-item' href='/kalibra/mukmodok/'>Működési módok</a>
+      <a class='dropdown-item' href='/kalibra/megysegek/'>Mértékegységek</a>
     </div>
   </li>
   <li class='nav-item'>

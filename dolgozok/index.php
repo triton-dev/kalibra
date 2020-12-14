@@ -49,7 +49,7 @@ btnBackTopSticky();
 
 $res = $pg->query($q);
 echo"
-<table class='table table-bordered table-stripped'>
+<table class='table table-bordered table-striped'>
   <thead class='text-center'>
 	<tr class='bg-secondary'> 
 		<th scope='col' colspan='6' class='text-center text-white'>$fejlec</th>
