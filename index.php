@@ -50,7 +50,7 @@ echo"
       <a class='dropdown-item' href='/kalibra/#/'>Partnerek</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új partner</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Felhasználók</a>
+      <a class='dropdown-item' href='/kalibra/felhasznalok/'>Felhasználók</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új felhasználó</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/szerepek/'>Szerepek</a>
