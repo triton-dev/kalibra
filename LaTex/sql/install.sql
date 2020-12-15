@@ -1159,7 +1159,7 @@ insert into felhasznalo(fhnev,vnev,knev,hnev,titulus,szerep) values
 ('sasvarik','Sasvári','Krisztina','Judit','','mérőeszköz felügyelő'),
 ('ipachc','Ipach','Corina','','','metrológus'),
 ('gsm','Gulyásné Sasvári','Mária','Erzsébet','','lekérdező'),
-('kalibadmin','Kalibra','Rendszer','Adminisztárot','','admin');
+('kalibadmin','Kalibra','Rendszer','Adminisztrátor','','admin');
 
 -- Minősítések:
 insert into minosites values
