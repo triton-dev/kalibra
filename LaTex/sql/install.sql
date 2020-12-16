@@ -1282,6 +1282,13 @@ insert into mukmod values
 ('univerzális'),
 ('-');
 
+-- Partnerek:
+insert into partner(partnerkod, partnernev) values
+('1302','Materialteszt Kft.'),
+('5047','Kalibra 59 Bt.'),
+('6181','Commed Kft.'),
+('7601','Inventure Zrt.');
+
 -- Teszt Törzsadatok:
 insert into torzsadat values
 ('MEV0000001-1','tolóméró','Mitutoyo','15A2','nóniuszos','mélységmérős','1','mm','0.02','mm','0-150','mm',365,false),
