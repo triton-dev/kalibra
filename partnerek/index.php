@@ -1,6 +1,6 @@
 <?php
 /*
- * Minősítések listája
+ * Partnerek listája
  */
 require_once '../inc/func.php';
 
@@ -16,12 +16,12 @@ if(isset($_SESSION['kalib_alapjelszo']) && $_SESSION['kalib_alapjelszo'] === tru
 }
 
 
-$q = "select minosites, case when aktivminosites then 'aktív' else 'zárolt' end as statusz ";
-$q .= "from minosites $orderby minosites;";
+$q = "select partnerkod, partnernev, case when aktivpartner then 'aktív' else 'zárolt' end as statusz ";
+$q .= "from partner order by partnernev;";
 
 
 
-$fejlec ='Mérőeszköz minősítések listája';
+$fejlec ='Partnereklistája';
 
 
 htmlHeader();
@@ -29,15 +29,17 @@ btnBackTopSticky();
 
 $res = $pg->query($q);
 echo"
-<table class='table table-bordered table-striped w-50' style='margin:0 auto;'>
+<table class='table table-bordered table-striped w-75' style='margin:0 auto;'>
   <thead class='text-center'>
 	<tr class='bg-secondary'> 
-		<th scope='col' colspan='2' class='text-center text-white'>$fejlec</th>
+		<th scope='col' colspan='3' class='text-center text-white'>$fejlec</th>
 	</tr>
     <tr>
 		<th scope='col'>
-			Minősítés
+			Partnerkód
 		</th>
+		<th scope='col'>
+			Partnernév
 		<th scope='col'>
 			Státusz
 		</th>
@@ -48,7 +50,8 @@ echo"
 while($row = $res->fetch(PDO::FETCH_ASSOC)) {
 echo"
 	<tr>
-		<td>$row[minosites]</td>
+		<td class='text-center'>$row[partnerkod]</td>
+		<td>$row[partnernev]</td>
 		<td class='text-center'>$row[statusz]</td>
     </tr>
 ";

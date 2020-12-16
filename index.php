@@ -41,13 +41,13 @@ echo"
     <li class='nav-item dropdown'>
     <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Törzsadatok</a>
     <div class='dropdown-menu'>
-      <a class='dropdown-item' href='/kalibra/#/'>Cikktörzs</a>
+      <a class='dropdown-item' href='/kalibra/torzsadatok/'>Cikktörzs</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új cikk</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/ktghelyek/'>Költséghelyek</a>
       <a class='dropdown-item' href='/kalibra/ujktghely/'>Új Költséghely</a>
       <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='/kalibra/#/'>Partnerek</a>
+      <a class='dropdown-item' href='/kalibra/partnerek/'>Partnerek</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új partner</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/felhasznalok/'>Felhasználók</a>

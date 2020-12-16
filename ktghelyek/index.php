@@ -58,7 +58,7 @@ echo"
 <table class='table table-bordered table-stripped'>
   <thead class='text-center'>
 	<tr class='bg-secondary'> 
-		<th scope='col' colspan='6' class='text-center text-white'>$fejlec</th>
+		<th scope='col' colspan='3' class='text-center text-white'>$fejlec</th>
 	</tr>
     <tr>
 		<th scope='col'>
