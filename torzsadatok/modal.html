@@ -1,0 +1,355 @@
+
+
+
+<!doctype html>
+<html lang='hu'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<!-- Latest compiled and minified CSS -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css'>
+<!-- jQuery library -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<!-- Popper JS -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js'></script>
+<!-- Latest compiled JavaScript -->
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'></script>
+<!-- Saját css betöltése -->
+<link rel='stylesheet' href='/kalibra/css/custom-css.css?v=1'>
+<link rel='shortcut icon' href='/kalibra/icon/kalibra.ico' type='image/x-icon'>
+<link rel='icon' href='/kalibra/icon/kalibra.ico' type='image/x-icon'>
+<title>Kalibra</title>
+</head>
+<body>
+<header id='top'>
+        <h1 style='background-color:yellow;color:navy;padding:1rem;margin-bottom:0px;' class='text-center'>
+                BKV Vasúti Járműjavító Kft.
+        </h1>
+        <h2 class='text-center alert alert-success'>
+                Mérőeszköz és kalibrálás nyilvántartó
+        </h2>
+</header>
+<section>
+<p style='margin:0.5rem auto;' class='text-center sticky'>
+			<a href='/kalibra/index.php'><button class='btn btn-primary'>Vissza</button></a>
+			<a href='#top'><button class='btn btn-info'>Fel</button></a>
+		</p>
+<table class='table table-bordered table-stripped table-sm'>
+  <thead class='text-center'>
+	<tr class='bg-secondary'> 
+		<th scope='col' colspan='6' class='text-center text-white'>Törzsadatok (cikktörzs)</th>
+	</tr>
+    <tr>
+		<th scope='col'>
+			<a href='index.php?o=ka'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Cikkszám
+			<a href='index.php?o=kd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=na'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Megnevezés
+			<a href='index.php?o=nd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Gyártó
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Típus
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Működési mód
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Eszköz típus
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+    </tr>
+  </thead>
+  <tbody>
+
+	<tr>
+		<td>
+			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='MEV0000001-1'>
+				MEV0000001-1
+			</button>
+		</td>
+		<td>tolóméró</td>
+		<td>Mitutoyo</td>
+		<td>15A2</td>
+		<td>nóniuszos</td>
+		<td>mélységmérős</td>
+		
+		<div class='modal fade' id='MEV0000001-1' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		  <div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+			  <div class='modal-header'>
+				<h5 class='modal-title' id='exampleModalLabel'>MEV0000001-1</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+				  <span aria-hidden='true'>&times;</span>
+				</button>
+			  </div>
+			  <div class='modal-body'>
+				<p>Osztás: 1 mm</p>
+				<p>Pontosság: 0.02 mm</p>
+				<p>Tartomány: </p>
+				<p>Kalibrálási ciklus: 365</p>
+				<p>Státusz: aktív cikk</p>
+			  </div>
+			  <div class='modal-footer'>
+				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</tr>
+		
+	<tr>
+		<td>
+			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='MEV0000002-2'>
+				MEV0000002-2
+			</button>
+		</td>
+		<td>mérőszalag</td>
+		<td>OBI</td>
+		<td></td>
+		<td>mechanikus</td>
+		<td>mechanikus</td>
+		
+		<div class='modal fade' id='MEV0000002-2' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		  <div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+			  <div class='modal-header'>
+				<h5 class='modal-title' id='exampleModalLabel'>MEV0000002-2</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+				  <span aria-hidden='true'>&times;</span>
+				</button>
+			  </div>
+			  <div class='modal-body'>
+				<p>Osztás: 1 mm</p>
+				<p>Pontosság: 1 mm</p>
+				<p>Tartomány: </p>
+				<p>Kalibrálási ciklus: 180</p>
+				<p>Státusz: aktív cikk</p>
+			  </div>
+			  <div class='modal-footer'>
+				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</tr>
+		
+	<tr>
+		<td>
+			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='MEV0000003-3'>
+				MEV0000003-3
+			</button>
+		</td>
+		<td>talpas derékszög</td>
+		<td></td>
+		<td></td>
+		<td>mechanikus</td>
+		<td>mechanikus</td>
+		
+		<div class='modal fade' id='MEV0000003-3' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		  <div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+			  <div class='modal-header'>
+				<h5 class='modal-title' id='exampleModalLabel'>MEV0000003-3</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+				  <span aria-hidden='true'>&times;</span>
+				</button>
+			  </div>
+			  <div class='modal-body'>
+				<p>Osztás:  -</p>
+				<p>Pontosság: 2 %</p>
+				<p>Tartomány: </p>
+				<p>Kalibrálási ciklus: 365</p>
+				<p>Státusz: aktív cikk</p>
+			  </div>
+			  <div class='modal-footer'>
+				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</tr>
+		
+	<tr>
+		<td>
+			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='MEV0000004-4'>
+				MEV0000004-4
+			</button>
+		</td>
+		<td>multiméter</td>
+		<td>Voltcraft</td>
+		<td>CAT III.</td>
+		<td>univerzális</td>
+		<td>univerzális</td>
+		
+		<div class='modal fade' id='MEV0000004-4' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		  <div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+			  <div class='modal-header'>
+				<h5 class='modal-title' id='exampleModalLabel'>MEV0000004-4</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+				  <span aria-hidden='true'>&times;</span>
+				</button>
+			  </div>
+			  <div class='modal-body'>
+				<p>Osztás:  -</p>
+				<p>Pontosság:  -</p>
+				<p>Tartomány: </p>
+				<p>Kalibrálási ciklus: 720</p>
+				<p>Státusz: aktív cikk</p>
+			  </div>
+			  <div class='modal-footer'>
+				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</tr>
+		
+	<tr>
+		<td>
+			<button type='button' class='btn btn-primary' data-toggle='modal' data-target='MEV0000005-5'>
+				MEV0000005-5
+			</button>
+		</td>
+		<td>mikorméter</td>
+		<td>Mitutoyo</td>
+		<td>5075</td>
+		<td>nóniuszos</td>
+		<td>kengyeles</td>
+		</tr>
+
+		
+	</tbody>
+</table>
+
+</section>
+<footer>
+<p class='text-center alert alert-success' style='font-size:0.75rem'>
+        <b>BKV Vasúti Járműjavító Kft. &ndash; Kalibra </b><br>
+        &copy; 2020. szikoragy
+</p>
+</footer>
+</body>
+</html>
+
+
+<div class='modal fade' id='MEV0000005-5' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+	<div class='modal-dialog' role='document'>
+		<div class='modal-content'>
+			<div class='modal-header'>
+				<h5 class='modal-title' id='exampleModalLabel'>MEV0000005-5</h5>
+				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+					<span aria-hidden='true'>&times;</span>
+				</button>
+			</div>
+			<div class='modal-body'>
+				<p>Osztás: 0.5 mm</p>
+				<p>Pontosság: 0.01 mm</p>
+				<p>Tartomány: </p>
+				<p>Kalibrálási ciklus: 90</p>
+				<p>Státusz: aktív cikk</p>
+			</div>
+			<div class='modal-footer'>
+				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-1">
+  Launch demo modal
+</button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class='modal fade' id='exampleModal-1' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Modal title 1</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        ...<h1>1</h1>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class='modal fade' id='exampleModal2' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Modal title 2</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        ...<h1>2</h1>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Osztás
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Pontosság
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Mérési tartomány
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Kalibrálási ciklus
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		<th scope='col'>
+			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			Státusz
+			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+		</th>
+		
+		
+		
+		<td class='text-right'>$row[_osztas]</td>
+		<td class='text-right'>$row[_pontossag]</td>
+		<td class='text-right'>$row[_tartomany]</td>
+		<td class='text-center'>$row[kalibciklus]</td>
+		<td class='text-center'>$row[statusz]</td>
+		-->
