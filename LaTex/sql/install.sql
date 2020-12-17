@@ -751,7 +751,17 @@ create view v_felhasznalo_login as
 		case when jelszo=md5('init') then true 
 		else false end as alapjelszo from felhasznalo;
 
-
+-- Eszközök listája
+drop view if exists v_eszkozlista;
+create view v_eszkozlista as
+	select gravirszam, e.cikkszam, gyarto, tipus, gysz, megnevezes, mukodes, eszkoztipus,
+		osztas||' '||osztasme _osztas, pontossag||' '||pontossagme _pontossag, 
+		tartomany||' '||tartomanyme _tartomany, kalibciklus, ekalibciklus, eszkozszam||'/'||eszkozalszam _eszkoz,
+		case when torzseszkoz then 'törzseszköz' else 'ált. eszköz' end _torzseszkoz,
+		uzemdatum, minosites, kaliblejar, tarhely, seljavdatum, seldatum,
+		case when zarolt then 'zárolt cikk' else 'aktív cikk' end _torzsstatusz,
+		case when aktiveszkoz then 'aktiv eszköz' else 'zárolt eszköz' end _eszkozstatusz
+		from eszkoz e join torzsadat using(cikkszam) order by 1;
 
 
 
@@ -1304,6 +1314,7 @@ insert into torzsadat values
 ('102','MEV0000001-1','My 9812','kalibrált',120,'2021-03-31','2020-03-19'),
 ('103','MEV0000001-1','My 1882','kalibrált',720,'2020-12-31','2020-04-08'),
 ('104','MEV0000001-1','My 8712','kalibrált',540,'2022-06-17','2020-06-01');
+
 
 
 
