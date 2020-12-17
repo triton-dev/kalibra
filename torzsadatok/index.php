@@ -19,10 +19,10 @@ $orderby = "order by cikkszam asc, statusz asc";
 if(isset($_GET['o'])) {
 	switch($_GET['o']) {
 		case 'ca':
-			$orderby = "order by cikkszam asc, statusz asc";
+			$orderby = "order by cikkszam asc";
 		break;
 		case 'cd':
-			$orderby = "order by cikkszam desc, statusz asc";
+			$orderby = "order by cikkszam desc";
 		break;
 		case 'na':
 			$orderby = "order by megnevezes asc, statusz asc";
@@ -55,7 +55,7 @@ if(isset($_GET['o'])) {
 			$orderby = "order by eszkoztipus desc, statusz asc";
 		break;	
 		default:
-			$orderby = "order by cikkszam asc, statusz asc";
+			$orderby = "order by cikkszam asc";
 		break;
 	}
 	
@@ -138,19 +138,19 @@ echo"
 				<p class='text-center'></p><br>
 				<h5 class='modal-title' id='exampleModalLabel'>
 					<img src='/kalibra/icon/info-circle.svg' height=32><br>
-					$row[cikkszam]<br>
-					$row[megnevezes]
+					<b>Cikkszám:</b> $row[cikkszam]<br>
+					<b>Megnevezés:</b> $row[megnevezes]
 				</h5>
 				<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 				  <span aria-hidden='true'>&times;</span>
 				</button>
 			  </div>
 			  <div class='modal-body'>
-				<p>Osztás: $row[_osztas]</p>
-				<p>Pontosság: $row[_pontossag]</p>
-				<p>Tartomány: $row[_tartomany]</p>
-				<p>Kalibrálási ciklus: $row[kalibciklus]</p>
-				<p>Státusz: $row[statusz]</p>
+				<p><b>Osztás:</b> $row[_osztas]</p>
+				<p><b>Pontosság:</b> $row[_pontossag]</p>
+				<p><b>Tartomány:</b> $row[_tartomany]</p>
+				<p><b>Kalibrálási ciklus:</b> $row[kalibciklus]</p>
+				<p><b>Státusz:</b> $row[statusz]</p>
 			  </div>
 			  <div class='modal-footer'>
 				<button type='button' class='btn btn-secondary' data-dismiss='modal'>Bezár</button>
