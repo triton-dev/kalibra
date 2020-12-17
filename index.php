@@ -62,6 +62,18 @@ echo"
       <a class='dropdown-item' href='/kalibra/megysegek/'>Mértékegységek</a>
     </div>
   </li>
+    <li class='nav-item dropdown'>
+    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+		Mérőeszközök
+	</a>
+    <div class='dropdown-menu'>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=e'>Élő eszközök</a>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=s'>Selejtezettek</a>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=m'>Minden eszköz</a>
+      <div class='dropdown-divider'></div>
+      <a class='dropdown-item' href='/kalibra/ujeszkoz/index.php?m=n'>Új eszköz</a>
+    </div>
+  </li>
   <li class='nav-item'>
     <a class='nav-link' href='#'>Link</a>
   </li>
