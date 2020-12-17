@@ -1,6 +1,6 @@
 <?php
 /*
- * Eszközök (mérőeszközök listája)
+ * ÉLŐ Eszközök (mérőeszközök listája)
  */
 require_once '../inc/func.php';
 
@@ -14,6 +14,36 @@ if(!isset($_SESSION['kalib_szerep'])){
 if(isset($_SESSION['kalib_alapjelszo']) && $_SESSION['kalib_alapjelszo'] === true) {
 	header("Location: /kalibra/jelszocsere/index.php");
 }
+
+if(!isset($_GET['y'])){
+	$y='&y=e';
+	$where=' where aktiveszkoz ';
+	$fejlec = 'ÉLŐ mérőeszközök listája';
+} else {
+	switch ($_GET['y']) {
+		case 'e':
+			$y='&y=e';
+			$where=' where aktiveszkoz ';
+			$fejlec = 'ÉLŐ mérőeszközök listája';
+		break;
+		case 's':
+			$y='&y=s';
+			$where=' where not aktiveszkoz ';
+			$fejlec = 'SELEJTEZETT mérőeszközök listája';
+		break;
+		case 'm':
+			$y='&y=m';
+			$where='';
+			$fejlec = 'MINDEN mérőeszköz';
+		break;
+		default:
+			$y='&y=e';
+			$where=' where aktiveszkoz ';
+			$fejlec = 'ÉLŐ mérőeszközök listája';
+		break;
+	}
+}
+
 $orderby = "order by gravirszam asc";
 
 if(isset($_GET['o'])) {
@@ -74,7 +104,6 @@ $q .= "seljavdatum,seldatum,_torzsstatusz,_eszkozstatusz,zarolt,aktiveszkoz";
 $q .= " from v_eszkozlista $orderby ;";
 
 
-$fejlec ='Mérőeszközök listája';
 
 //sql($q);
 
@@ -90,39 +119,39 @@ echo"
 	</tr>
     <tr>
 		<th scope='col'>
-			<a href='index.php?o=ga'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=ga$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Gravírszám
-			<a href='index.php?o=gd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=gd$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=ca'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=ca$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Cikkszám
-			<a href='index.php?o=cd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=cd$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=da'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=da$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Gyártó
-			<a href='index.php?o=dd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=dd$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=ta'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=ta$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Típus
-			<a href='index.php?o=td'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=td$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=ma'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=ma$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Megnevezés
-			<a href='index.php?o=md'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=md$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=sa'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=sa$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Működési mód
-			<a href='index.php?o=sd'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=sd$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
 		<th scope='col'>
-			<a href='index.php?o=ea'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
+			<a href='index.php?o=ea$y'><img src='/kalibra/icon/sort-alpha-down.svg' height:1rem;></a>
 			Eszköz típus
-			<a href='index.php?o=ed'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
+			<a href='index.php?o=ed$y'><img src='/kalibra/icon/sort-alpha-up-alt.svg' height:1rem;></a>
 		</th>
     </tr>
   </thead>

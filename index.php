@@ -20,7 +20,10 @@ htmlHeader();
 echo"
 <ul class='nav nav-pills'>
   <li class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>$_SESSION[kalib_fhnev]</a>
+    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+		<img src='/kalibra/icon/person.svg' height=32>
+		$_SESSION[kalib_fhnev]
+	</a>
     <div class='dropdown-menu'>
       <a class='dropdown-item' href='/kalibra/sajatadatok/'>Saját adatok módosítása</a>
       <a class='dropdown-item' href='/kalibra/jelszocsere/'>Jelszó módosítása</a>
@@ -67,9 +70,9 @@ echo"
 		Mérőeszközök
 	</a>
     <div class='dropdown-menu'>
-      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=e'>Élő eszközök</a>
-      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=s'>Selejtezettek</a>
-      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?m=m'>Minden eszköz</a>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?y=e'>Élő eszközök</a>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?y=s'>Selejtezettek</a>
+      <a class='dropdown-item' href='/kalibra/eszkozok/index.php?y=m'>Minden eszköz</a>
       <div class='dropdown-divider'></div>
       <a class='dropdown-item' href='/kalibra/ujeszkoz/index.php?m=n'>Új eszköz</a>
     </div>
