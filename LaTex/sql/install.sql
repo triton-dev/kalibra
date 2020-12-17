@@ -752,7 +752,8 @@ create view v_felhasznalo_login as
 		else false end as alapjelszo from felhasznalo;
 
 -- Eszközök listája
-drop view if exists v_eszkozlista;
+
+drop view v_eszkozlista cascade;
 create view v_eszkozlista as
 	select gravirszam, e.cikkszam, gyarto, tipus, gysz, megnevezes, mukodes, eszkoztipus,
 		osztas||' '||osztasme _osztas, pontossag||' '||pontossagme _pontossag, 
@@ -760,7 +761,8 @@ create view v_eszkozlista as
 		case when torzseszkoz then 'törzseszköz' else 'ált. eszköz' end _torzseszkoz,
 		uzemdatum, minosites, kaliblejar, tarhely, seljavdatum, seldatum,
 		case when zarolt then 'zárolt cikk' else 'aktív cikk' end _torzsstatusz,
-		case when aktiveszkoz then 'aktiv eszköz' else 'zárolt eszköz' end _eszkozstatusz
+		case when aktiveszkoz then 'aktiv eszköz' else 'zárolt eszköz' end _eszkozstatusz,
+		zarolt, aktiveszkoz
 		from eszkoz e join torzsadat using(cikkszam) order by 1;
 
 
