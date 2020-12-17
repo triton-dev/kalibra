@@ -14,7 +14,7 @@ if(!isset($_SESSION['kalib_szerep'])){
 if(isset($_SESSION['kalib_alapjelszo']) && $_SESSION['kalib_alapjelszo'] === true) {
 	header("Location: /kalibra/jelszocsere/index.php");
 }
-$orderby = "order by cikkszam asc statusz asc";
+$orderby = "order by cikkszam asc, statusz asc";
 
 if(isset($_GET['o'])) {
 	switch($_GET['o']) {
@@ -69,6 +69,7 @@ $q.= "from torzsadat $orderby;";
 
 $fejlec ='Törzsadatok (cikktörzs)';
 
+//sql($q);
 
 htmlHeader();
 btnBackTopSticky();
