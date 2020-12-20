@@ -32,7 +32,10 @@ echo"
     </div>
   </li>
   <li class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Dolgozók</a>
+    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+		<img src='/kalibra/icon/people.svg' height=32>
+		Dolgozók
+	</a>
     <div class='dropdown-menu'>
       <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=a'>Aktív dolgozók</a>
       <a class='dropdown-item' href='/kalibra/dolgozok/index.php?m=p'>Nem aktív dolgozók</a>
@@ -42,7 +45,10 @@ echo"
     </div>
   </li>
     <li class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Törzsadatok</a>
+    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+		<img src='/kalibra/icon/list-task.svg' height=32>
+		Törzsadatok
+	</a>
     <div class='dropdown-menu'>
       <a class='dropdown-item' href='/kalibra/torzsadatok/'>Cikktörzs</a>
       <a class='dropdown-item' href='/kalibra/#/'>Új cikk</a>
@@ -67,6 +73,7 @@ echo"
   </li>
     <li class='nav-item dropdown'>
     <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+		<img src='/kalibra/icon/slash-circle.svg' height=32>
 		Mérőeszközök
 	</a>
     <div class='dropdown-menu'>
