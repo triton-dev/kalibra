@@ -101,7 +101,7 @@ $q = "select gravirszam,cikkszam,gyarto,tipus,gysz,megnevezes,mukodes,";
 $q .="eszkoztipus,_osztas,_pontossag,_tartomany,kalibciklus,ekalibciklus,";
 $q .="_eszkoz,_torzseszkoz,uzemdatum,minosites,kaliblejar,tarhely,";
 $q .= "seljavdatum,seldatum,_torzsstatusz,_eszkozstatusz,zarolt,aktiveszkoz";
-$q .= " from v_eszkozlista $orderby ;";
+$q .= " from v_eszkozlista $where $orderby ;";
 
 
 

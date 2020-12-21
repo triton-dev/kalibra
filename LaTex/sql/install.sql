@@ -9,10 +9,10 @@
 -------------------------------------------------------------------------------
 -- \i install.sql
 -- Csak Linux psql konzolos létrehozás esetén kell a következő 4 sor.
- \c template1
- drop database if exists kalibra;
- create database kalibra;
- \c kalibra
+-- \c template1
+-- drop database if exists kalibra;
+-- create database kalibra;
+-- \c kalibra
 -------------------------------------------------------------------------------
 
 --
@@ -753,7 +753,7 @@ create view v_felhasznalo_login as
 
 -- Eszközök listája
 
-drop view v_eszkozlista cascade;
+drop view if exists v_eszkozlista cascade;
 create view v_eszkozlista as
 	select gravirszam, e.cikkszam, gyarto, tipus, gysz, megnevezes, mukodes, eszkoztipus,
 		osztas||' '||osztasme _osztas, pontossag||' '||pontossagme _pontossag, 
