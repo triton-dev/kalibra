@@ -15,6 +15,19 @@ if(isset($_SESSION['kalib_alapjelszo']) && $_SESSION['kalib_alapjelszo'] === tru
 	header("Location: /kalibra/jelszocsere/index.php");
 }
 
+$q = "select count(*) from koltseghely;";
+$res = $pg->query($q);
+$sorok_szama = $res->fetch(PDO::FETCH_NUM)[0];
+
+if($sorok_szama > 15) {
+	$limit = "limit 15 offset 0";
+}
+
+if(isset($_GET['O']) && is_numeric($_GET['O']) && $_GET['O'] >=0 && $_GET['O'] <= $sorok_szama) {
+	$limit = "limit 15 offset ".$_GET['O'];
+}
+
+
 if(isset($_GET['o'])) {
 	switch($_GET['o']) {
 		case 'ka':
@@ -43,8 +56,7 @@ if(isset($_GET['o'])) {
 }
 
 $q = "select ktghely, ktghelynev, case when aktivktghely then 'aktív' else 'zárolt' end as statusz ";
-$q .= "from koltseghely $orderby;";
-
+$q .= "from koltseghely $orderby $limit;";
 
 
 $fejlec ='Költséghelyek listája';
@@ -92,6 +104,26 @@ echo "
 	</tbody>
 </table>
 ";
+
+if($sorok_szama > 15) {
+	$limit = 15;
+	echo "
+		<nav aria-label='Page navigation example'>
+			<ul class='pagination justify-content-center'>";
+	$lapozo = $sorok_szama / 15;
+	for($i = 0; $i <= $lapozo; $i++) {
+		$offset = $i*15;
+		$lap= $i+1;
+		echo "
+		<li class='page-item'><a class='page-link' href='index.php?O=$offset&o=$_GET[o]'>$lap</a></li>
+		";
+	}
+    
+	echo "
+			</ul>
+		</nav>";
+}
+
 
 htmlFooter()
 ?>
